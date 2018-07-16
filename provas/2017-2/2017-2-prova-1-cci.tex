@@ -1,0 +1,329 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{CCI122-03U}
+\newcommand*\disciplina{ANN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{12/09/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Seja $\overline{x} = \dfrac{33}{20}$.
+\begin{enumerate}
+\item Obtenha a representação de $\overline{x}$ em binário, com 8 algarismos corretos após a vírgula.
+\item Quantos desses algarismos (binários) são necessários após a vírgula para representar $\overline{x}$ com erro relativo percentual inferior a $5\%$?
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Tem-se:
+\begin{center}
+\begin{tabular}{|c|l|l|l|l|l|l|l|l|}
+\hline
+$\mathbf{x}$       
+& 0,65 & 0,3 & 0,6 & 0,2 & 0,4 & 0,8 & 0,6 & 0,2 \\ \hline
+$\mathbf{2\cdot x}$
+& \textbf{1},3  & \textbf{0},6 & \textbf{1},2 & \textbf{0},4 & \textbf{0},8 & \textbf{1},6 & \textbf{1},2 & \textbf{0},4 \\ \hline
+\end{tabular}
+\end{center}
+
+Logo,
+\[
+\overline{x}
+= \dfrac{33}{20}
+= (1,65)_{10}
+= (1,10\overline{1001})_2
+\approx (1,10100110)_2.
+\]
+\item \textbf{Solução 1}: Como se pode ver na tabela a seguir, é preciso no mínimo 3 dos algarismos da representação binária de $\overline{x}$ para que o erro seja inferior a $5\%$:
+\medskip
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+\hline
+  $\mathbf{n}$
+& \textbf{Binário}
+& \textbf{Decimal}
+& \textbf{Erro relativo percentual} \\ \hline
+0 & $(1)_2$     & $(1)_{10}$ & $39,39\%$ \\ \hline
+1 & $(1,1)_2$   & $(1,5)_{10}$ & $9,09\%$ \\ \hline
+2 & $(1,10)_2$  & $(1,5)_{10}$ & $9,09\%$ \\ \hline
+3 & $(1,101)_2$ & $(1,625)_{10}$ & $\mathbf{1,52\% < 5\%}$ \\ \hline
+\end{tabular}
+\end{center}
+\textbf{Solução 2}: Já que $\frac{|\overline{x} - 1.65|}{|1.65|}$ equivale a $1.5675< \overline{x} < 1.7325$, basta truncar a soma
+\begin{align*}
+\overline{x} & =
+  1 \times 2^0
++ 1 \times 2^{-1}
++ 0 \times 2^{-2}
++ 1 \times 2^{-3}
++ 0 \times 2^{-4}
++ 0 \times 2^{-5}
++ 1 \times 2^{-6}
++ \ldots \\
+& =
+  \underbrace{1
++ 0.5
++ 0
++ 0.125}_{=1.625}
++ 0
++ 0
++ 0.015625
++ \ldots
+\end{align*}
+assim que a soma parcial estiver no intervalo acima, isto é, na parcela $2^{-3}$.
+\end{enumerate}
+
+\Exercise[title={2,5}] Em relação ao método da \textbf{posição falsa}:
+\begin{enumerate}
+\item Interprete geometricamente e deduza a fórmula recursiva utilizada a cada iteração.
+\item Se $f(x) = -2 + \sqrt[3]{3x}$, quantas iterações são necessárias para obter $x_k$ tal que $|f(x_k)| < 10^{-4}$, partindo do intervalo inicial $I = [2, 4]$? \textit{(utilize 5 algarismos após a vírgula nos cálculos)}
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item A cada iteração subdivide-se um intervalo fechado que contém a raiz em dois subintervalos, e escolhe-se um deles para uso na próxima iteração. O que muda em relação ao método da bissecção o ponto em que é feita a divisão: em vez de usar sempre o ponto médio dos extremos do intervalo $[a,b]$, é feita uma média ponderada dessas extremidades, levando em conta o valor de $f$ em cada uma. Geometricamente, isso corresponde a ligar os pontos $(a, f(a))$ e $(b, f(b))$ por uma reta, e encontrar a interseção desta com o eixo horizontal.
+\item Os primeiros termos da sequência $(x_k)_{k=0}^\infty$, produzida pelo método da posição falsa são obtidos como segue (com arredondamento no quinto dígito decimal a cada iteração):
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|r|c|}
+\hline
+$k$ & $a_k$ & $b_k$ & $f(a_k)$ & $f(b_k)$ & $x_k$ & $f(x_k)$ & $f(a_k)\cdot f(x_k)$ \\
+\hline
+0 & 2 & 4 & -0.18288 & 0.28943 & 2.77441 & 0.02658 & > 0 \\
+\hline
+1 & 2 & 2.77441 & -0.18288 & 0.02658 & 2.67614 & 0.00237 & > 0 \\
+\hline
+2 & 2 & 2.67614 & -0.18288 & 0.00237 & 2.66749 & 0.00021 & > 0 \\
+\hline
+3 & 2 & 2.66749 & -0.18288 & 0.00021 & 2.66672 & 0.00001 & > 0 \\
+\hline
+4 & 2 & 2.66672 & -0.18288 & 0.00001 & 2.66668 & \textbf{0.00000} & = 0 \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Como $|f(x_4)| = 0.00000 < 10^{-4}$ (ao arredondar na quinta casa decimal), conclui-se que $x_4 = 2.66672$ é uma aproximação da raiz de $f$ com a precisão desejada. Portanto, são necessárias 4 iterações.
+\end{enumerate}
+
+\Exercise[title={2,5}]
+A função $f(x) = 2 e^x + 3x^3$ possui uma única raiz $\overline{x} \in \R$. Identifique um intervalo que contenha essa raiz, e partindo de uma aproximação inicial neste intervalo, aplique o método de \textbf{Newton-Raphson} para obter um $x_k \approx \overline{x}$ tal que $|f(x_k)| < 10^{-4}$. Ao final, estime o erro relativo percentual cometido. \textit{(utilize 5 algarismos após a vírgula nos cálculos)}
+\Answer 
+Sendo $f$ contínua, $f(-1) = \frac{2}{e} - 3 \approx -2.3 < 0$ e $f(0) = 2 > 0$, pode-se concluir que há uma raiz de $f$ no intervalo $I = (-1, 0)$. Escolhendo como aproximação inicial da raiz o ponto $x_0 = -1/2$, estas são as iterações do método de Newton-Raphson, com arredondamento no quinto dígito decimal a cada iteração:
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|}
+\hline
+$k$ &  $x_{k-1}$ & $f(x_{k-1})$ & $f^\prime(x_{k-1})$ & $\frac{f(x_{k-1})}{f^\prime(x_{k-1})}$ & $x_k = x_{k-1} - \frac{f(x_{k-1})}{f^\prime(x_{k-1})}$ \\
+\hline
+1 & -0.50000 & 0.83806 & 3.46306 & 0.242 & -0.742 \\
+\hline
+2 & -0.74200 & -0.27323 & 5.9074 & -0.04625 & -0.69575 \\
+\hline
+3 & -0.69575 & -0.01297 & 5.35401 & -0.00242 &-0.69333 \\
+\hline
+4 & -0.69333 & \textbf{-0.00005} & - & - & - \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Assim, a aproximação $x_4 \approx -0.69333$ satisfaz $| f(x_4) | < 10^{-4}$ e estima-se que
+\[
+\varepsilon_{\text{per}}
+\approx
+\frac{|x_4 - x_3|}{|x_4|} \times 100\%
+= \frac{|-0.69333 - (-0.69575)|}{|-0.69333|} \times 100\%
+= \frac{0.00242}{0.69333} \times 100\%
+\approx 0.3490\%.
+\]
+
+\Exercise[title={2,5}]
+Seja $f: \R \to \R$ a função definida por $f(x) = 4e^x + x^3$.
+\begin{enumerate}
+\item Obtenha uma função de iteração $\varphi$ para $f$, tal que se
+$x_0 = -1$ for a aproximação inicial, poderá garantir a convergência do método da \textbf{iteração de ponto fixo} para a raiz de $f$.
+\item Obtenha uma aproximação $x_k$ tal que o erro absoluto estimado seja $|x_k - x_{k-1}| < 0,05$, usando o item anterior. Indique os valores de $x_k$, $f(x_k)$ e $|x_k - x_{k-1}|$ a cada iteração.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item A equação $f(x) = 4e^x + x^3 = 0$ é equivalente a
+$x = -\sqrt[3]{4e^x} = -\sqrt[3]{4}e^{x/3}$. Definindo $\varphi(x) = -\sqrt[3]{4}e^{x/3}$, tem-se uma função contínua em $\R$ e $|\varphi^\prime(x)| = \frac{\sqrt[3]{4}}{3}e^{x/3}$. Então $|\varphi^\prime(x)| < 1$ equivale a
+$e^{x/3} < \frac{3}{\sqrt[3]{4}}$,
+ou ainda,
+$x < 3 \ln\left( \frac{3}{\sqrt[3]{4}} \right) \approx 1.90954$.
+
+Então para qualquer aproximação inicial $x_0 < 1.9$, o método da iteração de ponto fixo com esta função de iteração $\varphi$ produzirá uma sequência convergente, cujo limite será a raiz de $f$. Em particular, isso vale para $x_0 = -1$.
+\item Usando a função de iteração escolhida anteriormente, os primeiros termos da sequência $(x_k)_{k=0}^\infty$, definida por $x_0 = -1$ e $x_k = -\sqrt[3]{4}e^{(x_{k-1})/3}$ para $k \geq 1$ são os seguintes (arredondados no quinto dígito decimal a cada iteração).
+\begin{center}
+\begin{tabular}{|r|r|r|r|}
+\hline
+$k$ & $x_k$ & $f(x_k)$ & $|x_k - x_{k-1}|$ \\
+\hline
+0 & -1.000 & 0,472 & - \\
+\hline
+1 & -1,137 & -0,187 & 0,137 \\
+\hline
+2 & -1,087 &  0,065 & 0,05 \\
+\hline
+3 & -1,105 & -0,024 & 0,018 \\
+\hline
+\end{tabular}
+\end{center}
+
+Como $|x_3 - x_2| \approx 0.018 < 0.05$, conclui-se que $x_3 = -1.105$ é uma aproximação da raiz de $f$ com a precisão desejada.
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Utilize o método da secante para obter uma raiz de $f(x) = 2\ln(x) - 3\ln(x - 1)$ com um erro relativo estimado de no máximo $10^{-2}$.
+\Answer Atribuindo alguns valores para $x$, obtém-se:
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|}
+\hline
+$x$    & 2   & 3   & 4    &  5 \\
+\hline
+$f(x)$ & 1.4 & 0.1 & -0.5 & -0.9 \\
+\hline
+\end{tabular}
+\end{center}
+Assim, no intervalo $I = [3, 4]$ deve existir uma raiz de $f$.
+
+Estas são as primeiras iterações do método da secante com aproximações iniciais $x_{-1} = 3$ e $x_{0} = 4$, com arredondamento no quarto dígito decimal a cada iteração:
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|}
+\hline
+$k$ & $x_{k-1}$ & $x_k$ & $x_k - x_{k-1}$ & $f(x_k)$ & $\frac{|x_k - x_{k-1}|}{|x_k|}$ \\
+\hline
+-1 &      - & 3.0000 & -       &  0.1178 & - \\
+\hline
+ 0 & 3.0000 & 4.0000 & -0.8163 & -0.5233 & 0.2500 \\
+\hline
+ 1 & 4.0000 & 3.1837 & -0.0444 & -0.0270 & 0.2564 \\
+\hline
+ 2 & 3.1837 & 3.1393 &  0.0087 &  0.0066 & 0.0141 \\
+\hline
+ 3 & 3.1393 & 3.1480 &  0.0001 & -0.0001 & \textbf{0.0028} \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Nesta etapa, obtém-se a aproximação $x_3 = 3.1393$, com $|x_3 - x_2| / |x_3| \approx 0.0028 < 10^{-2}$.
+
+\Exercise[title={2,5}]
+O volume $V$ de líquido em um tanque esférico de raio $r$ está relacionado com a profundidade $h$ do líquido por $V = \dfrac{\pi h^2(3r-h)}{3}$. Determine $h$, com erro absoluto menor do que $10^{-2}$, dado que $r=1\ m$ e $V = 2\ m^3$.
+\Answer Substituindo os valores de $r$ e $V$, obtém-se a equação
+$2 = \dfrac{\pi h^2(3-h)}{3}$, que deve ser satisfeita por algum valor $h \in [0, 2r] = [0, 2]$ (já que a altura nunca é negativa, e nem pode ultrapassar o diâmetro do tanque). Buscar uma solução para essa equação é equivalente a procurar um zero da função
+\[
+f(x)
+= \dfrac{\pi x^2(3-x)}{3} - 2
+= -\dfrac{\pi}{3}x^3 + \pi x^2 - 2.
+\]
+Para isso, pode ser utilizado qualquer um dos métodos estudados. Por exemplo, por Newton-Raphson, obtém-se:
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|}
+\hline
+$k$ &  $x_{k-1}$ & $f(x_{k-1})$ & $f^\prime(x_{k-1})$ & $\frac{f(x_{k-1})}{f^\prime(x_{k-1})}$ & $x_k = x_{k-1} - \frac{f(x_{k-1})}{f^\prime(x_{k-1})}$ \\
+\hline
+1 & 1.0000 & 0.0944 & 3.1416 & 0.0300 & 0.9700 \\
+\hline
+2 & 0.9700 & 0.0002 & 3.1388 & 0.0001 & 0.9699 \\
+\hline
+\end{tabular}
+\end{center}
+Neste ponto, o erro absoluto é $\varepsilon_{abs} \approx |x_2 - x_1| = 0.0001 < 10^{-2}$.
+\end{ExerciseList}
+
+\vspace{0.5cm}
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

@@ -1,0 +1,153 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{CCI122-03U}
+\newcommand*\disciplina{ANN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{03/07/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={1,0}]
+Explique o funcionamento e as vantagens do método de Newton-Cotes adaptável.
+\Answer \fixme
+
+\Exercise[title={3,0}] Seja $f(x) = 1-x^4$. Se for utilizada a regra
+$1/3$ de Simpson com repetição, qual será o menor número de \textbf{pontos} distintos em que $f$ precisará ser calculada para que o erro relativo percentual ao aproximar $\int_{-1}^1 f(x)\, dx$ seja de no máximo $1\%$?
+
+{\color{blue} \textit{(Utilize números decimais com 4 dígitos após a vírgula)}}
+\Answer \fixme
+
+
+\Exercise[title={3,0}] Considerando que
+$\int_{-1}^3 \sqrt[3]{x}\, dx
+= \frac{9 \; \sqrt[3]{3} - 3}{4}
+\approx 2,4951$
+e que
+$\int_{-1}^5 \sqrt[3]{x}\, dx
+= \frac{15 \; \sqrt[3]{5} - 3}{4}
+\approx 5,6624$, verifique que o erro relativo da aproximação de $\int_{-1}^3 \sqrt[3]{x}\, dx$ pela regra de Gauss-Legendre com 3 pontos é cerca de um terço do erro relativo da aproximação de $\int_{-1}^5 \sqrt[3]{x}\, dx$ pelo mesmo método.
+
+{\color{blue} \textit{(Utilize números decimais com 4 dígitos após a vírgula)}}
+\Answer \fixme
+
+\Exercise[title={3,0}] Dados os pontos $x_0 = 0$, $x_1 = 1$ e $x_2 = 4$, obtenha os pesos $w_i$ para que a aproximação
+\[
+\int_{0}^{4} f(x) \approx w_0 f(0) + w_1 f(1) + w_2 f(4)
+\]
+seja exata para polinômios de grau menor ou igual a dois. Utilize a regra obtida para calcular $\int_{0}^{4} g(x)$ considerando que $g(0) = 2$, $g(1) = 0$ e $g(4) = 3$.
+\Answer \fixme
+
+\Exercise[title={3,0}]
+Em relação às soluções aproximadas do problema de valor inicial
+\[
+\begin{cases}
+y^\prime(x) = x - y(x), \quad x \in [0,1]\\
+y(0) = 2
+\end{cases}
+\]
+pelos métodos de Euler explícito e implícito, com passo $h=0,25$, verifique se é correto afirmar que o maior erro absoluto em ambos os casos ocorre quando $x = 1$, considerando que a solução exata é $y(x) = 3e^{-x}+x-1$.
+
+{\color{blue} \textit{(Utilize números decimais com 3 dígitos após a vírgula)}}
+\Answer \fixme
+\end{ExerciseList}
+
+\vspace{0.4cm}
+\begin{center}
+BOA PROVA E BOAS FÉRIAS!
+\end{center}
+
+%\newpage
+\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}

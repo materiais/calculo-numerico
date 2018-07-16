@@ -1,0 +1,376 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\sen{\operatorname{sen}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{CCI122-03U}
+\newcommand*\disciplina{ANN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{07/12/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{16.3cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Utilize números decimais em vez de frações e arredonde as respostas finais com 4 casas após a vírgula.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={1,0}] Interprete geometricamente o método de Euler explícito e relacione essa interpretação com a fórmula recursiva utilizada pelo método.
+\Answer Rever referências básicas de análise numérica e cálculo numérico.
+%{\color{red}
+%O método de Euler explícito permite que seja obtida uma aproximação $y_{i+1}$ do valor de $y(t_{i+1})$, uma vez que seja conhecido o valor de $f(t_i, y(t_i))$. Para isso, é utilizada uma reta tangente em $(t_i, y(t_i))$. \fixme passo $h$ \fixme figura \fixme
+%}
+
+\Exercise[title={3,0}] Obtenha a reta que melhor se ajusta (por mínimos quadrados) aos seguintes pontos:
+$A = (-1, 1)$,
+$B = (1, 3)$,
+$C = (2, 2)$,
+$D = (3, 4)$,
+$E = (5, 2)$.
+\Answer Sejam $A = (x_1,y_1)$, $B = (x_2,y_2)$, $C = (x_3,y_3)$, $D = (x_4,y_4)$ e $E = (x_5,y_5)$ e denote $g_0(x) = 1$, $g_1(x) = x$. Para encontrar uma função da forma $f(x) = a_0 g_0(x) + a_1 g_1(x)$ que melhor se ajusta aos pontos $(x_i, y_i)$, basta resolver o sistema $A^T A X = A^T B$, em que
+\[
+A
+= \begin{bmatrix}
+g_0(x_1) & g_1(x_1) \\
+\vdots & \vdots\\
+g_0(x_5) & g_1(x_5) \\
+\end{bmatrix}
+= \begin{bmatrix}
+1 & x_1 \\
+\vdots & \vdots\\
+1 & x_5 \\
+\end{bmatrix},
+%=\begin{bmatrix}
+%  1 & -1 \\
+%  1 &  1 \\
+%  1 &  2 \\
+%  1 &  3 \\
+%  1 &  5
+%\end{bmatrix},
+\quad
+X =
+\begin{bmatrix}
+a_0\\a_1
+\end{bmatrix},
+\quad
+B = \begin{bmatrix}
+y_1 \\
+\vdots \\
+y_5 \\
+\end{bmatrix},
+%=
+%\begin{bmatrix}
+%1 \\ 3 \\ 2 \\ 4 \\ 2
+%\end{bmatrix},
+\]
+\[
+A^T A
+= \begin{bmatrix}
+ 5                & \sum_{i=1}^5 x_i \\
+\sum_{i=1}^5 x_i  & \sum_{i=1}^5 x_i^2
+\end{bmatrix}
+=\begin{bmatrix}
+ 1 & 1 & 1 & 1 & 1 \\
+-1 & 1 & 2 & 3 & 5
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+  1 & -1 \\
+  1 &  1 \\
+  1 &  2 \\
+  1 &  3 \\
+  1 &  5
+\end{bmatrix}
+=\begin{bmatrix}
+5 & 10 \\ 10 & 40
+\end{bmatrix},
+\]
+e
+\[
+A^T B
+= \begin{bmatrix}
+ \sum_{i=1}^5 y_i \\
+ \sum_{i=1}^5 x_i y_i
+\end{bmatrix}
+= \begin{bmatrix}
+ 1 & 1 & 1 & 1 & 1 \\
+-1 & 1 & 2 & 3 & 5
+\end{bmatrix}
+\begin{bmatrix}
+1 \\ 3 \\ 2 \\ 4 \\ 2
+\end{bmatrix}
+= \begin{bmatrix}
+12 \\ 28
+\end{bmatrix}.
+\]
+Então, 
+$
+A^T A X = A^T B
+\Leftrightarrow
+\begin{bmatrix}
+5 & 10 \\ 10 & 40
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+a_0\\
+a_1
+\end{bmatrix}
+=
+\begin{bmatrix}
+12 \\ 28
+\end{bmatrix} 
+\Leftrightarrow
+\begin{bmatrix}
+a_0\\
+a_1
+\end{bmatrix}
+=
+\begin{bmatrix}
+2\\
+1/5
+\end{bmatrix}.
+$
+
+Portanto, a solução é $f(x) = 2 + \dfrac{x}{5} = 2 + 0.2x$.
+
+\Exercise[title={3,0}] Identifique qual é o melhor e o pior método para estimar $\displaystyle I = \int_{-3}^3 \cos(x) dx$ (em termos do erro relativo), dado que o valor exato é $2 \sen(3) \approx 0.2822400161$: 
+
+\textit{(Configure sua calculadora para radianos)}
+\begin{multicols}{3}
+\begin{enumerate}
+\item Trapézios repetido em\\3 subintervalos
+\item 3/8 de Simpson em\\ um único intervalo
+\item Gauss-Legendre com\\ 4 pontos
+\end{enumerate}
+\end{multicols}
+\Answer
+\begin{enumerate}
+\item Repetindo a regra dos trapézios em 3 subintervalos, obtém-se:
+\[
+I \approx \frac{2}{2} \left( \cos(-3) + 2\cos(-1) + 2\cos(1) + \cos(3) \right)
+\approx \textbf{0.1812}2
+\]
+\[
+\varepsilon_{rel} = |0.18122 - 0.28224|/|0.28224|
+\approx \textbf{0.3579}
+\]
+
+\item Aplicando a regra 3/8 de Simpson em um único intervalo, tem-se:
+\[
+I \approx \frac{3}{8} \cdot 2 \cdot \left( \cos(-3) + 3\cos(-1) + 3\cos(1) + \cos(3) \right)
+\approx \textbf{0.9463}7
+\]
+\[
+\varepsilon_{rel} = |0.94637 - 0.28224|/|0.28224|
+\approx \textbf{2.3531}
+\]
+
+\item Fazendo a mudança de variáveis $x = 3t$ obtém-se:
+$\int_{-3}^3 \cos(x) dx = 3 \int_{-1}^1 \cos(3t) dt$.
+Então, pela regra de Gauss-Legendre com 4 pontos, tem-se:
+\begin{align*}
+I & \approx
+    3\cdot \left[ 0.347855 \cdot \cos(3\cdot(-0.861136))
+  + 0.652145 \cdot \cos(3\cdot(-0.339981)) \right.\\
+&  \qquad\left. + 0.652145 \cdot \cos(3\cdot 0.339981)
+  + 0.347855 \cdot \cos(3\cdot 0.861136)\right]\\
+& \approx \textbf{0.2777}1
+\end{align*}
+\[
+\varepsilon_{rel} = |0.27771- 0.28224|/|0.28224|
+\approx \textbf{0.0161}
+\]
+\end{enumerate}
+Portanto, a pior estimativa é a do método 3/8 de Simpson e a melhor é a do de Gauss-Legendre.
+
+\Exercise[title={3,0}] Aplique o método de Romberg para obter uma estimativa $\displaystyle R_{4,4} \approx \int_1^9 \ln(x) dx$, e o respectivo erro relativo percentual, considerando que o valor exato da integral é $9\ln(9)-8$.
+\Answer
+Calculando os termos $R_{k,j}$, obtêm-se:
+\begin{itemize}
+\item $R_{1,1}
+= \frac{8}{2}(\ln(1) + \ln(9))
+= 8.788898$
+\item $R_{2,1}
+= \frac{4}{2}(\ln(1) + 2\ln(5) + \ln(9))
+= 10.832201$
+\item $R_{2,2}
+= 10.832201+\dfrac{10.832201-8.788898}{3}
+= 11.513302$
+\item $R_{3,1}
+= \frac{2}{2}(\ln(1) + 2[\ln(3) + \ln(5) + \ln(7)] + \ln(9))
+= 11.505145$
+\item $R_{3,2}
+= 11.505145+\dfrac{11.505145 - 10.832201}{3}
+= 11.729460$
+\item $R_{3,3}
+= 11.729460+\dfrac{11.729460-11.513302}{15}
+= 11.743871$
+\item $R_{4,1}
+= \frac{1}{2}(\ln(1) + 2[\ln(2) + \ln(3) + \ln(4) + \ln(5) + \ln(6) + \ln(7) + \ln(8)] + \ln(9))
+= 11.703215$
+\item $R_{4,2}
+= 11.703215+\dfrac{11.703215-11.505145}{3}
+= 11.769238$
+\item $R_{4,3}
+= 11.769238+\dfrac{11.769238-11.729460}{15}
+= 11.771890$
+\item $R_{4,4}
+= 11.771890+\dfrac{11.771890-11.743871}{63}
+= 11.772335$
+\end{itemize}
+
+Os resultados anteriores são resumidos na tabela a seguir:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|r|}
+\hline 
+$\mathbf{k}$ & $\mathbf{ R_{k,1} }$ & $\mathbf{ R_{k,2} }$ & $\mathbf{ R_{k,3} }$ & $\mathbf{ R_{k,4} }$\\ 
+\hline 
+1& \textbf{8.788898} &  &  & \\ 
+\hline 
+2& 10.832201 & \textbf{11.513302} & & \\ 
+\hline 
+3& 11.505145 & 11.729460 & \textbf{11.743871} & \\ 
+\hline 
+4& 11.703215 & 11.769238 & 11.771890 & \textbf{11.772335} \\ 
+\hline 
+\end{tabular}
+\end{center}
+\medskip
+Portanto, a aproximação $R_{4,4} = 11.772335$ tem um erro relativo percentual de $-0.0228\%$.
+
+
+\Exercise[title={3,0}] 
+Considere a equação diferencial $y^\prime(t) = t/y(t)$. Use os métodos de Runge-Kutta de ordem 2 e 4 para estimar $y(t)$ conforme $t$ percorre o intervalo $[0, 1.5]$ com passos de tamanho $h = 0.5$, dada a condição inicial $y(0) = 0.1$. Identifique o(s) ponto(s) onde ocorre o maior erro absoluto, levando em conta que a solução exata é $y(t)=\sqrt{t^2 + 0.01}$.
+\Answer Pelo método de Runge-Kutta de ordem 2, obtêm-se:
+\begin{center}
+\begin{tabular}{|c|c|r|r|c|r|c|}
+\hline
+  $i$
+& $t_i$
+& $k_1$
+& $k_2$
+& $y_i$
+& $y_{exato}(t_i)$
+& $\varepsilon_i = y_i-y_{exato}(t_i)$ \\ \hline\hline
+$0$ & $0.00$ &   -     &   -     & $ 0.100000$ & $ 0.100000$ & $0.000000$ \\ \hline
+$1$ & $0.5$ & $0.000000$ & $5.000000$ & $ 1.350000$ & $0.509902$ & $0.840098$ \\ \hline
+$2$ & $1.0$ & $0.370370$ & $0.651387$ & $ 1.605439$ & $1.004988$ & $0.600451$ \\ \hline
+$3$ & $1.5$ & $0.622883$ & $0.782521$ & $ 1.956790$ & $1.503330$ & $0.453460$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Já pelo método de Runge-Kutta de ordem 4, obtêm-se:
+\begin{center}
+\begin{tabular}{|c|c|r|r|r|r|c|r|c|}
+\hline
+  $i$
+& $t_i$
+& $k_1$
+& $k_2$
+& $k_3$
+& $k_4$
+& $y_i$
+& $y_{exato}(t_i)$
+& {\footnotesize
+$\varepsilon_i = y_i-y_{exato}(t_i)$ } \\ \hline\hline
+$0$ & $0.0$ &   -     &   -     &   -     &   -     & $ 0.100000$ & $ 0.100000$ & $0.000000$ \\ \hline
+$1$ & $0.5$ & $ 0.000000$ & $2.500000$ & $0.344828$ & $1.835442$ & $0.727092$ & $0.509902$ & $0.217190$ \\ \hline
+$2$ & $1.0$ & $0.687671$ & $0.834251$ & $0.801578$ & $0.886618$ & $1.130921$ & $1.004988$ & $0.125933$ \\ \hline
+$3$ & $1.5$ & $0.884235$ & $0.924570$ & $0.917725$ & $0.943525$ & $1.590284$ & $1.503330$ & $0.086954$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Em ambos os casos pode-se observar que o erro absoluto diminui conforme $t_i$ se afasta de $t_0$. Portanto, o maior erro ocorre em $t_1=0.5$.
+\end{ExerciseList}
+
+\vspace{0.4cm}
+\begin{center}
+BOA PROVA E BOAS FÉRIAS!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}
