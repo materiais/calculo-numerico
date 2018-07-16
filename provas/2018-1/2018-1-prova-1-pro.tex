@@ -1,0 +1,244 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tg{\operatorname{tg}}
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{PRO112-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{03/04/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Seja $\overline{x} = \dfrac{739}{8}$.
+\begin{enumerate}
+\item Obtenha a representação de $\overline{x}$ em binário.
+\item Qual é o erro relativo percentual cometido ao representar $\overline{x}$ desconsiderando os dígitos binários após a vírgula?
+\end{enumerate}
+\Answer
+Observe que $\overline{x} = \dfrac{739}{8} = 92,375 = 92 + 0,375$.
+\begin{enumerate}
+\item Tem-se $92 = 64 + 16 + 8 + 4
+= 1 \cdot 2^6
++ 0 \cdot 2^5
++ 1 \cdot 2^4
++ 1 \cdot 2^3
++ 1 \cdot 2^2
++ 0 \cdot 2^1
++ 0 \cdot 2^0 = (1011100)_{2}$. Além disso,
+\begin{center}
+\begin{tabular}{|c|l|l|l|l|l|l|l|l|}
+\hline
+$\mathbf{x}$       
+& 0,375 & 0,75 & 0,5 & 0,0 \\ \hline
+$\mathbf{2\cdot x}$
+& \textbf{0},75
+& \textbf{1},5
+& \textbf{1},0
+& \textbf{0},0
+\\ \hline
+\end{tabular}
+\end{center}
+Logo, $\overline{x}
+= \dfrac{739}{8}
+= (92,375)_{10}
+= (1011100,011)_2$.
+
+\item Ao truncar $\overline{x} = 92,375$ para o inteiro $x = 92$, o erro relativo percentual é dado por
+\[
+\varepsilon_{per}
+= \frac{|92 - 92,375|}{|92,375|} \times 100\%
+= \frac{|-0,375|}{|92,375|} \times 100\%
+\approx 0,41\%.
+\]
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Considere $f(x) = \cos(x) - x$ e $x_0 = 1$.
+\begin{enumerate}
+\item Dê dois exemplos ($\varphi_1$ e $\varphi_2$) de funções de iteração para $f(x) = 0$.
+\item Garanta que um dos exemplos escolhidos gera uma sequência $\{x_k\}_{k \in \mathbb{N}}$, definida recursivamente por $x_k = \varphi_i(x_{k-1})$, que converge para algum $\overline{x}$ tal que $f(\overline{x}) = 0$. 
+\item Utilize a função de iteração do item anterior para calcular a aproximação $x_5$ e estime o erro relativo percentual desta aproximação.
+\end{enumerate}
+(obs: arredonde cada $\varphi_i(x)$ com 4 dígitos após a vírgula)
+\Answer \begin{enumerate}
+\item Como $\cos(x) - x = 0$ equivale a $x = \cos(x)$, pode-se escolher $\varphi_1(x) = \cos(x)$ como função de iteração. Além disso, $f(x) = 0$ também equivale a $x = x + A(x) f(x)$, se $A(x) \neq 0$, o que possibilita a escolha de $\varphi_2(x) =x+\frac{1}{x} (\cos(x)-x) = x-1+\frac{\cos(x)}{x}$ como função de iteração.
+\item Sendo $\varphi_1(x) = \cos(x)$, tem-se $\varphi_1^\prime(x) = -\sen(x)$ e portanto as funções $f$, $\varphi_1$ e $\varphi_1^\prime$ são contínuas em $\R$. Além disso, como $-1 \leq \sen(x) \leq 1$, tem-se $|\varphi_1^\prime(x)| \leq 1$ para todo $x \in \R$, e a igualdade só ocorre quando $x = \frac{\pi}{2} + k \pi$. Em particular, para todo $x \in I = (-\frac{\pi}{2}, \frac{\pi}{2})$, tem-se $|\varphi_1^\prime(x)| < 1$. Como $f(-\frac{\pi}{2}) = -\frac{\pi}{2} < 0 < \frac{\pi}{2} < f(\frac{\pi}{2})$, e $f$ é contínua em $[-\frac{\pi}{2}, \frac{\pi}{2}]$, segue do teorema de Bolzano que há uma raiz de $f$ em $I$. Essa raiz pode ser obtida pelo método de iteração de ponto fixo como o limite da sequência dada por $x_k = \varphi_1(x_{k-1})$, para qualquer $x_0 \in I$, inclusive $x_0 = 1$.
+
+\item Os primeiros termos dessa sequência são os seguintes (arredondados no quarto dígito decimal a cada iteração).
+
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|r|r|}
+\hline
+$k$   & 0      & 1      & 2      & 3      & 4      & 5 \\ \hline
+$x_k$ & 1,0000 & 0,5403 & 0,8576 & 0,6543 & 0,7935 & 0,7014 \\ \hline
+\end{tabular}
+\end{center}
+Logo, o erro relativo percentual em $x_5$ é $\varepsilon_{per} \approx |0,7014 - 0,7935|/|0,7014| \approx 13,13\%$.
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Obtenha a única raiz positiva do polinômio $p(x) = x^4+3x-2$ com um erro absoluto estimado menor do que $10^{-4}$, utilizando o método de Newton-Raphson.
+
+(os resultados devem ser arredondados com 6 dígitos após a vírgula)
+\Answer Como $f(0) = -2 < 0 < 2 = f(1)$ e $f$ é contínua em $[0,1]$, segue do Teorema de Bolzano que $f$ possui uma raiz $\overline{x} \in I = (0,1)$. Além disso, $f^\prime(x) = 4x^3+3$ e $f^{\prime\prime}(x) = 12x^2$ são contínuas em $I$, e $f^\prime(x) \neq 0$ para $x \in I$. Então o método de Newton-Raphson produzirá uma sequência convergente, para toda aproximação inicial $x_0$ em algum subintervalo $\overline{I} \subset (0,1)$. Escolhendo $x_0 = 1 \in I$ e aplicando o método de Newton-Raphson, obtém-se os seguintes valores:
+
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline 
+$k$ & $x_k$ & $f(x_k)$ & $f^\prime(x_k)$ & $\frac{f^\prime(x_k)}{f(x_k)}$ & $|x_k - x_{k-1}|$ \\ 
+\hline 
+0 & 1,000000 & 2,000000 & 7,000000 & 0,285714 & -\\
+\hline
+1 & 0,714286 & 0,403167 & 4,457728 & 0,090442 & 0,285714 \\
+\hline
+2 & 0,623844 & 0,022994 & 3,971154 & 0,005790 & 0,090442 \\
+\hline
+3 & 0,618054 & 0,000079 & 3,944364 & 0,000020 & 0,005790 \\ 
+\hline
+4 & 0,618034 & 0,000000 & 3,944272 & 0,000000 & 0,000020 \\ 
+\hline
+\end{tabular} 
+\end{center}
+
+\Exercise[title={2,5}] Seja $f(x) = \sen(\ln(x))$. Utilize o método da secante com aproximações iniciais $x_{-1}=1,23$ e $x_0 = 1,24$, para obter $x_k$ que satisfaça ambas as condições de parada $|x_k-x_{k-1}| < 0,01$ e $|f(x_k)| < 0,01$. Estime o erro relativo para a aproximação encontrada.
+
+(arredonde cada valor de $f(x)$ utilizado com 4 dígitos após a vírgula)
+\Answer Estas são as primeiras iterações do método da secante partindo do intervalo inicial $x_{-1} = 1,23$ e $x_0 = 1,24$, com arredondamento no quinto dígito decimal a cada iteração:
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|r|c|}
+\hline
+$k$ & $x_{k-2}$ & $x_{k-1}$ & $x_k$ & $f(x_{k-2})$ & $f(x_{k-1})$ & $f(x_k)$ & $|x_k-x_{k-1}|$ \\
+\hline
+1 & 1,2300 & 1,2400 & 0,9731 &  0,2055 &  0,2135 & -0,0273 & - \\\hline
+2 & 1,2400 & 0,9731 & 1,0034 &  0,2135 & -0,0273 &  0,0034 & 0,0303 \\\hline
+3 & 0,9731 & 1,0034 & 1,0000 & -0,0273 &  0,0034 &  0,0000 & 0,0034 \\\hline
+\end{tabular}
+\end{center}
+\medskip
+Nesta etapa, obtém-se a aproximação $x_3 = 1,0000$, com $|f(x_3)| \approx 0,0000 < 0,01$ e $\varepsilon_{abs} \approx |x_3-x_2| \approx 0,0034 < 0,01$.
+
+
+\Exercise[title={2,5}] Mostre que $f(x) = \ln(\tg(x))$ possui alguma raiz no intervalo $I = (0, 1)$ e obtenha uma raiz aproximada usando o método da bisseção, com erro absoluto de no máximo $0,01$.
+(arredonde cada valor com 4 dígitos após a vírgula)
+\Answer Como $f(0,1) = -2,2992 < 0 < 0,4430 = f(1)$, e que $f$ é contínua em $[0,1, 1]$, segue do teorema de Bolzano que existir alguma raiz de $f$ no intervalo $I = (0,1, 1) \subset (0, 1)$.
+
+Estas são as primeiras iterações do método da bisseção partindo do intervalo inicial $a_0 = 0,1$ e $b_0 = 1$, com arredondamento no quinto dígito decimal a cada iteração:
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|r|r|r|r|}
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $f(a_k)\cdot f(x_k)$ & $\varepsilon_{abs}$ \\
+\hline
+0 & 0,1 & 0,55 & 1 & -2,29924 & -0,48922 & 0,44302 & 1,1248 & -\\\hline
+1 & 0,55 & 0,775 & 1 & -0,48922 & -0,0208 & 0,44302 & 0,0102 & 0,225\\\hline
+2 & 0,775 & 0,8875 & 1 & -0,0208 & 0,20564 & 0,44302 & -0,0043 & 0,1125\\\hline
+3 & 0,775 & 0,83125 & 0,8875 & -0,0208 & 0,09183 & 0,20564 & -0,0019 & 0,05625\\\hline
+4 & 0,775 & 0,80313 & 0,83125 & -0,0208 & 0,03547 & 0,09183 & -0,0007 & 0,02812\\\hline
+5 & 0,775 & 0,78907 & 0,80313 & -0,0208 & 0,00734 & 0,03547 & -0,0002 & 0,01406\\\hline
+6 & 0,775 & 0,78204 & 0,78907 & -0,0208 & -0,00672 & 0,00734 & 0,0001 & 0,00703\\\hline
+\end{tabular}
+\end{center}
+\medskip
+Nesta etapa, obtém-se a aproximação $x_6 = 0,78204$, com $\varepsilon_{abs} \approx |x_6-x_5| \approx 0,00703 < 0,01$.
+
+\end{ExerciseList}
+
+\vspace{0.5cm}
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

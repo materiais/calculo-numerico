@@ -1,0 +1,447 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\arcsen{\operatorname{arcsen}}
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{PRO112-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{17/10/2017}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons Atribuição-CompartilhaIgual 4.0 Internacional}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+{\footnotesize
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Ao escrever números decimais, arredonde-os com 4 casas depois da vírgula.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Resolva os sistemas lineares a seguir utilizando a fatoração $A = LU$:
+\begin{multicols}{2}
+\begin{enumerate}
+\item \systeme{
+ x_1  - x_2               =  0,
+       2x_2 - 2x_3        = -2,
+5x_1 - 5x_2 + 3x_3 - 3x_4 = -6,
+            - 6x_3 +10x_4 =  8.
+}
+\item \systeme{
+ x_1  - x_2               =  2,
+       2x_2 - 2x_3        = -6,
+5x_1 - 5x_2 + 3x_3 - 3x_4 = 10,
+            - 6x_3 +10x_4 =  4.
+}
+\end{enumerate}
+\end{multicols}
+\Answer Usando as operações elementares $L_3 \to L_3 - 5L_1$ e $L_4 \to L_4 + 2L_3$ obtém-se a decomposição $A = LU$, em que
+\[
+L=
+\begin{bmatrix}
+1 & 0 &  0 & 0\\
+0 & 1 &  0 & 0\\
+5 & 0 &  1 & 0\\
+0 & 0 & -2 & 1
+\end{bmatrix}
+\text{ e }
+U=\begin{bmatrix}
+1 & -1 &  0 &  0\\
+0 &  2 & -2 &  0\\
+0 &  0 &  3 & -3\\
+0 &  0 &  0 &  4
+\end{bmatrix}.
+\]
+
+Como $A$ é a matriz de coeficientes de ambos os sistemas, pode-se usar a mesma fatoração nos dois casos. Para isso, resolve-se primeiramente um sistema $LY=B$ e com a solução $Y$ obtida resolve-se $UX = Y$. Os resultados em cada caso serão os seguintes:
+
+\begin{enumerate}
+\item
+$
+ Y  =
+\begin{bmatrix}
+0 & -2 & -6 & -4
+\end{bmatrix}^T
+\text{ e }
+X =\begin{bmatrix}
+-4 & -4 & -3 & -1
+\end{bmatrix}^T
+$
+\item
+$
+ Y  =
+\begin{bmatrix}
+2 & -6 & 0 & 4
+\end{bmatrix}^T
+\text{ e }
+ X  =
+\begin{bmatrix}
+0 & -2 & 1 & 1
+\end{bmatrix}^T
+$
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Considere um sistema cuja representação matricial é:
+$
+\begin{bmatrix}
+ 4 &  2 & -1 \\
+\mathbf{k} & -4 &  0 \\
+-1 &  1 &  \mathbf{k}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+9 \\ -5 \\ 1
+\end{bmatrix}
+$.
+\begin{enumerate}
+\item Para quais valores de $k \in \mathbb{Z}$ o sistema tem uma matriz estritamente diagonal dominante?
+\item Considerando o maior valor de $k$ encontrado acima, e tomando$X^{(0)} = (1, 2, 0)$, mostre que na quarta iteração do método de Gauss-Seidel, o erro relativo percentual é inferior a $3\%$.
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item  A matriz do sistema é estritamente diagonal dominante se:
+\begin{align*}
+|4|  & > |2|  + |-1|,\\
+|-4| & > |k|  + |0|,\\
+|k|  & > |-1| + |1|,
+\end{align*}
+isto é, se $2 < |k| < 4$. Os únicos valores de $k \in \mathbb{Z}$ nestas condições são $k = \pm 3$.
+\item Para $k=3$, o método de Gauss-Seidel usa as equações $
+\begin{cases}
+x_1^{(n)} = ( 9 - 2x_2^{(n-1)} + x_3^{(n-1)})/4\\
+x_2^{(n)} = (-5 - 3x_1^{(n)})/(-4)\\
+x_3^{(n)} = ( 1 +  x_1^{(n)} - x_2^{(n-1)})/3.
+\end{cases}
+$
+Os valores obtidos a cada iteração são os seguintes:
+\begin{center}
+\begin{tabular}{|c|r|r|r|r|r|}
+\hline
+$\mathbf{n}$     & 0 & 1 & 2 & 3 & 4 \\
+\hline
+$\mathbf{x_1^{(n)}}$ & 1.0000 & 1.2500 & 1.1615 & 1.1928 & 1.1817 \\
+\hline
+$\mathbf{x_2^{(n)}}$ & 2.0000 & 2.1875 & 2.1211 & 2.1446 & 2.1363 \\
+\hline
+$\mathbf{x_3^{(n)}}$ & 0.0000 & 0.0208 & 0.0135 & 0.0161 & 0.0151 \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Na quarta iteração, o erro absoluto é estimado como
+\begin{align*}
+\varepsilon_{abs}
+& \approx || x^{(4)} - x^{(3)} ||
+= \max\{| 1.1817 - 1.1928 |,
+        | 2.1363 - 2.1446 |,
+        | 0.0151 - 0.0161 |\}\\
+& = \max\{ |-0.0111|, |-0.0083|, |-0.0010| \}
+= 0.0111.
+\end{align*}
+Então o erro relativo percentual é:
+\[
+\varepsilon_{per}
+\approx
+\frac{ || x^{(4)} - x^{(3)} || }{ || x^{(4)} || } \times 100 \%
+= \frac{ 0.0111 }{ 2.1363 } \times 100 \%
+= 0.005195 \times 100 \%
+= 0.5196\% < 3\%.
+\]
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Verifique se é garantido que o método de Gauss-Seidel convergirá, se for aplicado a
+\[
+\systeme{
+ x_1 + 2x_2 = 4,
+3x_1 + 7x_2 = 13.
+}
+\]
+Em caso afirmativo, determine se com 4 iterações do método, partindo de $x_1^{(0)} = x_2^{(0)} = 1$, é possível obter um erro relativo $\varepsilon_{rel} \leq 0.6$.
+\Answer O sistema linear pode ser escrito na forma matricial como
+$
+\begin{bmatrix}
+1 & 2\\3 &7
+\end{bmatrix}
+\begin{bmatrix}
+x_1\\x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+4\\13
+\end{bmatrix}
+$, mas sua matriz de coeficientes não é estritamente diagonal dominante, então este critério não é suficiente para determinar se as iterações do método de Gauss-Seidel produzirão uma sequência convergente a partir das equações
+\[
+\begin{cases}
+x_1^{(k)} =  4 - 2x_2^{(k-1)}\\
+x_2^{(k)} = \frac{13}{7} - \frac{3}{7} x_1^{(k)}.\\
+\end{cases}
+\]
+A outra alternativa é reescrever essas equações matricialmente, na forma $X^{(k)} = C X^{(k-1)} + D$, pois a sequência produzida pelo método é convergente se, e somente se, cada autovalor de $C$ tem módulo menor do que um. Sendo $x_2^{(k)}
+= \frac{13}{7} - \frac{3}{7}\left(4 - 2x_2^{(k-1)}\right)
+= \frac{1}{7} + \frac{6}{7}x_2^{(k-1)}$, resulta que
+\[
+\begin{bmatrix}
+x_1^{(k)}\\x_2^{(k)}
+\end{bmatrix}
+=
+\underbrace{\begin{bmatrix}
+0 & -2 \\ 0 & 6/7
+\end{bmatrix}}_{C} \cdot
+\begin{bmatrix}
+x_1^{(k-1)}\\x_2^{(k-1)}
+\end{bmatrix}
++
+\begin{bmatrix}
+4 \\ 1/7
+\end{bmatrix}.
+\]
+
+E a matriz $C$ obtida tem a propriedade desejada:
+\[
+0 =
+\det{(\lambda I - C)}
+= \begin{vmatrix}
+\lambda & 2 \\ 0 & \lambda - 6/7
+\end{vmatrix}
+= \lambda(\lambda - 6/7)
+\Rightarrow
+\begin{cases}
+\lambda = 0 < 1\\
+ \text{ ou }\\
+\lambda = 6/7 < 1
+\end{cases}
+\]
+
+Os valores obtidos a cada iteração são os seguintes:
+\begin{center}
+\begin{tabular}{|c|r|r|r|r|r|}
+\hline
+$\mathbf{k}$     & 0 & 1 & 2 & 3 & 4 \\
+\hline
+$\mathbf{x_1^{(k)}}$ & 1.0000 & 2.0000 & 2.0000 & 2.0000 & 2.0000 \\
+\hline
+$\mathbf{x_2^{(k)}}$ & 1.0000 & 1.0000 & 1.0000 & 1.0000 & 1.0000 \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Como os valores obtidos na segunda iteração correspondem à solução exata, e ela é um ponto fixo da função de iteração utilizada pelo método, as próximas iterações sempre produzem os mesmos valores, e consequentemente $\varepsilon_{rel} = 0 < 0.6$.
+
+\Exercise[title={2,5}] Em relação à função $f(x) = \log_2(x)$: qual dos seguintes polinômios fornece o valor mais próximo de $f(3) = \log_2(3)$?
+\begin{enumerate}
+\item O polinômio $p(x)$, que interpola $f$ nos pontos $x_1 = 1$,  $x_2 = 2$ e  $x_3 = 4$
+\item O polinômio $q(x)$, que interpola $f$ nos pontos $x_1 = 2$,  $x_2 = 4$ e  $x_3 = 8$
+\end{enumerate}
+\Answer
+\begin{enumerate}
+\item Considerando $x_1 = 1$,  $x_2 = 2$, $x_3 = 4$ e $y_1 = 0$, $y_2 = 1$ e  $y_3 = 2$, tem-se:
+\begin{align*}
+p(x)
+& = 0 \frac{(x-2)(x-4)}{(1-2)(1-4)}
+  + 1 \frac{(x-1)(x-4)}{(2-1)(2-4)}
+  + 2 \frac{(x-1)(x-2)}{(4-1)(4-2)}\\
+& = - \frac{(x - 1)(x - 4)}{2}
+    + \frac{(x - 1)(x - 2)}{3}
+  = -\frac{1}{2}\left( x^2 - 5x + 4 \right)
+  +  \frac{1}{3}\left( x^2 - 3x + 2 \right)\\
+& = -\frac{1}{6}x^2 + \frac{3}{2}x - \frac{4}{3}.
+\end{align*}
+Logo, o erro absoluto em $x = 3$ é dado por
+$
+\varepsilon_{abs} = |f(3) - p(3)| = |1.5850 - 5/3| = 0.0817
+$.
+\item Considerando $x_1 = 2$,  $x_2 = 4$, $x_3 = 8$ e $y_1 = 1$, $y_2 = 2$ e  $y_3 = 3$, tem-se:
+\begin{align*}
+q(x)
+& = 1 \frac{(x-4)(x-8)}{(2-4)(2-8)}
+  + 2 \frac{(x-2)(x-8)}{(4-2)(4-8)}
+  + 3 \frac{(x-2)(x-4)}{(8-2)(8-4)}\\
+& = \frac{(x - 4)(x - 8)}{12}
+  - \frac{(x - 2)(x - 8) }{4}
+  + \frac{(x - 2)(x - 4)}{8}\\
+& = \frac{1}{12}\left( x^2 - 12x + 32 \right)
+  - \frac{1}{4} \left( x^2 - 10x + 16 \right)
+  + \frac{1}{8} \left( x^2 -  6x +  8 \right)
+  = -\frac{1}{24}x^2 + \frac{3}{4}x - \frac{1}{3}.
+\end{align*}
+Logo, o erro absoluto em $x = 3$ é dado por
+$
+\varepsilon_{abs} = |f(3) - q(3)| = |1.5850 - 1.5417| = 0.0433
+$.
+\end{enumerate}
+Portanto, o valor de $\log_2(3)$ está mais próximo de $q(3)$ do que de $p(3)$.
+
+\Exercise[title={2,5}]
+Utilize diferenças divididas para encontrar um polinômio $p(x)$ que interpola a função $f(x) = \arcsen{x}$ e estimar $\arcsen(\sqrt{2}/2)$, considerando a tabela a seguir:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+         $x$ & -1    & -1/2  & 0 &  1/2 \\
+\hline
+$\arcsen(x)$ & $-\pi/2$ & $-\pi/6$ & 0 & $\pi/6$ \\
+\hline
+\end{tabular}
+\end{center}
+\Answer A partir dos pontos dados, obtém-se:
+\[
+	\begin{array}{cccccc}
+   x_i & y_i=f[x_i] & f[x_i,x_{i+1}] & f[x_i,x_{i+1},x_{i+2}]  & f[x_i,x_{i+1},x_{i+2},x_{i+3}] \\
+   -1.0000 & \mathbf{-1.5708} \\
+	    &            & \mathbf{2.0944} \\
+   -0.5000 & -0.5236 &             & \mathbf{-1.0472}\\
+	    &            & 1.0472 &              & \mathbf{0.6981}. \\
+	0.0000 &  0.0000 &             & 0.0000\\
+	    &            & 1.0472 \\
+	0.5000 &  0.5236
+	\end{array}
+\]
+
+Então:
+\begin{align*}
+p(x)
+&=-1.5708
+ +2.0944(x+1)
+ -1.0472(x+1)(x+1/2)
+ +0.6981(x+1)(x+1/2)x\\
+& = 0.6981 x^3 + 0.8727 x.
+\end{align*}
+Usando este polinômio para estimar o valor pedido, resulta que:
+\begin{align*}
+\arcsen\left(0.7071\right)
+& \approx p(0.7071) \\
+& =-1.5708\\
+& \quad +2.0944 \cdot 1.7071\\
+& \quad -1.0472 \cdot 1.7071 \cdot 1.2071\\
+& \quad +0.6981 \cdot 1.7071 \cdot 1.2071 \cdot 0.7071 \\
+& \approx 0.8638.
+\end{align*}
+
+\textbf{Solução 2}: Se durante os cálculos não é usada a aproximação $\pi \approx 3.1415$, tem-se:
+\[
+	\begin{array}{cccccc}
+   x_i & y_i=f[x_i] & f[x_i,x_{i+1}] & f[x_i,x_{i+1},x_{i+2}]  & f[x_i,x_{i+1},x_{i+2},x_{i+3}] \\
+   -1 & \mathbf{-\pi/2} \\
+	    &     & \mathbf{2\pi/3} \\
+ -1/2 & -\pi/6 &             & \mathbf{-\pi/3}\\
+	    &     & \pi/3 &              & \mathbf{2\pi/9}. \\
+	0 & 0 &             & 0\\
+	    &     & \pi/3 \\
+	1/2 & \pi/6
+	\end{array}
+\]
+Então:
+\begin{align*}
+p(x)
+&= -\frac{\pi}{2}
+ + \frac{2\pi}{3}(x+1)
+ - \frac{ \pi}{3}(x+1)(x+1/2)
+ + \frac{2\pi}{9}(x+1)(x+1/2)x\\
+&= \frac{2 \pi}{9} x^3 + \frac{5 \pi}{18} x
+\approx 0.6981 x^3 + 0.8727 x.
+\end{align*}
+Usando este polinômio para estimar o valor pedido, resulta que:
+\[
+\arcsen\left(\sqrt{2}/2\right)
+\approx p\left(\sqrt{2}/2\right)
+= \frac{2 \pi}{9} \left(\sqrt{2}/2\right)^3 + \frac{5 \pi}{18} \left(\sqrt{2}/2\right)
+= \frac{7\pi}{18 \sqrt{2}}
+\approx 0.8639.
+\]
+\end{ExerciseList}
+
+\vspace{0.4cm}
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}
