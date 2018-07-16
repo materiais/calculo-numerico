@@ -1,0 +1,329 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{icomma} % vírgulas como pontuação vs ponto decimal
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tg{\operatorname{tg}}
+\newcommand*\arctg{\operatorname{arctg}}
+\newcommand*\R{\mathbb{R}}
+
+\newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
+\newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
+\newcommand{\IconThink}{\includegraphics[width=1em]{pencil.png}}
+\newcommand{\IconCheck}{\includegraphics[width=1em]{checkmark.png}}
+\newcommand{\IconConcept}{\includegraphics[width=1em]{edit.png}}
+
+\newlength{\SmileysLength}
+\setlength{\SmileysLength}{\labelwidth}\addtolength{\SmileysLength}{\labelsep}
+
+\newcommand{\calc}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCalc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\software}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconPc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\teoria}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconThink}%
+   \hspace*{\SmileysLength}}
+\newcommand{\conceito}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+\newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+
+\newcommand*\tipo{3ª Lista de Exercícios}
+%\newcommand*\turma{...}
+\newcommand*\disciplina{ANN0001/CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}.}
+\end{center}
+
+%\section*{Legenda}
+%\begin{multicols}{4}
+%\begin{itemize}
+%\item[] \hspace*{\SmileysLength} \calc \hspace*{-\SmileysLength} Cálculos
+%\item[] \hspace*{\SmileysLength} \conceito \hspace*{-\SmileysLength} Conceitos
+%\item[] \hspace*{\SmileysLength} \teoria \hspace*{-\SmileysLength} Teoria
+%\item[] \hspace*{\SmileysLength} \software \hspace*{-\SmileysLength} Software
+%\end{itemize}
+%\end{multicols}
+
+\section*{Questões}
+
+\begin{enumerate}
+\item Uma forma simples de estimar o valor de $\int_a^b f(x)\,dx$ é utilizar o \textit{método do ponto médio}, um método de Newton-Cotes aberto, no qual considera-se um retângulo cuja base é o intervalo $[a,b]$ e a altura é o valor de $f$ no ponto médio deste intervalo, ou seja:
+\[
+\int_a^b f(x)\,dx \approx (b-a) \cdot f\left(m \right),
+\quad
+m = \frac{a+b}{2}.
+\]
+
+Calcule numericamente as integrais a seguir por meio de uma única aplicação das regras: (1) do ponto médio, (2) do trapézio, (3) 1/3 de Simpson, (4) 3/8 de Simpson e (5) de Boole. Obtenha também as soluções exatas e compare-as com as aproximações obtidas, calculando os erros relativos percentuais. Interprete geometricamente.
+\begin{multicols}{4}
+\begin{enumerate}
+\item $\int_0^1 3x^2 \,dx$
+% I = 1
+\item $\int_0^1 4x^3 \,dx$
+% I = 1
+\item $\int_{0}^1 x^9 - 3x^2 \,dx$
+% I = -0.9
+\item $\int_{1}^5 \frac{4}{x} - \cos(x) \,dx$
+% I ≈ 8.2381
+\end{enumerate}
+\end{multicols}
+
+\item Considere a integral $I = \int_0^2 \cos(x^2)\, dx$, cujo valor com 10 casas decimais corretas é $0.4614614624$. Subdivida o intervalo $[a, b] = [0, 2]$ utilizando $n+1$ pontos igualmente espaçados, $a = x_0 < x_1 < \ldots < x_n = b$, e calcule numericamente o valor aproximado de $I$ aplicando repetidas vezes os métodos do ponto médio, do trapézio e 1/3 de Simpson aos subintervalos $[x_i,x_{i+1}]$. Compare os resultados obtidos com $n = 1, 2, 4, 8$.
+
+\item Seja $M$ a aproximação de $\int_a^b f(x)\, dx$ fornecida pela regra do ponto médio, $T$ a aproximação obtida pela regra do trapézio e $S$ a aproximação que resulta da regra 1/3 de Simpson. Mostre que $S$ é uma média aritmética ponderada de $M$ e $T$.
+
+\item Considere uma função $g$ que assume os valores dados na tabela a seguir:
+%g(x) = (x² + 1) cos(x π / 12 )
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+   $x_i$ & 0 & 1 & 2 & 3 & 4 & 5 & 6 \\ \hline
+$g(x_i)$ & 1.00 & 1.93 & 4.33 & 7.07 & 8.50 & 6.73 & 0.00 \\ \hline
+\end{tabular}
+\end{center}
+Estime $\int_0^6 g(x)\,dx$ utilizando os métodos a seguir no maior número de subintervalos de mesmo comprimento que for possível:
+\begin{multicols}{2}
+\begin{enumerate}
+\item A regra do trapézio.
+\item A regra 1/3 de Simpson.
+\end{enumerate}
+\end{multicols}
+
+\item Explique uma das regras de integração/quadratura numéricas, e deduza a fórmula correspondente a partir de sua interpretação geométrica.
+
+\item Estime as integrais a seguir utilizando a quadratura de Gauss-Legendre com 2 a 5 pontos, depois de realizar uma mudança de variáveis apropriada para usar o intervalo $[-1,1]$:
+\begin{multicols}{4}
+\begin{enumerate}
+\item $\int_0^2 x^2 + x\,dx$
+\item $\int_1^2 \frac{2}{x^2}\,dx$
+\item $\int_{-1}^3 e^{-x^2}\,dx$
+\item $\int_{-3}^3 \frac{1}{1+x^2} \,dx$
+\end{enumerate}
+\end{multicols}
+
+\item Utilize o método de Romberg para estimar o valor de $\pi = \int_{-1}^1 \frac{2}{x^2 + 1} dx$, com um erro relativo percentual inferior a $0,1\%$.
+
+\item Forneça uma estimativa de $\int_1^{1.8} e^x dx$ com erro relativo menor ou igual a $10^{-7}$, utilizando o esquema de Romberg.
+
+\item Utilize o método de Newton-Cotes adaptável estimar as integrais a seguir:
+\begin{enumerate}
+\item $\int_{0.3}^{1.5} \tg(x) dx$, com $|\varepsilon_{rel}| \leq 0.1$, usando 3 dígitos após a vírgula
+\item $\int_{0.4}^{2} \ln{x} dx$, com $|\varepsilon_{rel}| \leq 0.005$, usando 4 dígitos após a vírgula
+\item $\int_{1}^{13} \sqrt{x} dx$, com $|\varepsilon_{rel}| \leq 0.001$, usando 4 dígitos após a vírgula
+\item $\int_1^5 \frac{x+1}{x^2} dx$, com $|\varepsilon_{rel}| \leq 0.02$, usando 3 dígitos após a vírgula
+\item $\int_{0.2}^{1} \sen(1/x) dx$, com $|\varepsilon_{rel}| \leq 0.01$, usando 3 dígitos após a vírgula
+\item $\int_{0}^{2} f(x) dx$, com $|\varepsilon_{rel}| \leq 0.01$, considerando que $f(x)$ assume os seguintes valores:
+%f(x) = cos(3x) + 21 / (7 + x⁸)
+\begin{center}\hspace{-1cm}
+\begin{tabular}{|c|c||c|c||c|c||c|c||c|c|}
+\hline
+$x$ & $f(x)$ & $x$ & $f(x)$ & $x$ & $f(x)$ & $x$ & $f(x)$ & $x$ & $f(x)$\\
+\hline
+0 & 4 & 0.5 & 3.06906 & 1 & 1.63501 & 1.5 & 0.43281 & 2 & 1.04002\\
+\hline
+0.125 & 3.93051 & 0.625 & 2.69052 & 1.125 & 1.22244 & 1.625 & 0.53945 & 2.125 & 1.04546\\
+\hline
+0.25 & 3.73168 & 0.75 & 2.32953 & 1.25 & 0.79975 & 1.75 & 0.73322 & 2.25 & 0.92464\\
+\hline
+0.375 & 3.43101 & 0.875 & 1.99012 & 1.375 & 0.50766 & 1.875 & 0.92255 & 2.375 & 0.68671\\
+\hline
+\end{tabular}
+\end{center}
+\end{enumerate}
+\item A seguir são dados vários problemas de valor inicial, juntamente com a sua solução exata. Use cada um dos métodos estudados para estimar os valores de $y(x)$ conforme $x$ percorre o intervalo $[a,b]$, usando um passo $h$ do tamanho indicado. Faça uma tabela com os valores exatos ($y(x_i)$) e aproximados ($y_i$), em cada ponto $x_i$. Compare esses resultados para determinar o maior erro (absoluto) cometido nos pontos considerados.
+\begin{enumerate}
+\item $\begin{cases}
+y^\prime = x-\frac{y}{x} \\
+y(1) = -1
+\end{cases}$
+Utilize $h = 0,25$ e $[a,b] = [1, 2]$. A solução exata é $y = \frac{x^3 - 4}{3x}$.
+\item $\begin{cases}
+y^\prime = x+y \\
+y(0) = 0
+\end{cases}$
+Utilize $h = 0,4$ e $[a,b] = [0, 2]$. A solução exata é $y = e^x - x - 1$.
+\item $\begin{cases}
+y^\prime = \sen(x) - \frac{x}{2} \\
+y(0) = -1
+\end{cases}$
+Utilize $h = \frac{1}{2}$ e $[a,b] = [0,2]$. A solução exata é $y = \frac{-x^2}{4} - \cos(x)$.
+\item $\begin{cases}
+y^\prime = y \cos(x) \\
+y(0) = 1
+\end{cases}$
+Utilize $h = \frac{1}{3}$ e $[a,b] = [0,2]$. A solução exata é $y = e^{\sen(x)}$.
+\end{enumerate}
+
+\item Obtenha a reta que melhor se ajusta (por mínimos quadrados) aos pontos
+$A = (-3, -5)$,
+$B = (-2,  7)$,
+$C = (-1,  0)$,
+$D = ( 0,  1)$,
+$E = ( 1,  2)$,
+$F = ( 2,  1)$,
+$G = ( 3,  2)$,
+$H = ( 4,  1)$.
+\item Utilize a regressão por mínimos quadrados para ajustar (1) uma reta, (2) uma parábola e (3) uma função da forma $f(x) = k_1 + k_2 \cos(\pi x) + k_3 x^2$ aos seguintes dados:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|c|}
+\hline
+   $x_i$ & -3 & -2 & -1 &  0 & 1 & 2 & 3 \\ \hline
+$y_i$ & 14 &  4 &  4 & -2 & 2 & 0 & 8 \\ \hline
+\end{tabular}
+\end{center}
+\end{enumerate}
+
+\newpage
+\begin{enumerate}
+\setcounter{enumi}{14}
+\item Resolva os problemas de valor inicial a seguir, utilizando o método de Euler com passos $h = 0.25$ e $h=0.125$, para obter aproximações para $y_1(1)$ e $y_2(1)$.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $\begin{cases}
+y_1^\prime(t) &= 4y_2(t)\\
+y_2^\prime(t) &= -4y_1(t)\\
+y_1(0) &= 0\\
+y_2(0) &= 2
+\end{cases}$
+
+\item $\begin{cases}
+y_1^\prime(t) &= y_1(t) y_2(t)\\
+y_2^\prime(t) &= y_1(t)+y_2(t)\\
+y_1(0) &= 7\\
+y_2(0) &= -1
+\end{cases}$
+\end{enumerate}
+\end{multicols}
+
+\item Aplique os métodos de Euler explícito e implícito, e os métodos de Runge-Kutta de ordem 2 e 4 para obter soluções aproximadas do problema de valor inicial
+\[
+\begin{cases}
+y^\prime(t) = 6t - 3y(t) \\
+y(0) = 1.
+\end{cases}\]
+Utilize passos de tamanho $h = 0.2$ ao longo do intervalo $[a,b] = [0, 1]$. Faça um gráfico para comparar as soluções obtidas solução e a solução exata, que é $y = \frac{1}{3} (6 x - 2 + 5 e^{-3 x})$.
+\end{enumerate}
+
+\newpage
+\section*{Algumas respostas}
+
+\begin{enumerate}
+\item Estas são as soluções exatas:
+\begin{enumerate}
+\item $\int_0^1 3x^2 \,dx = x^3 \Big|_0^1 = 1$
+\item $\int_0^1 4x^3 \,dx = x^4 \Big|_0^1 = 1$
+\item $\int_0^1 x^9 - 3x^2 \,dx= \left(\frac{1}{10}x^{10} - x^3\right) \Big|_0^1 = -0.9$
+\item $\int_1^5 \frac{4}{x} - \cos(x) \,dx = \left( 4\ln(x) - \sen(x)\right) \Big|_1^5 = 4\ln(5) + \sen(1) - \sen(5) \approx 8.2381$
+\end{enumerate}
+\item $\int_0^2 \cos(x^2)\, dx \approx 0.4614614624$
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+              & $n=1$     & $n=2$    & $n=4$   & $n=8$ \\ \hline
+Ponto médio   & $1.08060$ & $\textbf{0}.34074$ & $\textbf{0.4}2770$ & $\textbf{0.4}5342$ \\ \hline
+Trapézio      & $\textbf{0}.34636$ & $\textbf{0}.71348$ & $\textbf{0}.52711$ & $\textbf{0.4}7740$ \\ \hline
+Simpson (1/3) & $\textbf{0}.83586$ & $\textbf{0.46}499$ & $\textbf{0.46}083$ & $\textbf{0.4614}2$ \\ \hline
+Simpson (3/8) & $\textbf{0}.60960$ & $\textbf{0.46}211$ & $\textbf{0.461}18$ & $\textbf{0.4614}4$ \\ \hline
+\end{tabular}
+\end{center}
+\item \fixme
+\item
+\begin{enumerate}
+\item $\int_0^6 g(x)\,dx \approx 29.0623$, aplicando a regra do trapézio em $6$ subintervalos
+\item $\int_0^6 g(x)\,dx \approx 29.8630$, aplicando a regra 1/3 de Simpson em $3$ subintervalos
+\end{enumerate}
+\item \fixme
+\item \fixme
+\item
+\begin{enumerate}
+\item $\int_0^2 x^2 + x\,dx = \left( \frac{1}{3}x^3 +\frac{1}{2}x^2 \right)\Big|_0^2 = 14/3 \approx 4.6667$
+\item $\int_1^2 \frac{2}{x^2}\,dx = \left( \frac{-2}{x} \right)\Big|_1^2 = 1$
+\item $\int_{-1}^3 e^{-x^2}\,dx \approx 1.63303$
+\item O valor exato é $\int_{-3}^3 \frac{1}{1+x^2} \,dx = \arctg(x) \Big|_{-3}^3 = 2 \arctg(3) \approx 2.49809154479651$.
+\begin{itemize}
+\item Gauss-Legendre com 2 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 1.5$
+\item Gauss-Legendre com 3 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 3.1875$ 
+\item Gauss-Legendre com 4 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 2.1897810219$
+\item Gauss-Legendre com 5 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 2.6717025035$
+\end{itemize}
+\end{enumerate}
+\begin{multicols}{2}
+\item \fixme
+\item \fixme
+\end{multicols}
+\item $\pi \approx R_{5,5} \approx 3.141582321$
+\item $\int_1^{1.8} e^x dx
+= \left(e^x \right)\Big|_{1}^{1.8}
+= e^{1.8} - e
+\approx R_{5,5}
+\approx 3.331365637$.
+\item Estes são os valores exatos:
+\begin{enumerate}
+\item $\int_{0.3}^{1.5} \tg(x) dx \approx 2.603$
+\item $\int_{0.4}^{2} \ln{x} dx \approx 0.1528$
+\item $\int_{1}^{13} \sqrt{x} dx \approx 30.5814$
+\item $\int_1^5 \frac{x+1}{x^2} dx \approx 2.409$
+\item $\int_{0.2}^{1} \sen(1/x) dx \approx 0.506$
+\item $\int_{0}^{2} f(x) dx \approx 3.80997$
+\end{enumerate}
+\item \fixme
+\item $f(x) = x/4 + 1$
+\item \begin{enumerate}
+\item $f(x) = -x + \frac{30}{7} \approx -x + 4.2857142857$
+\item $f(x) = \frac{25}{21}x^2 - x-\frac{10}{21} \approx 1.1904761905x^2 - x - 0.4761904762$
+\item $f(x) = x^2 - 2\cos(\pi x)$
+\end{enumerate}
+\item \begin{enumerate}
+\item Usando o método de Euler, os resultados aproximados são:
+\begin{itemize}
+\item Com $h=0.25$, $y_1(1) \approx 0$ e $y_2(1) \approx -8$
+\item Com $h=0.125$, $y_1(1) \approx -2.6250$ e $y_2(1) \approx -4.1172$
+\end{itemize}
+
+No entanto, a solução exata do sistema é
+$\begin{cases}
+y_1(t) = 2\sen(4t),\\
+y_2(t) = 2\cos(4t).
+\end{cases}$
+
+Portanto $y_1(1) = 2\sen(4) \approx -1.5136$ e $y_2(1) = 2\cos(4) \approx -1.3073$.
+
+\end{enumerate}
+\item Usando o método de Euler, os resultados aproximados são:
+\begin{itemize}
+\item Com $h=0.25$, $y_1(1) \approx 17.3116$ e $y_2(1) \approx 7.0648$
+\item Com $h=0.125$, $y_1(1) \approx 41.6057$ e $y_2(1) \approx 10.9499$
+\end{itemize}
+\end{enumerate}
+\end{document}
