@@ -99,14 +99,36 @@ Este é um material de acesso livre distribuído sob os termos da licença \href
 \begin{ExerciseList}
 \Exercise[title={1,0}]
 Explique o funcionamento e as vantagens do método de Newton-Cotes adaptável.
-\Answer \fixme
+\Answer
+Neste método, depois de aproximar o valor de $\int_a^b f(x)\,dx$, é feita uma estimativa do erro cometido nesta aproximação. Se o erro é maior do que o desejado, o intervalo é subdividido ao meio, e são calculadas aproximações individuais para $\int_a^{\frac{a+b}{2}} f(x)\,dx$ e $\int_{\frac{a+b}{2}}^b f(x)\,dx$. Em cada caso, o erro cometido é avaliado, e usado como critério para decidir se algum dos intervalos (ou ambos) precisa ser dividido ao meio novamente. O processo se repete até que a soma das aproximações das integrais nos subintervalos considerados esteja próxima o bastante do valor exato da integral em $[a,b]$. Uma vantagem deste tipo de abordagem é que ele evita calcular $f(x)$ desnecessariamente em regiões onde é possível alcançar uma boa aproximação sem usar muitos pontos.
 
-\Exercise[title={3,0}] Seja $f(x) = 1-x^4$. Se for utilizada a regra
+\Exercise[title={3,0}]
+Seja $f(x) = 1-x^4$. Se for utilizada a regra
 $1/3$ de Simpson com repetição, qual será o menor número de \textbf{pontos} distintos em que $f$ precisará ser calculada para que o erro relativo percentual ao aproximar $\int_{-1}^1 f(x)\, dx$ seja de no máximo $1\%$?
 
 {\color{blue} \textit{(Utilize números decimais com 4 dígitos após a vírgula)}}
-\Answer \fixme
-
+\Answer O valor exato da integral é
+\[
+\int_{-1}^1 1-x^4\, dx
+= \left(x-\frac{x^5}{5} \right)\Big|_{-1}^1 = \frac{8}{5} = 1,6.
+\]
+As aproximações obtidas pelo método 1/3 de Simpson são as seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|c|c|}
+\hline 
+Subintervalos & Pontos & Aproximação & Erro (\%) \\ 
+\hline 
+1 & 3 & $1,3333$ & $16,6688$ \\ 
+\hline 
+2 & 5 & $1,5833$ & $1,0438$ \\ 
+\hline 
+3 & 7 & $1,5967$ & $0,2063$ \\ 
+\hline 
+\end{tabular}
+\end{center}
+\medskip
+Então é preciso calcular $f$ em pelo menos 7 pontos para que o erro relativo percentual não ultrapasse $1\%$.
 
 \Exercise[title={3,0}] Considerando que
 $\int_{-1}^3 \sqrt[3]{x}\, dx
@@ -118,15 +140,79 @@ $\int_{-1}^5 \sqrt[3]{x}\, dx
 \approx 5,6624$, verifique que o erro relativo da aproximação de $\int_{-1}^3 \sqrt[3]{x}\, dx$ pela regra de Gauss-Legendre com 3 pontos é cerca de um terço do erro relativo da aproximação de $\int_{-1}^5 \sqrt[3]{x}\, dx$ pelo mesmo método.
 
 {\color{blue} \textit{(Utilize números decimais com 4 dígitos após a vírgula)}}
-\Answer \fixme
+\Answer Considerando $x = 2t + 1$, tem-se $
+    \int_{-1}^3 \sqrt[3]{x}\, dx
+= 2 \int_{-1}^1 \sqrt[3]{2t+1} \,dt
+$. Consequentemente, o valor aproximado da integral pode ser calculado pelo método de Gauss-Legendre com 3 pontos com o auxílio da seguinte tabela:
+\medskip
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline 
+$x_i$ & $t_i = 2x_i+1$ & $\sqrt[3]{t_i}$ & $w_i$ & $w_i \sqrt[3]{t_i}$ \\ 
+\hline 
+-0,7746 & -0,5492 & -0,8189 & 0,5556 & -0,4550 \\ 
+\hline 
+ 0,0000 &  1,0000 &  1,0000 & 0,8889 &  0,8889 \\ 
+\hline 
+ 0,7746 &  2,5492 &  1,3661 & 0,5556 &  0,7589 \\ 
+\hline 
+\end{tabular}
+\end{center}
+\medskip
+Assim,
+\[
+\int_{-1}^3 \sqrt[3]{x}\, dx
+\approx 2 \cdot \left( -0,4550 + 0,8889 + 0,7589\right)
+= 2,3856,
+\]
+e o erro relativo desta aproximação é $\varepsilon_1 = -0,0439$.
+Analogamente, tomando $x = 3t + 2$, tem-se
+$
+    \int_{-1}^3 \sqrt[3]{x}\, dx
+= 3 \int_{-1}^1 \sqrt[3]{3t+2} \,dt
+$. Consequentemente, o valor aproximado da integral pode ser calculado pelo método de Gauss-Legendre com 3 pontos com o auxílio da seguinte tabela:
+\medskip
+\begin{center}
+\begin{tabular}{|r|r|r|r|r|}
+\hline 
+$x_i$ & $t_i = 3x_i+2$ & $\sqrt[3]{t_i}$ & $w_i$ & $w_i \sqrt[3]{t_i}$ \\ 
+\hline 
+-0,7746 & -0,3238 & -0,6867 & 0,5556 & -0,3815 \\ 
+\hline 
+ 0,0000 &  2,0000 &  1,2599 & 0,8889 &  1,1199 \\ 
+\hline 
+ 0,7746 &  4,3238 &  1,6291 & 0,5556 &  0,9051 \\ 
+\hline 
+\end{tabular}
+\end{center}
+\medskip
+Assim,
+\[
+\int_{-1}^3 \sqrt[3]{x}\, dx
+\approx 3 \cdot \left( -0,3815 + 1,1199 + 0,9051 \right)
+= 4,9305,
+\]
+e o erro relativo desta aproximação é $\varepsilon_2 = -0,1293$. Comparando-se os erros relativos de ambas as aproximações, resulta que $\frac{\varepsilon_1}{\varepsilon_2} = \frac{-0,0439}{-0,1293} = 0,3395 \approx 1/3$.
 
 \Exercise[title={3,0}] Dados os pontos $x_0 = 0$, $x_1 = 1$ e $x_2 = 4$, obtenha os pesos $w_i$ para que a aproximação
 \[
-\int_{0}^{4} f(x) \approx w_0 f(0) + w_1 f(1) + w_2 f(4)
+\int_{0}^{4} f(x)\, dx \approx w_0 f(0) + w_1 f(1) + w_2 f(4)
 \]
 seja exata para polinômios de grau menor ou igual a dois. Utilize a regra obtida para calcular $\int_{0}^{4} g(x)$ considerando que $g(0) = 2$, $g(1) = 0$ e $g(4) = 3$.
-\Answer \fixme
-
+\Answer Se a aproximação
+\[
+\int_{0}^{4} f(x)\, dx \approx w_0 f(0) + w_1 f(1) + w_2 f(4)
+\]
+for exata para polinômios de grau menor ou igual a dois então, em particular, ela será exata para os polinômios $1$, $x$ e $x^2$, isto é,
+\begin{align*}
+\int_{0}^{4} 1\, dx & = 4 = w_0 \cdot 1 + w_1 \cdot 1 + w_2 \cdot 1 \\
+\int_{0}^{4} x\, dx & = 8 = w_0 \cdot 0 + w_1 \cdot 1 + w_2 \cdot 4 \\
+\int_{0}^{4} x^2\, dx & = \frac{64}{3} = w_0 \cdot 0 + w_1 \cdot 1 + w_2 \cdot 16
+\end{align*}
+Resolvendo o sistema, chega-se a $w_0 = -2/3$, $w_1 = 32/9$ e $w_2 = 10/9$. Em particular,
+\[
+\int_{0}^{4} g(x)\, dx \approx -0,6667 \cdot 2 + 3,5556 \cdot 0 + 1,1111 \cdot 3 = 1,9999.
+\]
 \Exercise[title={3,0}]
 Em relação às soluções aproximadas do problema de valor inicial
 \[
@@ -135,10 +221,57 @@ y^\prime(x) = x - y(x), \quad x \in [0,1]\\
 y(0) = 2
 \end{cases}
 \]
-pelos métodos de Euler explícito e implícito, com passo $h=0,25$, verifique se é correto afirmar que o maior erro absoluto em ambos os casos ocorre quando $x = 1$, considerando que a solução exata é $y(x) = 3e^{-x}+x-1$.
+pelos métodos de Euler explícito e implícito, com passo $h=0,25$, verifique se é correto afirmar que o maior erro absoluto (em módulo) em ambos os casos ocorre quando $x = 1$, considerando que a solução exata é $y(x) = 3e^{-x}+x-1$.
 
 {\color{blue} \textit{(Utilize números decimais com 3 dígitos após a vírgula)}}
-\Answer \fixme
+\Answer
+Denotando $f(x,y) = x-y$ e $h=0,25$, pode-se expressar a fórmula do método de Euler explícito da seguinte forma:
+\[
+y_n
+= y_{n-1} + h f(x_{n-1}, y_{n-1})
+= y_{n-1} + 0,25( x_{n-1} - y_{n-1} )
+= 0,25 x_{n-1} + 0,75 y_{n-1}.
+\]
+Disto resulta que os valores obtidos a cada passo são os seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|r|c|c|}
+\hline
+$n$ & $x_n$ & $y_n = 0,25 x_{n-1} + 0,75 y_{n-1}, n\geq 1$ & $y_{exato}(x_n)$ & $\varepsilon_n = y_n-y_{exato}(x_n)$ \\ \hline\hline
+$0$ & $0,000$ & $2,000$                                       & $2,000$ & $0,000$ \\ \hline
+$1$ & $0,250$ & $0,25 \cdot 0,000 + 0,75 \cdot 2,000 = 1,500$ & $1,586$ & $0,086$ \\ \hline
+$2$ & $0,500$ & $0,25 \cdot 0,250 + 0,75 \cdot 1,500 = 1,188$ & $1,320$ & $0,132$ \\ \hline
+$3$ & $0,750$ & $0,25 \cdot 0,500 + 0,75 \cdot 1,188 = 1,016$ & $1,167$ & $0,151$ \\ \hline
+$4$ & $1,000$ & $0,25 \cdot 0,750 + 0,75 \cdot 1,016 = 0,950$ & $1,104$ & $\textbf{0,154}$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Em particular, o maior erro absoluto ocorre no ponto $x = 1$.
+
+No método de Euler implícito, por sua vez, utiliza-se a relação $y_n = y_{n-1} + h f(x_n, y_n)$ que, no problema considerado, pode ser reescrita  de forma equivalente como:
+\[
+y_n
+= y_{n-1} + 0,25( x_n - y_n )
+\Leftrightarrow
+1,25y_n = 0,25x_n + y_{n-1}
+\Leftrightarrow
+y_n = 0,2 x_n + 0,8 y_{n-1}.
+\]
+Consequentemente, os valores obtidos a cada passo são:
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|r|r|r|}
+\hline
+$n$ & $x_n$ & $y_n= 0,2 x_n + 0,8 y_{n-1}, n\geq 1$ & $y_{exato}(x_n)$ & $\varepsilon_n = y_n-y_{exato}(x_n)$ \\ \hline\hline
+$0$ & $0,000$ & $2,000$                                         & $2,000$ & $0,000$ \\ \hline
+$1$ & $0,250$ & $0,200 \cdot 0,250 + 0,800 \cdot 2,000 = 1,650$ & $1,586$ & $-0,064$ \\ \hline
+$2$ & $0,500$ & $0,200 \cdot 0,500 + 0,800 \cdot 1,650 = 1,420$ & $1,320$ & $-0,100$ \\ \hline
+$3$ & $0,750$ & $0,200 \cdot 0,750 + 0,800 \cdot 1,420 = 1,286$ & $1,167$ & $-0,119$ \\ \hline
+$4$ & $1,000$ & $0,200 \cdot 1,000 + 0,800 \cdot 1,286 = 1,229$ & $1,104$ & $\textbf{-0,125}$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Novamente, o maior erro absoluto (em módulo) ocorre no ponto $x = 1$. Portanto a afirmação é correta.
 \end{ExerciseList}
 
 \vspace{0.4cm}
@@ -146,8 +279,8 @@ pelos métodos de Euler explícito e implícito, com passo $h=0,25$, verifique s
 BOA PROVA E BOAS FÉRIAS!
 \end{center}
 
-%\newpage
+\newpage
 \restoregeometry
-%\section*{Respostas}
-%\shipoutAnswer
+\section*{Respostas}
+\shipoutAnswer
 \end{document}
