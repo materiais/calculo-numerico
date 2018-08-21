@@ -98,16 +98,16 @@ Obtenha a representação dos números a seguir nas bases indicadas, e complete 
 & $(110,1)_2$
 & ? \\ \hline
   $(110,1)_{10}$
-& ? 
+& ?
 & ? \\ \hline
   ?
-& ? 
+& ?
 & $(110,1)_8$ \\ \hline
   $(501,375)_{10}$
-& ? 
+& ?
 & ? \\ \hline
   ?
-& ? 
+& ?
 & $(35,1)_8$ \\ \hline
   ?
 & $(1011,101)_2$
@@ -174,7 +174,7 @@ Retorne $\varepsilon$
 \end{multicols}
 
 \item \calc Encontre o (único) ponto de mínimo da função $f(x) = \cos(x + 1) + \dfrac{x^2}{2}$.
-\item \calc 
+\item \calc
 Seja $f(x) = \tg(x) - \sqrt{1 - x^2}$.
 \begin{enumerate}
 \item Determine, sem realizar as iterações, para quais valores de $n$ o método da bisseção produz uma aproximação $x_n = \frac{a_n+b_n}{2}$ da raiz de $f(x)$, com um erro absoluto menor do que $0.05$, considerando que seja utilizado o intervalo inicial $[a_0, b_0] = [-1, 1]$. Lembre-se que o erro absoluto de $x_k$ é menor do que $|b_k - a_k|/2$.
@@ -263,14 +263,78 @@ Seja $f(x) = \tg(x) - \sqrt{1 - x^2}$.
 \begin{enumerate}
 \item O maior erro absoluto possível nesta situação é $\varepsilon_{abs} = |1,25 - 0,05| = 1,2$. Isso pode ser obtido calculando o máximo absoluto da função $f(\overline{x}, x) = |\overline{x} - x|$ sobre o retângulo $D = \{ (\overline{x}, x) \in \R^2 \ |\ 0,1 \leq \overline{x} \leq 1,25 \text{ e } 0,05 \leq x \leq 0,6 \}$.
 
-\item O maior erro relativo possível nesta situação é $\varepsilon_{abs} = \frac{|0,6 - 0,1| }{ |0,1|} = 5$. Isso pode ser obtido calculando o máximo absoluto da função $g(\overline{x}, x) = \frac{|\overline{x}-x| }{ |\overline{x}|}$ sobre o retângulo $D = \{ (\overline{x}, x) \in \R^2 \ |\ 0,1 \leq \overline{x} \leq 1,25 \text{ e } 0,05 \leq x \leq 0,6 \}$. Observe que, para um valor de $x$ fixado, o erro relativo aumenta conforme o valor de $\overline{x}$ se aproxima de zero.
+\item O maior erro relativo possível nesta situação é $\varepsilon_{rel} = \frac{|0,6 - 0,1| }{ |0,1|} = 5$. Isso pode ser obtido usando ferramentas do cálculo diferencial para calcular o máximo absoluto da função $g(\overline{x}, x) = \frac{|\overline{x}-x| }{ |\overline{x}|}$ sobre o retângulo $D = \{ (\overline{x}, x) \in \R^2 \ |\ 0,1 \leq \overline{x} \leq 1,25 \text{ e } 0,05 \leq x \leq 0,6 \}$. Observe que, para um valor de $x$ fixado, o erro relativo aumenta conforme o valor de $\overline{x}$ se aproxima de zero.
 \end{enumerate}
 
 \item Basta observar que o intervalo $[a,b] = [0,7-10^{-3}, 0,7+10^{-3}]$ satisfaz as hipóteses do teorema de Bolzano, pois $f(0,699) \approx -0.008 < 0$ e $f(0,701) \approx 0.001 > 0$. Logo, há uma raiz $\overline{x} \in (0,699, 0,701)$, cuja distância até o centro do intervalo é $d = |\overline{x} - 0,7| < 10^{-3}$.
 \item Considerando que $2^{33} = 8589934592 \leq n \leq 17179869183 = 2^{34}-1$, resulta que $n$ tem de $10$ a $11$ dígitos.
-\item 
-\item O fato de um certo termo de uma sequência convergente estar muito próximo do limite não garante que todos os termos seguintes estarão igualmente (ou mais) próximos do limite. Assim mesmo que o critério de parada seja satisfeito, não há garantia de que as aproximações subsequentes seriam ainda melhores.
+\item Considerando que $\overline{x} = 2$, têm-se as seguintes equivalências a respeito da aproximação $x_k$:
+\[
+\varepsilon_{per}(x_k) < 1\%
+\Leftrightarrow
+\varepsilon_{rel}(x_k) < 0,01
+\Leftrightarrow
+\frac{|x_k - 2|}{|2|} < 0,01
+\Leftrightarrow
+|x_k - 2| < 0,02
+\Leftrightarrow
+1,98 < x_k < 2,02
+\]
+
+As tabelas a seguir mostra os primeiros termos de cada sequência, e os respectivos erros, arredondados para o quarto dígito após a vírgula:
+\begin{enumerate}
 \item
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x_k$ & $\varepsilon_{abs}$ & $\varepsilon_{rel}$ & $\varepsilon_{per}$ \\
+\hline
+$1$ & $2,5000$ & $0,5000$ & $0,2500$ & $25,00\%$ \\
+\hline
+$2$ & $2,0500$ & $0,0500$ & $0,0250$ & $2,50\%$ \\
+\hline
+$3$ & $2,0006$ & $0,0006$ & $0,0003$ & $0,03\%$ \\
+\hline
+\end{tabular}
+
+Portanto o primeiro termo que aproxima $\overline{x}$ com menos de $1\%$ de erro é $x_3 = 2,0006$.
+\item
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x_k$ & $\varepsilon_{abs}$ & $\varepsilon_{rel}$ & $\varepsilon_{per}$ \\
+\hline
+$1$ & $1,0000$ & $1,0000$ & $0,5000$ & $50,00\%$ \\
+\hline
+$2$ & $2,2500$ & $0,2500$ & $0,1250$ & $12,5\%$ \\
+\hline
+$3$ & $1,8889$ & $0,8889$ & $0,0556$ & $5,56\%$ \\
+\hline
+$4$ & $2,0625$ & $0,0625$ & $0,0313$ & $3,13\%$ \\
+\hline
+$5$ & $1,9600$ & $0,9600$ & $0,0200$ & $2,00\%$ \\
+\hline
+$6$ & $2,0278$ & $0,0278$ & $0,0139$ & $1,39\%$ \\
+\hline
+$7$ & $2,9796$ & $0,9796$ & $0,0102$ & $1,02\%$ \\
+\hline
+$8$ & $2,0156$ & $0,0156$ & $0,0078$ & $0,78\%$ \\
+\hline
+\end{tabular}
+
+Portanto o primeiro termo que aproxima $\overline{x}$ com menos de $1\%$ de erro é $x_8 = 2,0156$.
+\end{enumerate}
+\item Os primeiros termos da sequência são os seguintes:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$   & $1$   & $2$   & $3$   & $4$\\
+\hline
+$x_k$ & $0,159$ & $0,239$ & $0,053$ & $0,119$ \\
+\hline
+\end{tabular}
+\end{center}
+Como se pode observar, $|x_3| < 0,1$ embora $|x_4| > 0,1$. Assim, o fato de um certo termo de uma sequência convergente estar muito próximo do limite não garante que todos os termos seguintes estarão igualmente (ou mais) próximos do limite. Assim, mesmo que o critério de parada seja satisfeito, não há garantia de que as aproximações subsequentes seriam ainda melhores.
+\item
+
 \item Dica: lembre-se que quando uma função é derivável, deve ocorrer $f^\prime(x) = 0$ em todo $x$ que for um ponto de mínimo local de $f$. Assim, pode-se usar um dos métodos para zeros de funções para obter que $x = 0,9345632107$ é o ponto de mínimo e que $f(x) = 0,0809070571$ é o valor mínimo.
 \item Solução com 15 dígitos após a vírgula: $x = 0,649888730553309$.
 \item
