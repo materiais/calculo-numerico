@@ -165,7 +165,7 @@ Retorne $\varepsilon$
 
 \item \calc Seja $\{ x_n \}_{n \in \mathbb{N}}$, a sequência definida por $x_n = \dfrac{2 + \cos(\pi n)}{2\pi n}$, para $n\geq 1$. Verifique que, apesar de ser verdade que $x_n \to 0$, é possível obter $|x_n| < 0.1$ sem que ocorra $|x_{n+1}| < 0.1$. O que isso revela sobre o uso de testes como $|\varepsilon_{\text{abs}}| < \text{TOL}$ como critério de parada?
 
-\item \calc Seja $f(x) = (x^2 - 4)(x - 8)$. Determine o menor valor de $n$ tal que a aproximação $x_n$ obtida pelo método da bisseção tenha um erro relativo percentual menor do que 1\% sendo:
+\item \calc Seja $f(x) = (x^2 - 4)(x - 8)$. Determine o menor valor de $n$ tal que a aproximação $x_k$ obtida pelo método da bisseção tenha um erro relativo percentual menor do que 1\% sendo:
 \begin{multicols}{2}
 \begin{enumerate}
 \item $[a_0, b_0] = [1, 4]$
@@ -334,6 +334,59 @@ $x_k$ & $0,159$ & $0,239$ & $0,053$ & $0,119$ \\
 \end{center}
 Como se pode observar, $|x_3| < 0,1$ embora $|x_4| > 0,1$. Assim, o fato de um certo termo de uma sequência convergente estar muito próximo do limite não garante que todos os termos seguintes estarão igualmente (ou mais) próximos do limite. Assim, mesmo que o critério de parada seja satisfeito, não há garantia de que as aproximações subsequentes seriam ainda melhores.
 \item
+\begin{enumerate}
+\item Considerando que $2$ é a única raiz de $f(x)$ em $[1, 4]$, pode-se utilizar $\overline{x} = 2$ ao calcular o erro relativo percentual a cada iteração do método da bisseção. Estes são os valores obtidos:
+
+\begin{tabular}{cccccccc}
+\hline 
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\ 
+\hline 
+0 & 1,0000 & 2,5000 & 4,0000 & 21,0000 & -12,3750 & -48,0000 & 25,0000\% \\
+1 & 1,0000 & 1,7500 & 2,5000 & 21,0000 &   5,8594 & -12,3750 & 12,5000\%\\
+2 & 1,7500 & 2,1250 & 2,5000 &  5,8594 &  -3,0293 & -12,3750 &  6,2500\%\\
+3 & 1,7500 & 1,9375 & 2,1250 &  5,8594 &   1,4919 &  -3,0293 &  3,1250\%\\
+4 & 1,9375 & 2,0313 & 2,1250 &  1,4919 &  -0,7531 &  -3,0293 &  1,5650\%\\
+5 & 1,9375 & 1,9844 & 2,0313 &  1,4919 &   0,3739 &  -0,7531 &  0,7800\%\\
+\hline
+\end{tabular}
+
+Assim, neste caso $k = 5$.
+
+\textbf{Observação}: Como a raiz exata é conhecida, pode-se deduzir que
+\[
+\varepsilon_{per}(x_k) < 1\%
+\Leftrightarrow
+\varepsilon_{rel}(x_k) < 0,01
+\Leftrightarrow
+\frac{|x_k - 2|}{|2|} < 0,01
+\Leftrightarrow
+\varepsilon_{abs}(x_k) = |x_k - 2| < 0,02,
+\]
+e então executar as iterações até que o erro absoluto seja menor do que $0,02$ (o que, de qualquer modo, ocorrerá na quinta iteração). No entanto, se em vez de realizar as iterações for usado que
+\[
+k > \log_2 \left(\frac{4-1}{0,02}\right)-1 \approx 6,2
+\Rightarrow
+k \geq 7
+\Rightarrow
+\varepsilon_{abs}(x_k) < 0,02
+\]
+o resultado obtido será maior do que o esperado, pois esta fórmula é deduzida a partir de uma estimativa conservadora do erro absoluto a cada iteração. Mesmo assim, não deixa de ser verdade que, para $k\geq 7$, o erro relativo percentual da aproximação $x_k$ é menor do que $1\%$.
+
+\item Considerando que $\overline{x} = 8$ é a única raiz de $f(x)$ em $[6, 9]$, pode-se utilizar este valor ao calcular o erro relativo percentual a cada iteração do método da bisseção, e obter:
+
+\begin{tabular}{cccccccc}
+\hline 
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\ 
+\hline 
+0 & 6,0000 & 7,5000 & 9,0000 & -64,0000 & -26,1250 & 77,0000 & -6,2500\%\\
+1 & 7,5000 & 8,2500 & 9,0000 & -26,1250 &  16,0156 & 77,0000 &  3,1250\%\\
+2 & 7,5000 & 7,8750 & 8,2500 & -26,1250 &  -7,2520 & 16,0156 & -1,5625\%\\
+3 & 7,8750 & 8,0625 & 8,2500 &  -7,2520 &   3,8127 & 16,0156 &  0,7813\%\\
+\hline 
+\end{tabular}
+
+Assim, neste caso $k = 3$.
+\end{enumerate}
 
 \item Dica: lembre-se que quando uma função é derivável, deve ocorrer $f^\prime(x) = 0$ em todo $x$ que for um ponto de mínimo local de $f$. Assim, pode-se usar um dos métodos para zeros de funções para obter que $x = 0,9345632107$ é o ponto de mínimo e que $f(x) = 0,0809070571$ é o valor mínimo.
 \item Solução com 15 dígitos após a vírgula: $x = 0,649888730553309$.
