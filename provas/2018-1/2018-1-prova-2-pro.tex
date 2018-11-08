@@ -43,7 +43,7 @@
 \renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
 \textbf{%\ExerciseListName\
 \ExerciseHeaderNB.\ %
-%\ --- \ 
+%\ --- \
 \ExerciseHeaderTitle}%
 %\ExerciseHeaderOrigin
 \ignorespaces}
@@ -116,7 +116,7 @@ Considere $X^{(0)} = (0,000, 1,000, 2,000)$ e mostre que o erro relativo da apro
 \begin{tabular}{ll}
 \textbf{Método de Jacobi}
 &
-\textbf{Método de Gauss-Seidel}\\ 
+\textbf{Método de Gauss-Seidel}\\
 $
 \begin{cases}
 x_1^{(k)} = (3 + 3x_2^{(k-1)})/4\\
@@ -141,7 +141,7 @@ Observe que no método de Gauss-Seidel, os valores de $x_j^{(k)}$ são utilizado
 \begin{tabular}{cc}
 \textbf{Método de Jacobi}
 &
-\textbf{Método de Gauss-Seidel}\\ 
+\textbf{Método de Gauss-Seidel}\\
 \begin{tabular}{|c|r|r|r|r|}
 \hline
 $\boldsymbol{k}$         & 0 & 1 & 2 & 3 \\
@@ -186,7 +186,7 @@ $\begin{array}{lll}
        & \quad |-1,313-(-0,767)|, \\
        & \quad |3,407 - 2,933| \left.\right\} \\
 = \max & \left\{ |0,425|, |-0,546|, |0,474| \right\} \\
-= 0,546\hspace{-1cm} & 
+= 0,546\hspace{-1cm} &
 \end{array}$
 &
 $\begin{array}{lll}
@@ -195,7 +195,7 @@ $\begin{array}{lll}
        & \quad |-1,227-(-1,210)|, \\
        & \quad |3,554-3,434| \left.\right\} \\
 = \max & \left\{ |-0,283|, |-0,017|, |0,120| \right\} \\
-= 0,283\hspace{-1cm} & 
+= 0,283\hspace{-1cm} &
 \end{array}$
 \\\hline
 Relativo
@@ -321,11 +321,11 @@ Em uma pesquisa recente foi constatado que o preço de um \textit{pendrive} vari
 \medskip
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
-\hline			
-Tamanho (GB) & 4 & 8 & 32 & 64 \\ 
-\hline			
+\hline
+Tamanho (GB) & 4 & 8 & 32 & 64 \\
+\hline
 Preço (R\$) & 20 & 25 & 40 & 80 \\
-\hline			
+\hline
 \end{tabular}
 \end{center}\medskip
 Estime o preço de um \textit{pendrive} de 16GB usando o polinômio interpolador obtido por diferenças divididas (forma de Newton).
@@ -349,16 +349,16 @@ p(x)
 &=20
  +1,25(x-4)
  -0,0223(x-4)(x-8)
- +0.0006(x-4)(x-8)(x-32)\\
+ +0,0006(x-4)(x-8)(x-32)\\
 & = 0,0006x^3 - 0,0469x^2 + 1,75x + 13,7143.
 \end{align*}
 Usando este polinômio para estimar o valor pedido, resulta que o preço é aproximadamente:
 \begin{align*}
 \approx p(16)
-& =-1.5708\\
+& =-1,5708\\
 & \quad +1,2500\cdot(12)\\
 & \quad -0,0223\cdot(12)\cdot(8)\\
-& \quad +0.0006\cdot(12)\cdot(8)\cdot(-16)\\
+& \quad +0,0006\cdot(12)\cdot(8)\cdot(-16)\\
 & \approx 32.
 \end{align*}
 
@@ -367,7 +367,7 @@ Obtenha, pelo método de Lagrange, o polinômio $p(x)$ que interpola $f(x) = x^5
 \Answer Considerando que $f(-1) = 1$, $f(0) = 1$ e $f(1) = 1$, o método de Lagrange permite que o polinômio que interpola $f$ nestes pontos seja descrito da seguinte forma:
 \begin{align*}
 p(x)
-& = -2 L_0(x) -1 L_1(x) + 2 L_2(x) \\
+& = 1 L_0(x) + 1 L_1(x) + 1 L_2(x) \\
 & = 1 \cdot \frac{x(x-1)}{-1(-1-1)}
   + 1 \cdot \frac{(x+1)(x-1)}{(0+1)(0-1)}
   + 1 \cdot \frac{(x+1)x}{(1+1)1}\\
