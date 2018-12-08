@@ -1,0 +1,242 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tg{\operatorname{tg}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{MEC151-03U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{12/09/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] Sejam
+$\overline{a} = 0,46$,
+$\overline{b} = 2,14$ e
+$\overline{c} = 0,65$ e considere as aproximações $a\approx \overline{a}$,
+$b\approx \overline{b}$ e
+$c\approx \overline{c}$,
+com apenas um dígito após a vírgula, obtidas por arredondamento (conforme a ABNT). Verifique se é verdade que $a\cdot (b + c) = a\cdot b + a\cdot c$ caso \textbf{todas} as adições e multiplicações intermediárias sejam efetuadas com valores arredondados, e indique o erro relativo percentual nos resultados finais de $a\cdot (b + c)$ e também de $a\cdot b + a\cdot c$.
+\Answer
+Considerando
+$a = 0,5$,
+$b = 2,1$ e
+$c = 0,6$, tem-se:
+\[
+a\cdot (b + c)
+= 0,5 \cdot (2,1 + 0,6)
+= 0,5 \cdot 2,7
+= 1,35 \approx 1,4.
+\]
+\[
+a\cdot b + a\cdot c
+= 0,5\cdot 2,1 + 0,5\cdot 0,6
+= 1,05 + 0,3
+\approx 1,0 + 0,3
+= 1,3.
+\]
+Portanto, $a\cdot (b + c) \neq a\cdot b + a\cdot c$. Comparando os resultados acima com o valor exato, que é $\overline{a}\cdot (\overline{b} + \overline{c}) = 0,46\cdot (2,14 + 0,65) = 1,2834$, percebe-se que os erros relativos percentuais dos resultados obtidos são:
+\[
+|\varepsilon_{per}(a\cdot (b + c))|
+= \frac{|1,4-1,2834|}{|1,2834|} \times 100 \%
+= 9,0852 \%
+= 9,1 \%.
+\]
+\[
+|\varepsilon_{per}(a\cdot b + a\cdot c)|
+= \frac{|1,3-1,2834|}{|1,2834|} \times 100 \%
+= 1,2934 \%
+= 1,3 \%.
+\]
+
+
+\Exercise[title={2,5}] Mostre que toda função da forma $f(x) = m(2-x)-x^3$, para algum $m > 0$, zera em algum ponto $\overline{x} \in (0, 2)$. Calcule uma aproximação $x_k \approx \overline{x}$ pelo método da bisseção no caso em que $m = 9$, de modo que o erro absoluto aproximado seja $|\varepsilon_{abs}(x_k)| \leq 0,05$.
+
+\textit{(Arredonde os valores utilizados no cálculo de cada $x_k$ com 4 dígitos após a vírgula)}
+\Answer
+Considerando que, para todo $m > 0$, tem-se $f(0) = 2m > 0 > -8 = f(2)$. Como $f$ muda de sinal em $[0,2]$ e $f$ é contínua neste intervalo, segue do teorema de Bolzano que $f$ possui pelo menos uma raiz em $(0,2)$, isto é, existe $\overline{x} \in (0,2)$ tal que $f(\overline{x}) = 0$.
+
+Pelo método da bisseção, obtêm-se as seguintes aproximações para $\overline{x}$, quando $m = 9$:
+\medskip
+\begin{center}
+\begin{tabular}{cccccccc}
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{abs}(x_k)$\\\hline
+0 & 0,0000 & 1,0000 & 2,0000 & 18,0000 & 8,0000 & -8,0000 & -\\
+1 & 1,0000 & 1,5000 & 2,0000 & 8,0000 & 1,1250 & -8,0000 & 0,5000\\
+2 & 1,5000 & 1,7500 & 2,0000 & 1,1250 & -3,1094 & -8,0000 & 0,2500\\
+3 & 1,5000 & 1,6250 & 1,7500 & 1,1250 & -0,9160 & -3,1094 & 0,1250\\
+4 & 1,5000 & 1,5625 & 1,6250 & 1,1250 & 0,1228 & -0,9160 & 0,0625\\
+5 & 1,5625 & 1,5938 & 1,6250 & 0,1228 & -0,3928 & -0,9160 & 0,0313\\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Portanto, $x_5 = 1,5938 \approx \overline{x}$, com um erro absoluto dentro da tolerância estipulada.
+
+\Exercise[title={2,5}]
+Obtenha uma aproximação $x_k$ de uma raiz da função $f(x) = 1/8-\cos(x)$ tal que $|f(x_k)|<10^{-9}$, utilizando o método de Newton-Raphson com $x_0 = 4$.
+
+\textit{(Configure a calculadora em radianos e arredonde cada valor com 10 dígitos após a vírgula)}
+\Answer
+Considerando que, por exemplo, $f(3) \approx 1,11 > 0 > -0,16 \approx f(5)$ e que $f$ é uma função contínua, resulta do teorema de Bolzano que $f$ possui alguma raiz $\overline{x} \in I = (3, 5)$. Além disso, $f^\prime(x) = \sen(x)$ e $f^{\prime\prime}(x) = \cos(x)$ são contínuas em $I$, e sendo $f^\prime(x) \neq 0$ para $x \in I$, o método de Newton-Raphson produzirá uma sequência convergente, para toda aproximação inicial $x_0$ em algum subintervalo $\overline{I} \subset (3, 5)$. Usando o valor que foi proposto, $x_0 = 4 \in I$, e aplicando o método de Newton-Raphson, obtém-se os seguintes valores:
+\medskip
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+$k$ & $x_k$ & $f(x_k)$ & $f^\prime(x_k)$ \\\hline
+0 & 4,000000000 &  0,778643621 & -0,756802495\\
+1 & 5,028859744 & -0,186214532 & -0,950339684\\
+2 & 4,832914510 &  0,004766059 & -0,992745586\\
+3 & 4,837715397 &  0,000001403 & -0,992156918\\
+4 & 4,837716811 &  0,000000001 & -\\\hline
+\end{tabular}
+\end{center}
+\medskip
+Portanto, $x_4 = 4,837716811$ é o valor aproximado de uma raiz de $f$, e $|f(x_4)| < 10^{-7}$.
+
+
+\Exercise[title={2,5}]
+Seja $f(x) = \tg(x)$. Aplique o método da secante, partindo das aproximações iniciais $x_{-1} = 8$ e $x_0 = 10$, para obter $x_k$ com erro relativo percentual menor ou igual a $0,05\%$.
+
+\textit{(Configure a calculadora em radianos e arredonde cada $x_k$ e $f(x_k)$ com 4 dígitos após a vírgula)}
+\Answer
+Considerando que $f(x) = \tg(x)$ é contínua em $[8, 10]$, que $f(8) \approx -6,7997$ e que $f(10) \approx 0,6484$, segue do teorema de Bolzano que há uma raiz $\overline{x}$ de $f$ em $(8, 10)$. Se o método da secante for aplicado para aproximá-la, resultarão os seguintes valores:
+\medskip
+\begin{center}
+\begin{tabular}{cccccccc}
+\hline
+$k$ & $x_{k-2}$ & $x_{k-1}$ & $x_k$ & $f(x_{k-2})$ & $f(x_{k-1})$ & $f(x_k)$ & $|x_k-x_{k-1}|/|x_k|$ \\
+\hline
+0 & 8,0000 & 10,0000 & 9,8259 & -6,7997 & 0,6484 & 0,4241 & - \\
+1 & 10,0000 & 9,8259 & 9,4967 & 0,6484 & 0,4241 & 0,0720 & 3,4665\%\\
+2 & 9,8259 & 9,4967 & 9,4294 & 0,4241 & 0,0720 & 0,0046 & 0,7137\%\\
+3 & 9,4967 & 9,4294 & 9,4248 & 0,0720 & 0,0046 & 0,0000 & 0,0488\%\\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Assim, a raiz $\overline{x}$ de $f$ é aproximadamente $x_3 = 9,4248$, com $\varepsilon_{per}(x_k) \approx 0,0488\%$.
+
+
+\Exercise[title={2,5}]
+Mostre que a sequência $\{x_n\}_{n=0}^\infty$ definida por $x_n = 3/n^3$, para $n \geq 1$, converge \textit{linearmente} para $\overline{x} = 0$. Qual é o menor valor de $n \in \mathbb{N}$ tal que $|x_n - \overline{x}| \leq 10^{-4}$?
+\Answer A convergência para zero é linear pois
+\[
+\lim_{n \to \infty} \frac{|x_n - \overline{x}|}{|x_{n-1} - \overline{x}|^\alpha}
+= \lim_{n \to \infty} \frac{|3/n^3 - 0|}{|3/(n-1)^3 - 0|^1}
+= \lim_{n \to \infty} \frac{(n-1)^3}{n^3}
+= \lim_{n \to \infty} \frac{n^3-3n^2+3n+1}{n^3}
+= 1.
+\]
+Para determinar p menor $n$ tal que $|x_n - \overline{x}| \leq 10^{-4}$, basta observar o seguinte:
+\[
+|3/n^3 - 0| \leq 10^{-4}
+\Leftrightarrow
+3 \leq 10^{-4} n^3
+\Leftrightarrow
+3/10^{-4} \leq n^3
+\Leftrightarrow
+n \geq \sqrt[3]{3/10^{-4}} \approx 31,07.
+\]
+Portanto, $n = 32$.
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

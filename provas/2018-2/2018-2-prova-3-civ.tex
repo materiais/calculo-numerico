@@ -1,0 +1,209 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+\usepackage{multicol}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova III}
+\newcommand*\turma{CIV122-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{01/12/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Obtenha a função do tipo $f(x) = \alpha \cdot (x-1)^2 + \beta (x+1)^2$ que melhor se ajusta aos pontos do conjunto (no sentido dos mínimos quadrados)
+\[
+D = \{(-1, 1), (0, 0), (1, 1), (2, 8), (2, 12)\}
+\]
+e utilize-a para obter $f(0,19)$.
+
+{\color{blue} \textit{(Utilize números decimais com 3 dígitos após a vírgula)}}
+\Answer
+\color{red}
+\ldots
+
+
+
+\Exercise[title={2,5}]
+Aproxime $\int_{-2}^{2} \frac{4}{x^2+4}\ dx$ usando a repetição da regra 1/3 de Simpson em 4 subintervalos.
+
+{\color{blue} (Utilize números decimais com 4 dígitos após a vírgula)}
+\Answer
+\color{red}
+\ldots
+
+
+\Exercise[title={2,5}]
+Qual é o maior valor de $h \in \mathbb{R}$ para o qual a regra de Gauss-Legendre com 2 pontos aproxima $\int_{-h}^h x^6 \ dx$ com um erro absoluto $|\varepsilon_{abs}| \leq 0,1$?
+
+{\color{blue} (Utilize números decimais com 4 dígitos após a vírgula)}
+\Answer \ldots
+
+
+
+\Exercise[title={2,5}]
+Considere a regra de quadratura $\int_0^{4m} f(x)\ dx \approx w_0 f(m) + w_1 f(2m)$, que é exata para polinômios de grau um. Calcule $w_0$, $w_1$ e o erro relativo percentual da aproximação de
+\[
+I = \int_0^{0,8} \frac{\cos(x-x^2)}{2^x} \ dx,
+\]
+fornecida por esta regra, sabendo que o valor exato é $I = 0,602778411\ldots$.
+
+{\color{blue} \textit{(Utilize números decimais com 6 dígitos após a vírgula, e configure sua calculadora em radianos)}}
+\Answer \ldots
+
+
+\Exercise[title={2,5}]
+Verifique se é verdade que se for usado um passo $h=0,500$ no método de Euler explícito, a solução aproximada do problema de valor inicial
+\[
+\begin{cases}
+y^\prime(x) = x-y(x), \quad x \in [0,000, 2,000]\\
+y(0,000) = 3,000
+\end{cases}
+\]
+terá erros absolutos cada vez maiores ao longo do intervalo $[0,000, 2,000]$. Para o cálculo do erro, considere que $y(x)=x-1+4e^{-x}$ é a solução exata.
+
+{\color{blue} \textit{(Utilize números decimais com 3 dígitos após a vírgula)}}
+\Answer
+Denotando $f(x,y) = y-x$ e $h=0,5$, pode-se expressar a fórmula do método de Euler explícito da seguinte forma:
+\[
+y_n
+= y_{n-1} + h f(x_{n-1}, y_{n-1})
+= y_{n-1} + 0,5( y_{n-1} - x_{n-1} )
+= 1,5 y_{n-1} - 0,5 x_{n-1}.
+\]
+Disto resulta que os valores obtidos a cada passo são os seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|r|r|c|}
+\hline
+$n$ & $x_n$ & $y_n= 1,5 y_{n-1} - 0,5 x_{n-1}$ & $y_{exato}(x_n)$ & $\varepsilon_n = y_n-y_{exato}(x_n)$ \\ \hline\hline
+$0$ & $0,000$ & $0,100$ & $0,100$ & $0,000$ \\ \hline
+$1$ & $0,500$ & $1,5 \cdot 0,100 - 0,5 \cdot 0,000 =  0,150$ & $ 0,016$ & $0,134$ \\ \hline
+$2$ & $1,000$ & $1,5 \cdot 0,016 - 0,5 \cdot 0,500 = -0,025$ & $-0,446$ & $0,421$ \\ \hline
+$3$ & $1,500$ & $1,5 \cdot(-0,446)-0,5 \cdot 1,000 = -0,538$ & $-1,534$ & $\textbf{0,996}$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Em particular, o maior erro absoluto ocorre no ponto $x = 1,5$.
+
+No método de Euler implícito, por sua vez, utiliza-se a relação $y_n = y_{n-1} + h f(x_n, y_n)$ que, no problema considerado, pode ser reescrita  de forma equivalente como:
+\[
+y_n
+= y_{n-1} + 0,5( y_n - x_n )
+\Leftrightarrow
+0,5y_n = y_{n-1} - 0,5x_n
+\Leftrightarrow
+y_n = 2y_{n-1} - x_n.
+\]
+Consequentemente, os valores obtidos a cada passo são:
+\medskip
+\begin{center}
+\begin{tabular}{|c|c|r|r|c|}
+\hline
+$n$ & $x_n$ & $y_n= 2 y_{n-1} - x_n$ & $y_{exato}(x_n)$ & $\varepsilon_n = y_n-y_{exato}(x_n)$ \\ \hline\hline
+$0$ & $0,000$ & $0,100$ & $0,100$ & $0,000$ \\ \hline
+$1$ & $0,500$ & $2 \cdot 0,100 - 0,500 =  0,300$ & $ 0,016$ & $-0,316$ \\ \hline
+$2$ & $1,000$ & $2 \cdot(-0,300) - 1,000 = -1,600$ & $-0,446$ & $-1,154$ \\ \hline
+$3$ & $1,500$ & $2 \cdot(-1,600)- 1,500 = -4,700$ & $-1,534$ & $\textbf{-3,166}$ \\ \hline
+\end{tabular}
+\end{center}
+\medskip
+Novamente, o maior erro absoluto (em módulo) ocorre no ponto $x = 1,5$.
+
+
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA E BOAS FÉRIAS!
+\end{center}
+
+%\newpage
+%\restoregeometry
+%\section*{Respostas}
+%\shipoutAnswer
+\end{document}

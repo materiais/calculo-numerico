@@ -1,0 +1,259 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova I}
+\newcommand*\turma{PRO112-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{11/09/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}] A partir de que dígito binário o número $x = (3,141)_{10}$ difere de $y = (3,142)_{10}$?
+\Answer Para a parte inteira de ambos os números, tem-se:
+\[
+(3)_{10} = 1 \cdot 2^1 + 1 \cdot 1^0 = (11)_{2}.
+\]
+Para a parte fracionaria de $x$ e de $y$, tem-se, respectivamente:
+\begin{multicols}{2}
+\begin{description}
+\item $2 \times 0,141 = 0,282$
+\item $2 \times 0,282 = 0,564$
+\item $2 \times 0,564 = 1,128$
+\item $2 \times 0,128 = 0,256$
+\item $2 \times 0,256 = 0,512$
+\item $2 \times 0,512 = 1,024$
+\item $2 \times 0,024 = 0,048$
+\item $2 \times 0,048 = 0,096$
+\item $2 \times 0,096 = 0,192$
+\item $2 \times 0,192 = \textbf{0},384$
+\end{description}
+\begin{description}
+\item $2 \times 0,142 = 0,284$
+\item $2 \times 0,284 = 0,568$
+\item $2 \times 0,568 = 1,136$
+\item $2 \times 0,136 = 0,272$
+\item $2 \times 0,272 = 0,544$
+\item $2 \times 0,544 = 1,088$
+\item $2 \times 0,088 = 0,176$
+\item $2 \times 0,176 = 0,352$
+\item $2 \times 0,352 = 0,704$
+\item $2 \times 0,704 = \textbf{1},408$
+\end{description}
+\end{multicols}
+Logo, $x = (11,0010010000\ldots)_2$
+e
+$y = (11,0010010001\ldots)_2$, ou seja, o décimo dígito binário após a vírgula é o primeiro no qual $x$ e $y$ são diferentes.
+
+\Exercise[title={2,5}] Seja $f(x) = cx^5-c^3x^2$, para algum $c \in \R$. Mostre que para todo $c > 1$, existe algum $\overline{x} \in (1, c)$ tal que $f(\overline{x}) = 0$. Calcule uma aproximação $x_k \approx \overline{x}$ pelo método da bisseção no caso em que $c = 4$, de modo que o erro absoluto aproximado seja $|\varepsilon_{abs}(x_k)| \leq 0,05$.
+
+\textit{(Arredonde os valores utilizados no cálculo de cada $x_k$ com 4 dígitos após a vírgula)}
+\Answer Considerando que $f(1) = c-c^3 = c(1+c)(1-c) < 0$ quando $c > 1$ e que $f(c) = c^6-c^5 = c^5(c-1) > 0$ quando $c > 1$, resulta que a função $f$ muda de sinal no intervalo $[1,c]$, para todo $c > 1$. Como $f$ é contínua neste intervalo, resulta do teorema de Bolzano que $f$ possui pelo menos uma raiz em $(1,c)$, isto é, existe $\overline{x} \in (1,c)$ tal que $f(\overline{x}) = 0$.
+
+Utilizando o método da bisseção para obter aproximações de $\overline{x}$, encontram-se os seguintes valores:
+
+\begin{center}
+\begin{tabular}{cccccccc}
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{abs}(x_k)$\\\hline
+0 & 1,0000 & 2,5000 & 4,0000 & -60,0000 &  -9,3750 & 3072,0000 & -\\
+1 & 2,5000 & 3,2500 & 4,0000 &  -9,3750 & 774,3633 & 3072,0000 & 0,7500\\
+2 & 2,5000 & 2,8750 & 3,2500 &  -9,3750 & 256,6864 &  774,3633 & 0,3750\\
+3 & 2,5000 & 2,6875 & 2,8750 &  -9,3750 &  98,5427 &  256,6864 & 0,1875\\
+4 & 2,5000 & 2,5938 & 2,6875 &  -9,3750 &  39,0364 &   98,5427 & 0,0937\\
+5 & 2,5000 & 2,5469 & 2,5938 &  -9,3750 &  13,5176 &   39,0364 & 0,0469\\\hline
+\end{tabular}
+\end{center}
+Portanto, $x_5 = 2,5469 \approx \overline{x}$, com um erro absoluto dentro da tolerância estipulada.
+
+\textbf{Observação:} Neste exemplo é possível obter a solução exata explicitamente:
+\[
+f(x) = 0
+\Leftrightarrow
+cx^5-c^3x^2 = 0
+\Leftrightarrow
+cx^2(x^3-c^2) = 0
+\Leftrightarrow
+c = 0 \text{ ou }
+x = 0 \text{ ou }
+x = \sqrt[3]{c^2}.
+\]
+Assim, para $c = 4$, a única raiz positiva é $\overline{x} = \sqrt[3]{16} \approx 2,5198$.
+
+\Exercise[title={2,5}]
+Considere $f(x) = 11x-\cos(6x)$ e a função de iteração $\varphi(x) = \cos(6x)/11$.
+\begin{enumerate}
+\item Mostre, por meio de argumentos teóricos, que se $x_0 = 8$ e $x_k = \varphi(x_{k-1})$, para $k \in \mathbb{N}$, então a sequência $\{x_k\}_{k \in \mathbb{N}}$ converge para algum $\overline{x}$ tal que $f(\overline{x}) = 0$.
+\item Utilize a função de iteração dada para calcular uma aproximação $x_k \approx \overline{x}$ cujo erro relativo percentual estimado seja menor ou igual a $0,5\%$.
+\end{enumerate}
+\textit{(Configure a calculadora em radianos e arredonde cada termo $x_k$ com 4 dígitos após a vírgula)}
+\Answer
+\begin{enumerate}
+\item Como $f(x) = 11x - \cos(6x) = 0$ equivale a $x = \varphi(x) = \cos(6x)/11$, a função $\varphi$ é, de fato, uma função de iteração para $f$. Além disso, tem-se $\varphi^\prime(x) = \frac{6}{11}\sen(x)$ e portanto as funções $\varphi$ e $\varphi^\prime$ são contínuas em $\R$.
+
+Considerando que $|\sen(x)| \leq 1$, tem-se $|\varphi_1^\prime(x)| = \frac{6}{11}|\sen(x)|\leq \frac{6}{11} < 1$ para todo $x \in \R$. Em particular, para todo $x \in I = (-10, 10)$, tem-se $|\varphi^\prime(x)| < 1$. Como
+\[
+f(-10) \approx -109 < 0 < 111 \approx f(10),
+\]
+e $f$ é contínua em $[-10, 10]$, segue do teorema de Bolzano que há uma raiz de $f$ em $I$. Essa raiz pode ser obtida pelo método de iteração de ponto fixo como o limite da sequência dada por $x_k = \varphi(x_{k-1})$, para qualquer $x_0 \in I$, inclusive $x_0 = 8$.
+
+\item Os primeiros termos dessa sequência são os seguintes (arredondados no quarto dígito decimal a cada iteração).
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+$k$ & $x_k$ & $\varphi(x_k)$ & $\varepsilon_{per}(x_k)$\\
+\hline
+0 & 8 & -0,0582 & -\\
+1 & -0,0582 & 0,0854 & 13845,7045\%\\
+2 & 0,0854 & 0,0792 & 168,1499\%\\
+3 & 0,0792 & 0,0808 & 7,8283\%\\
+4 & 0,0808 & 0,0804 & 1,9802\%\\
+5 & 0,0804 & - & 0,4975\%\\
+\hline
+\end{tabular}
+\end{center}
+Portanto um valor aproximado de $\overline{x}$ nas condições exigidas é $x_5 = 0,0804$, que tem um erro relativo percentual de cerca de $0,4975\%$.
+\end{enumerate}
+
+\Exercise[title={2,5}]
+Obtenha uma aproximação $x_k$ de uma raiz da função $f(x) = \sen(x)+e^{(-x)}$ tal que $|f(x_k)|<10^{-9}$, utilizando o método de Newton-Raphson com $x_0 = 15$.
+
+\textit{(Configure a calculadora em radianos e arredonde cada valor com 10 dígitos após a vírgula)}
+\Answer Considerando que, por exemplo, $f(14) \approx 0,99 > 0 > -0.29 \approx f(16)$ e que $f$ é uma função contínua, resulta do teorema de Bolzano que $f$ possui alguma raiz $\overline{x} \in I = (14,5, 15,5)$. Além disso, $f^\prime(x) = \cos(x)-e^{-x}$ e $f^{\prime\prime}(x) = -\sen(x)+e^{-x}$ são contínuas em $I$, e sendo $f^\prime(x) \neq 0$ para $x \in I$, o método de Newton-Raphson produzirá uma sequência convergente, para toda aproximação inicial $x_0$ em algum subintervalo $\overline{I} \subset (14,5, 15,5)$. Usando o valor que foi proposto, $x_0 = 15 \in I$, e aplicando o método de Newton-Raphson, obtém-se os seguintes valores:
+
+\begin{center}
+\begin{tabular}{cccc}
+\hline
+$k$ & $x_k$ & $f(x_k)$ & $f^\prime(x_k)$ \\
+\hline
+0 & 15 & 0,6502881461 & -0,7596882188 \\
+1 & 15,8559934589 & -0,1474900236 & -0,989063654 \\
+2 & 15,706872598 & 0,0010908206 & -0,9999995561 \\
+3 & 15,7079634191 & -0,0000000004 & - \\
+\hline
+\end{tabular}
+\end{center}
+Portanto, $x_3 = 15,7079634191$ é o valor aproximado de uma raiz de $f$, e $|f(x_3)| < 10^{-9}$.
+
+
+\Exercise[title={2,5}]
+Seja $f(x) = \cos(x)$. Aplique o método da posição falsa, partindo do intervalo inicial $[a_0, b_0] = [0, 4]$, para obter $x_k$ que satisfaça $|f(x_k)| < 0,01$. Estime o erro relativo percentual da aproximação $x_k$ encontrada.
+
+\textit{(Configure a calculadora em radianos e arredonde cada $x_k$ e $f(x_k)$ com 4 dígitos após a vírgula)}
+\Answer
+Estas são as primeiras iterações do método da posição falsa partindo do intervalo inicial $[a_0, b_0] = [0, 4]$, com arredondamento no quarto dígito decimal a cada iteração:
+\begin{center}
+\begin{tabular}{cccccccc}
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$  & $\varepsilon_{per}(x_k)$\\
+\hline
+0 & 0 & 2,419 & 4 & 1 & -0,7501 & -0,6536 & - \\
+1 & 0 & 1,3822 & 2,419 & 1 & 0,1875 & -0,7501 & 75,0109\% \\
+2 & 1,3822 & 1,5895 & 2,419 & 0,1875 & -0,0187 & -0,7501 & 13,0418\% \\
+3 & 1,3822 & 1,5707 & 1,5895 & 0,1875 & 0,0001 & -0,0187 & 1,1969\% \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Nesta etapa, obtém-se a aproximação $x_3 = 1,5707$, com $|f(x_3)| \approx 0,0001 < 0,01$ e assim $\varepsilon_{per} \approx |x_3-x_2|/|x_3|\times 100\% \approx 1,1969\%$.
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

@@ -1,0 +1,397 @@
+
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{CIV122-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{18/09/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Reorganize as equações do sistema linear a seguir (se necessário), e apresente argumentos teóricos que sejam suficientes para garantir a convergência da sequência gerada pelo método de Gauss-Seidel a partir da aproximação inicial $X^{(0)} = (0, 0, 0)$.
+\[
+\systeme{
+ x_1-8x_2 + 2x_3 = 0,
+2x_1+ x_2 + 8x_3 = 8,
+8x_1- x_2        = 1
+}
+\]
+Depois, obtenha uma solução aproximada com erro relativo percentual estimado inferior a $1\%$.\\
+(arredonde cada resultado com \textbf{3 dígitos} após a vírgula)
+\Answer
+Para que o método de Jacobi produza uma sequência convergente, é suficiente (embora não seja necessário) que o sistema ao qual é aplicado tenha uma matriz de coeficientes estritamente diagonalmente dominante. Na ordem em que as equações foram apresentadas, a representação matricial do sistema é
+\[
+\begin{bmatrix}
+1 & -8 & 2 \\
+2 &  1 & 8 \\
+8 & -1 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\ 8 \\ 1
+\end{bmatrix}.
+\]
+Observa-se que a matriz de coeficientes não é estritamente diagonalmente dominante, mas isso pode ser resolvido permutando as equações, de modo a obter o seguinte:
+\[
+\begin{bmatrix}
+8 & -1 & 0 \\
+1 & -8 & 2 \\
+2 &  1 & 8
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\ 0 \\ 8
+\end{bmatrix}.
+\]
+Agora, tem-se uma matriz estritamente diagonalmente dominante, pois
+\begin{align*}
+| 8| & > |-1| + |0| \\
+|-8| & > |1| + |2|\\
+| 8| & > |2| + |1|.
+\end{align*}
+Então, por este critério, é garantido que o método iterativo produzirá uma sequência convergente, qualquer que seja a aproximação inicial escolhida. As equações utilizadas pelo Método de Gauss-Seidel são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = (1 + x_2^{(k-1)})/8\\
+x_2^{(k)} = (x_1^{(k)} + 2x_3^{(k-1)})/8\\
+x_3^{(k)} = (8 - 2x_1^{(k)} - x_2^{(k)})/8\\
+\end{cases}
+\]
+Consequentemente, os valores obtidos a cada iteração são os seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{crrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2 & 3 & 4\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 0,125 & 0,127 & 0,157 & 0,157 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 0,016 & 0,258 & 0,254 & 0,252 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & 0,967 & 0,936 & 0,929 & 0,929 \\
+\hline
+$\varepsilon_{abs}$ & - & 0,967 & 0,242 & 0,030 & 0,002 \\
+\hline
+$\varepsilon_{per}$ & - & 100,0\% & 25,90\% & 3,20\% & 0,20\% \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+Assim, o erro relativo da aproximação $X^{(4)} = (0,157, 0,252, 0,929)$ obtida pelo método de Gauss-Seidel é de aproximadamente $0,20\%$.
+
+
+\Exercise[title={2,5}]
+Determine o erro absoluto ao resolver o sistema a seguir pela eliminação de Gauss:
+\begin{multicols}{2}
+\begin{enumerate}
+\item Sem pivoteamento
+\item Com pivoteamento parcial
+\end{enumerate}
+$\begin{cases}
+0,03x+1,00y=1,00\\
+0,06x+0,01y=0,00
+\end{cases}$
+\end{multicols}
+Considere que a solução exata é $(\overline{x},\overline{y}) = (\frac{-100}{597}, \frac{200}{199})$, e arredonde o resultado de cada operação (adição, subtração, multiplicação ou divisão), com \textbf{2 dígitos} após a vírgula.
+\Answer
+\begin{enumerate}
+\item Estes são os passos da eliminação de Gauss sem pivoteamento:
+\[
+\begin{bmatrix}
+0,03 & 1,00 & 1,00\\
+0,06 & 0,01 & 0,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,01 &  1,00 &  1,00\\
+0,00 & -1,99 & -2,00
+\end{bmatrix}.
+\]
+Consequentemente, $y = \frac{-2,00}{-1,99} \approx 1,01$ e
+$x = \frac{1,00 - 1,00 \cdot 1,01}{0,03}
+= \frac{1,00 - 1,01}{0,03}
+\approx \frac{-0,01}{0,03}\approx -0,33$. Neste caso, o erro absoluto é:
+\begin{align*}
+\varepsilon_{abs}
+& = ||(x,y) - (\overline{x},\overline{y})||
+  = \max \left\{ \left|-0,33 - \frac{-100}{597}\right|, \left|1,01 - \frac{200}{199}\right| \right\}\\
+& = \max \left\{ \left|-0,33 + 0,17\right|, \left|1,01 - 1,01\right| \right\} 
+  = \max \left\{ \left|-0,16\right|, \left|0,00\right| \right\}
+  = 0,16.
+\end{align*}
+
+\item Estes são os passos da eliminação de Gauss com pivoteamento parcial:
+\[
+\begin{bmatrix}
+0,03 & 1,00 & 1,00\\
+0,06 & 0,01 & 0,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,06 & 0,01 & 0,00\\
+0,03 & 1,00 & 1,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,06 & 0,01 & 0,00\\
+0,00 & 1,00 & 1,00
+\end{bmatrix}
+\]
+Consequentemente, $y = \frac{1,00}{1,00} = 1,00$ e
+$x = \frac{0,00 - 0,01 \cdot 1,00}{0,06}
+\approx \frac{0,00 - 0,01}{0,06}
+\approx \frac{-0,01}{0,06}
+\approx -0,17$. Neste caso, o erro absoluto é:
+\begin{align*}
+\varepsilon_{abs}
+& = ||(x,y) - (\overline{x},\overline{y})||
+  = \max \left\{ \left|-0,17 - \frac{-100}{597}\right|, \left|1,00 - \frac{200}{199}\right| \right\}\\
+& = \max \left\{ \left|-0,17 + 0,17\right|, \left|1,00 - 1,01\right| \right\} 
+  = \max \left\{ \left|0,00\right|, \left|0,01\right| \right\}
+  = 0,01.
+\end{align*}
+\end{enumerate}
+
+
+\Exercise[title={2,5}]
+Utilize a forma de Newton do polinômio interpolador para estimar o volume de chuvas em certa cidade no mês de Outubro (10), considerando o quanto choveu nos 4 meses anteriores:
+\medskip
+\begin{center}
+\begin{tabular}{cc}
+\hline
+Mês & Volume de chuva (mm) \\ 
+\hline
+6 & 90 \\
+7 & 75 \\
+8 & 96 \\
+9 & 126 \\
+\hline
+\end{tabular}
+\end{center}
+\Answer
+A partir dos pontos dados, obtém-se:
+\[
+\begin{array}{ccccc}
+x_i
+& y_i=f[x_i]
+& f[x_i,x_{i+1}]
+& f[x_i,x_{i+1},x_{i+2}]
+& f[x_i,\ldots,x_{i+3}]\\
+6 & \mathbf{90} \\
+     & & \mathbf{-15} \\
+7 & 75 & & \mathbf{18} \\
+     & & 21 & & \mathbf{-4,5}. \\
+8 & 96 & & 4,5 \\
+     & & 30 \\
+9 & 126
+\end{array}
+\]
+
+Então:
+\[
+p(x) = 90 +(-15)(x-6) + 18(x-6)(x-7) +(-4,5)(x-6)(x-7)(x-8).
+\]
+Usando este polinômio para estimar o valor pedido, resulta que:
+\[
+p(x) = 90 +(-15)(4) + 18(4)(3) +(-4,5)(4)(3)(2)
+= 138.
+\]
+
+\Exercise[title={2,5}]
+Obtenha, pelo método de Lagrange, o polinômio $p(x)$ que interpola $f(x) = \dfrac{3^{x}}{x}$ em $x_0 = 1$, $x_1 = 3$ e $x_2 = 4$ e calcule o erro absoluto da aproximação $f(2,5) \approx p(2,5)$.
+\\(arredonde cada resultado com \textbf{4 dígitos} após a vírgula)
+\Answer
+Considerando que $f(1) = 3$, $f(3) = 9$ e $f(4) = \frac{81}{4} = 20,25$, o método de Lagrange permite que o polinômio que interpola $f$ nestes pontos seja descrito da seguinte forma:
+\begin{align*}
+p(x)
+& = 3 L_0(x) + 9 L_1(x) + 20,25 L_2(x) \\
+& = 3 \cdot \frac{(x-3)(x-4)}{(1-3)(1-4)}
+  + 9 \cdot \frac{(x-1)(x-4)}{(3-1)(3-4)}
+  + 20,25 \cdot \frac{(x-1)(x-3)}{(4-1)(4-3)}\\
+& = \frac{x^2 - 7 x + 12}{2}
+    - \frac{9x^2 - 45x + 36}{2}
+    + \frac{27x^2 - 108x + 81}{4}
+  = \frac{11}{4} x^2 - 8x + \frac{33}{4}.
+\end{align*}
+Logo,
+\[
+p(2,5) = \frac{11}{4} (2,5)^2 - 8 \cdot (2,5) + \frac{33}{4} \approx 5,4375.
+\]
+e o erro da aproximação $f(2,5) \approx p(2,5)$ é
+\[
+\varepsilon_{abs}
+= \left|5,4375 - \frac{18}{5} \sqrt{3}\right|
+\approx \left|5,4375 -6,2354\right|
+= 0,7979.
+\]
+
+
+
+\Exercise[title={2,5}]
+Considere os sistemas lineares definidos por
+$
+\begin{bmatrix}
+\mathbf{a} & 3 \\2 & \mathbf{a}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 \\-1
+\end{bmatrix}$,
+sendo $\mathbf{a} \in \R$. Escreva a relação de recorrência do método de Jacobi na forma matricial,
+$X^{(k)} = C \cdot X^{(k-1)} +D$
+e mostre que para todo $\mathbf{a}$ tal que $|\mathbf{a}| > \sqrt{6}$, o método sempre produzirá sequências convergentes.
+\Answer
+As equações utilizadas no método de Gauss-Seidel são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = - \frac{3}{a} x_2^{(k-1)},\\
+x_2^{(k)} = -\frac{1}{a} - \frac{2}{a}x_1^{(k-1)},
+\end{cases}
+\]
+ou seja,
+\[
+\begin{bmatrix}
+x_1^{(k)}\\
+x_2^{(k)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -\frac{3}{a}\\
+-\frac{2}{a} & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1^{(k-1)}\\
+x_2^{(k-1)}
+\end{bmatrix}
++
+\begin{bmatrix}
+0\\
+-\frac{1}{a}
+\end{bmatrix}
+\]
+As sequências produzidas pelo método de Gauss-Seidel serão convergentes se, e somente se, todos os autovalores da matriz $C = 
+\begin{bmatrix}
+0 & -\frac{3}{a}\\
+-\frac{2}{a} & 0
+\end{bmatrix}$ tiverem módulo menor do que um. Como o polinômio característico de $C$ é
+\[
+p_C(\lambda) = \det(\lambda I - C)
+=
+\begin{vmatrix}
+\lambda & \frac{3}{a}\\
+\frac{2}{a} & \lambda
+\end{vmatrix}
+= \lambda^2-\frac{6}{a^2},
+\]
+conclui-se que os autovalores de $C$ são $\lambda_1 = - \frac{\sqrt{6}}{a}$ e $\lambda_2 = \frac{\sqrt{6}}{a}$. Assim, tem-se a convergência se, e somente se, $\left|\frac{\sqrt{6}}{a}\right| < 1$, isto é, $|a| > \sqrt{6}$. Note que neste caso, os sistemas lineares dados são possíveis e determinados, pois $\det(A) = a^2-6 \neq 0$.
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

@@ -1,0 +1,441 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \ 
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{PRO112-04U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{16/10/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Sempre que calcular o valor de uma das funções consideradas em um ponto $x$, arredonde o resultado para o número de dígitos especificado, e só então use esse valor (arredondado) nas fórmulas dos métodos iterativos.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Reorganize as equações do sistema linear a seguir (se necessário), e apresente argumentos teóricos que sejam suficientes para garantir a convergência da sequência gerada pelo método de Jacobi a partir da aproximação inicial $X^{(0)} = (0,0,0,0)$.
+\[
+\begin{cases}
+10x_4+x_1 = 6\\
+10x_3+x_4 = 5\\
+10x_2-x_3 = 4\\
+10x_1-x_2 = 3.
+\end{cases}
+\]
+Depois, obtenha uma solução aproximada com erro relativo percentual estimado inferior a $1\%$.\\
+(arredonde cada resultado com \textbf{3 dígitos} após a vírgula)
+\Answer
+Para que o método de Jacobi produza uma sequência convergente, é suficiente (embora não seja necessário) que o sistema ao qual é aplicado tenha uma matriz de coeficientes estritamente diagonalmente dominante. Na ordem em que as equações foram apresentadas, a representação matricial do sistema é
+\[
+\begin{bmatrix}
+ 1 &  0 &  0 & 10 \\
+ 0 &  0 & 10 & 1 \\
+ 0 & 10 & -1 & 0 \\
+10 & -1 &  0 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+6 \\ 5 \\ 4 \\ 3
+\end{bmatrix}.
+\]
+Observa-se que a matriz de coeficientes não é estritamente diagonalmente dominante, mas isso pode ser resolvido permutando as equações, de modo a obter o seguinte:
+\[
+\begin{bmatrix}
+10 & -1 &  0 & 0 \\
+ 0 & 10 & -1 & 0 \\
+ 0 &  0 & 10 & 1 \\
+ 1 &  0 &  0 & 10
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+3 \\ 4 \\ 5 \\ 6
+\end{bmatrix}.
+\]
+Agora, tem-se uma matriz estritamente diagonalmente dominante, pois
+\begin{align*}
+|10| & > |-1| + |0| + |0|\\
+|10| & > |0| + |-1| + |0|\\
+|10| & > |0| + |0| + |1|\\
+|10| & > |1| + |0| + |0|.
+\end{align*}
+Então, por este critério, é garantido que o método iterativo produzirá uma sequência convergente, qualquer que seja a aproximação inicial escolhida. As equações utilizadas pelo Método de Jacobi são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = (3 + x_2^{(k-1)})/10\\
+x_2^{(k)} = (4 + x_3^{(k-1)})/10\\
+x_3^{(k)} = (5 - x_4^{(k-1)})/10\\
+x_4^{(k)} = (6 - x_1^{(k-1)})/10
+\end{cases}
+\]
+Consequentemente, os valores obtidos a cada iteração são os seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{crrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2 & 3 & 4\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 0,300 & 0,340 & 0,345 & 0,344\\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 0,400 & 0,450 & 0,444 & 0,444 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & 0,500 & 0,440 & 0,443 & 0,443 \\
+$\boldsymbol{x_4^{(k)}}$ & 0,000 & 0,600 & 0,570 & 0,566 & 0,566 \\
+\hline
+$\varepsilon_{abs}$ & - & 0,600 & 0,060 & 0,006 & 0,001 \\
+\hline
+$\varepsilon_{per}$ & - & 100,0\% & 10,50\% & 1,10\% & 0,20\% \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+
+Assim, o erro relativo da aproximação $X^{(4)} = (0,344, 0,444, 0,443, 0,566)$ obtida pelo método de Jacobi é de aproximadamente $0,20\%$.
+
+
+\Exercise[title={2,5}]
+Considerando que $X = A^{-1}$ é a solução de $A\cdot X = I_{3 \times 3}$, utilize a \textbf{fatoração LU} para calcular $A^{-1}$, sendo
+$A = \begin{bmatrix}
+ 2&  5&  5\\
+-1& -4& -8\\
+ 1&  3&  4
+\end{bmatrix}$.
+\Answer
+Através das operações $L_2 \to L_2 + \frac{1}{2} L_1$, $L_3 \to L_3 -\frac{1}{2} L_1$ e $L_3 \to L_3 +\frac{1}{3} L_2$, obtém-se $A = LU$, sendo
+\[
+L =
+\begin{bmatrix}
+ 1   &  0   & 0\\
+-1/2 &  1   & 0\\
+ 1/2 & -1/3 & 1
+\end{bmatrix}
+\text{ e }
+U =
+\begin{bmatrix}
+2 &   5  &   5  \\
+0 & -3/2 & -11/2\\
+0 &   0  &  -1/3
+\end{bmatrix}
+\]
+Se $X = \begin{bmatrix}
+x_{11} & x_{12} & x_{13}\\
+x_{21} & x_{22} & x_{23}\\
+x_{31} & x_{32} & x_{33}
+\end{bmatrix}$,
+então a equação $A\cdot X = I_{3 \times 3}$ equivale a três sistemas lineares, um para cada coluna de $X$ e de $I_{3 \times 3}$:
+\begin{small}
+\[
+\begin{cases}
+2x_{11}+5x_{12}+5x_{13} = 1,\\
+-x_{11}-4x_{12}-8x_{13} = 0,\\
+ x_{11}+3x_{12}+4x_{13} = 0
+\end{cases}
+\quad
+\begin{cases}
+2x_{21}+5x_{22}+5x_{23} = 0,\\
+-x_{21}-4x_{22}-8x_{23} = 1,\\
+ x_{21}+3x_{22}+4x_{23} = 0
+\end{cases}
+\quad
+\begin{cases}
+2x_{31}+5x_{32}+5x_{33} = 0,\\
+-x_{31}-4x_{32}-8x_{33} = 0,\\
+ x_{31}+3x_{32}+4x_{33} = 1
+\end{cases}
+\]
+\end{small}
+Como $A$ é a matriz de coeficientes de todos os sistemas, pode-se usar a mesma fatoração em todos os casos. Para isso, resolve-se primeiramente um sistema $LY=B$ e com a solução $Y$ obtida resolve-se $UX = Y$. Os resultados em cada caso serão os seguintes:
+\begin{multicols}{3}
+\begin{footnotesize}
+\begin{enumerate}
+\item
+$
+Y = \begin{bmatrix}
+1 \\ 1/2 \\ -1/3
+\end{bmatrix}
+\text{ e }
+X = \begin{bmatrix}
+8 \\ -4 \\ 1
+\end{bmatrix}
+$
+\item
+$
+Y  =
+\begin{bmatrix}
+0 \\ 1 \\ 1/3
+\end{bmatrix}
+\text{ e }
+ X  =
+\begin{bmatrix}
+-5 \\ 3 \\ -1
+\end{bmatrix}$
+\item
+$
+Y  =
+\begin{bmatrix}
+0 \\ 0 \\ 1
+\end{bmatrix}
+\text{ e }
+ X  =
+\begin{bmatrix}
+-20 \\ 11 \\-3
+\end{bmatrix}$
+\end{enumerate}
+\end{footnotesize}
+\end{multicols}
+Portanto, $X = A^{-1} = 
+\begin{bmatrix}
+ 8 & -5 & -20\\
+-4 &  3 &  11\\
+ 1 & -1 &  -3
+\end{bmatrix}$.
+
+
+\Exercise[title={2,5}]
+A tabela a seguir mostra a evolução do salário mínimo nos últimos anos. Utilize a forma de Newton do polinômio interpolador para estimar o salário mínimo em 2019, arredondado com \textbf{2 dígitos} após a vírgula.
+\medskip
+\begin{center}
+\begin{tabular}{cc}
+\hline
+Ano & Salário mínimo (R\$) \\ 
+\hline
+2015 & 788,00 \\
+2016 & 880,00 \\
+2017 & 937,00 \\
+2018 & 954,00 \\
+\hline
+\end{tabular}
+\end{center}
+\Answer
+A partir dos pontos dados, obtém-se:
+\[
+\begin{array}{ccccc}
+x_i
+& y_i=f[x_i]
+& f[x_i,x_{i+1}]
+& f[x_i,x_{i+1},x_{i+2}]
+& f[x_i,\ldots,x_{i+3}]\\
+2015 & \mathbf{788,00} \\
+     & & \mathbf{92,00} \\
+2016 & 880,00 & & \mathbf{-17,50} \\
+     & & 57,00 & & \mathbf{-0,83}. \\
+2017 & 937,00 & & -20,00 \\
+     & & 17,00 \\
+2018 & 954,00
+\end{array}
+\]
+
+Então:
+\begin{align*}
+p(x)
+&= 788,00
+ +  92,00  (x-2015)
+ +(-17,50) (x-2015)(x-2016)\\
+&\quad -0,83 (x-2015)(x-2016)(x-2017).
+\end{align*}
+Usando este polinômio para estimar o valor pedido, resulta que:
+\begin{align*}
+p(2019)
+&= 788,00
+ +  92,00  \cdot (4)
+ +(-17,50) \cdot (4)\cdot (3)\\
+&\quad -0,83 \cdot (4)\cdot (3)\cdot (2)\\
+& = 926.
+\end{align*}
+
+\Exercise[title={2,5}]
+Obtenha, pelo método de Lagrange, o polinômio $p(x)$ que interpola $f(x) = x \cdot 2^{-x}$ em $x_0 = 0$, $x_1 = 1$ e $x_2 = 3$ e calcule o erro absoluto da aproximação $f(2) \approx p(2)$.
+\Answer
+Considerando que $f(0) = 0$, $f(1) = \frac{1}{2} = 0,5$ e $f(3) = \frac{3}{8} = 0,375$, o método de Lagrange permite que o polinômio que interpola $f$ nestes pontos seja dado na seguinte forma:
+\begin{align*}
+p(x)
+& = 0 L_0(x) + \frac{1}{2}L_1(x) + \frac{3}{8} L_2(x) \\
+& = 0 \cdot \frac{(x-1)(x-3)}{(0-1)(0-3)}
+  + \frac{1}{2} \cdot \frac{(x-0)(x-3)}{(1-0)(1-3)}
+  + \frac{3}{8} \cdot \frac{(x-0)(x-1)}{(3-0)(3-1)}\\
+& = \frac{-x^2 + 3x}{4}
+    + \frac{x^2 - x}{16}
+  = \frac{-3}{16} x^2 + \frac{11}{16} x
+  = -0,1875 x^2 + 0,6875 x.
+\end{align*}
+Logo,
+\[
+p(2) = \frac{-3}{16}\cdot 2^2 + \frac{11}{16} \cdot 2 = \frac{5}{8} \approx 0,625.
+\]
+e o erro da aproximação $f(2) \approx p(2)$ é $\varepsilon_{abs}
+= \left| \frac{1}{2} - \frac{5}{8}\right|
+= \left|-\frac{1}{8}\right|
+= \frac{1}{8}
+\approx \left|0,5 - 0,625\right|
+\approx 0,125$.
+
+
+\Exercise[title={2,5}]
+Considere os sistemas lineares definidos por
+$
+\begin{bmatrix}
+\mathbf{a} & 2\\3 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+5 \\6
+\end{bmatrix}$,
+sendo $\mathbf{a} \in \R$. Escreva a relação de recorrência do método de Gauss-Seidel na forma matricial,
+$X^{(k)} = C \cdot X^{(k-1)} +D$
+e mostre que para todo $a$ tal que $|\mathbf{a}| > 3/2$, o método sempre produzirá sequências convergentes.
+\Answer
+
+As equações utilizadas no método de Gauss-Seidel são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = \frac{5}{a} - \frac{2}{a} x_2^{(k-1)}\\
+x_2^{(k)} = \frac{6}{4} - \frac{3}{4}x_1^{(k)}
+\end{cases}
+\]
+Substituindo a primeira equação na segunda, resulta que
+\[
+x_2^{(k)}
+= \frac{6}{4} - \frac{3}{4}\left(\frac{5}{a} - \frac{2}{a} x_2^{(k-1)}\right)
+= \frac{6a-15}{4a} + \frac{6}{4a} x_2^{(k-1)},
+\]
+ou seja,
+\[
+\begin{bmatrix}
+x_1^{(k)}\\
+x_2^{(k)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -\frac{2}{a}\\
+0 & \frac{3}{2a}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1^{(k-1)}\\
+x_2^{(k-1)}
+\end{bmatrix}
++
+\begin{bmatrix}
+\frac{5}{a}\\
+\frac{6a-15}{4a}
+\end{bmatrix}
+\]
+As sequências produzidas pelo método de Gauss-Seidel serão convergentes se, e somente se, todos os autovalores da matriz $C = 
+\begin{bmatrix}
+0 & -\frac{2}{a}\\
+0 & \frac{3}{2a}
+\end{bmatrix}$ tiverem módulo menor do que um. Como o polinômio característico de $C$ é
+\[
+p_C(\lambda) = \det(\lambda I - C)
+=
+\begin{vmatrix}
+\lambda & -\frac{2}{a}\\
+0 & \lambda-\frac{3}{2a}
+\end{vmatrix}
+= \lambda\left(\lambda-\frac{3}{2a}\right),
+\]
+conclui-se que os autovalores de $C$ são $\lambda_1 = 0$ e $\lambda_2 = \frac{3}{2a}$. Assim, tem-se a convergência se, e somente se, $\left|\frac{3}{2a}\right| < 1$, isto é, $|a| > \frac{3}{2}$. Note que neste caso, os sistemas lineares dados são possíveis e determinados, pois $\det(A) = 4a-6 \neq 0$.
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}

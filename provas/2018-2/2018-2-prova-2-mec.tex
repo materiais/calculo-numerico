@@ -1,0 +1,414 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma}
+
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+% TODO: Consider using exsheets
+% http://linorg.usp.br/CTAN/macros/latex/contrib/exsheets/exsheets_en.pdf
+%
+% http://ctan.org/tex-archive/macros/latex/contrib/exercise/
+% Options: answerdelayed,lastexercise,noanswer
+\usepackage[answerdelayed,lastexercise]{exercise}
+
+\addto\captionsbrazil{%
+\def\listexercisename{Lista de exerc\'icios}%
+\def\ExerciseName{Exerc\'icio}%
+\def\AnswerName{Solu\c{c}\~ao do exerc\'icio}%
+\def\ExerciseListName{Ex.}%
+\def\AnswerListName{Solu\c{c}\~ao}%
+\def\ExePartName{Parte}%
+\def\ArticleOf{de\ }%
+}
+
+\renewcommand{\ExerciseHeaderTitle}{(\ExerciseTitle)\ }
+\renewcommand{\ExerciseListHeader}{%\ExerciseHeaderDifficulty%
+\textbf{%\ExerciseListName\
+\ExerciseHeaderNB.\ %
+%\ --- \
+\ExerciseHeaderTitle}%
+%\ExerciseHeaderOrigin
+\ignorespaces}
+\renewcommand{\AnswerListHeader}{\textbf{\ExerciseHeaderNB.\ (\AnswerListName)\ }}
+
+\newcommand*\R{\mathbb{R}}
+
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand\labelenumi{(\theenumi) }
+
+\newcommand*\tipo{Prova II}
+\newcommand*\turma{MEC151-03U}
+\newcommand*\disciplina{CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{17/10/2018}
+
+\author{\eu}
+\title{\tipo - \disciplina}
+\date{\data}
+
+\begin{document}
+\thispagestyle{empty}
+\newgeometry{margin=2cm,bottom=0.5cm}
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo\ (\disciplina / \turma)} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}}
+\end{center}
+
+\noindent Nome do(a) aluno(a): \underline{\hspace{9,7cm}} Data: \underline{\data}
+
+%\section*{Instruções}
+\begin{center}\fbox{
+\begin{minipage}{14cm}
+\begin{footnotesize}
+\begin{itemize}
+\renewcommand{\theenumi}{\Roman{enumi}}
+\item Identifique-se em todas as folhas.
+\item Mantenha o celular e os demais equipamentos eletrônicos desligados durante a prova.
+\item Justifique cada resposta com cálculos ou argumentos baseados na teoria estudada.
+\item Resolva apenas os itens de que precisar para somar 10,0 pontos.
+\end{itemize}
+\end{footnotesize}
+\end{minipage}
+}
+\end{center}
+
+%\section*{Questões}
+\begin{ExerciseList}
+\Exercise[title={2,5}]
+Reorganize as equações do sistema linear a seguir (se necessário), e apresente argumentos teóricos que sejam suficientes para garantir a convergência da sequência gerada pelo método de Jacobi a partir da aproximação inicial $X^{(0)} = (0, 0, 0, 0)$.
+\[
+\begin{cases}
+5x_4-x_3 = 8\\
+5x_3-x_2 = 4\\
+5x_1+x_2 = 1\\
+5x_2-x_1 = 0.
+\end{cases}
+\]
+Depois, obtenha uma solução aproximada com erro relativo percentual estimado inferior a $1\%$.\\
+(arredonde cada resultado com \textbf{3 dígitos} após a vírgula)
+\Answer
+Para que o método de Jacobi produza uma sequência convergente, é suficiente (embora não seja necessário) que o sistema ao qual é aplicado tenha uma matriz de coeficientes estritamente diagonalmente dominante. Na ordem em que as equações foram apresentadas, a representação matricial do sistema é
+\[
+\begin{bmatrix}
+0 & 0 & -1 & 5 \\
+0 & -1 & 5 & 0 \\
+5 & 1 & 0 & 0 \\
+-1 & 5 & 0 & 0
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+8 \\ 4 \\ 1 \\ 0
+\end{bmatrix}.
+\]
+Observa-se que a matriz de coeficientes não é estritamente diagonalmente dominante, mas isso pode ser resolvido permutando as equações, de modo a obter o seguinte:
+\[
+\begin{bmatrix}
+5 & 1 & 0 & 0 \\
+-1 & 5 & 0 & 0 \\
+0 & -1 & 5 & 0 \\
+0 & 0 & -1 & 5
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2 \\ x_3 \\ x_4
+\end{bmatrix}
+=
+\begin{bmatrix}
+1 \\ 0 \\ 4 \\ 8
+\end{bmatrix}.
+\]
+Agora, tem-se uma matriz estritamente diagonalmente dominante, pois
+\begin{align*}
+|5| & > |1| + |0| + |0|\\
+|5| & > |-1| + |0| + |0|\\
+|5| & > |0| + |-1| + |0|\\
+|5| & > |0| + |0| + |-1|.
+\end{align*}
+Então, por este critério, é garantido que o método iterativo produzirá uma sequência convergente, qualquer que seja a aproximação inicial escolhida. As equações utilizadas pelo Método de Jacobi são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = (1 - x_2^{(k-1)})/5\\
+x_2^{(k)} = (x_1^{(k-1)})/5\\
+x_3^{(k)} = (4 + x_2^{(k-1)})/5\\
+x_4^{(k)} = (8 + x_3^{(k-1)})/5
+\end{cases}
+\]
+Consequentemente, os valores obtidos a cada iteração são os seguintes:
+\medskip
+\begin{center}
+\begin{tabular}{crrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2 & 3\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 0,200 & 0,200 & 0,192 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 0,000 & 0,040 & 0,040 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & 0,800 & 0,800 & 0,808 \\
+$\boldsymbol{x_4^{(k)}}$ & 0,000 & 1,600 & 1,760 & 1,760 \\
+\hline
+$\varepsilon_{abs}$ & - & 1,600 & 0,160 & 0,008 \\
+\hline
+$\varepsilon_{per}$ & - & 100,0\% & 9,09\% & 0,45\% \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+
+Assim, o erro relativo da aproximação $X^{(3)} = (0,192, 0,040, 0,808, 1,760)$ obtida pelo método de Jacobi é de aproximadamente $0,45\%$.
+
+
+\Exercise[title={2,5}]
+Determine o erro absoluto ao resolver o sistema a seguir pela eliminação de Gauss:
+\begin{multicols}{2}
+\begin{enumerate}
+\item Sem pivoteamento
+\item Com pivoteamento parcial
+\end{enumerate}
+$\begin{cases}
+0,01x+1,00y=1,00\\
+0,05x+0,02y=1,00
+\end{cases}$
+\end{multicols}
+Considere que a solução exata é $(\overline{x},\overline{y}) = (\frac{4900}{249}, \frac{200}{249})$, e arredonde o resultado de cada operação (adição, subtração, multiplicação ou divisão), com \textbf{2 dígitos} após a vírgula.
+\Answer
+\begin{enumerate}
+\item Estes são os passos da eliminação de Gauss sem pivoteamento:
+\[
+\begin{bmatrix}
+0,01 & 1,00 & 1,00\\
+0,05 & 0,02 & 1,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,01 &  1,00 & 1,00\\
+0,00 & -4,98 & -4,00
+\end{bmatrix}.
+\]
+Consequentemente, $y = \frac{-4,00}{-4,98} \approx 0,80$ e
+$x = \frac{1,00 - 1,00 \cdot 0,80}{0,01}
+= \frac{1,00 - 0,80}{0,01}
+\approx \frac{0,20}{0,01}\approx 20,00$. Neste caso, o erro absoluto é:
+\begin{align*}
+\varepsilon_{abs}
+& = ||(x,y) - (\overline{x},\overline{y})||
+  = \max \left\{ \left|20,00 - \frac{4900}{249}\right|, \left|0,80 - \frac{200}{249}\right| \right\}\\
+& = \max \left\{ \left|20,00 - 19,68\right|, \left|0,80 - 0,80\right| \right\}
+  = \max \left\{ \left|0,32\right|, \left|0,00\right| \right\}
+  = 0,32.
+\end{align*}
+
+\item Estes são os passos da eliminação de Gauss com pivoteamento parcial:
+\[
+\begin{bmatrix}
+0,01 & 1,00 & 1,00\\
+0,05 & 0,02 & 1,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,05 & 0,02 & 1,00\\
+0,01 & 1,00 & 1,00
+\end{bmatrix}
+\rightarrow
+\begin{bmatrix}
+0,05 & 0,02 & 1,00\\
+0,00 & 1,00 & 0,80
+\end{bmatrix}
+\]
+Consequentemente, $y = \frac{0,80}{1,00} = 0,80$ e
+$x = \frac{1,00 - 0,02 \cdot 0,80}{0,05}
+\approx \frac{1,00 - 0,02}{0,05}
+\approx \frac{0,98}{0,05}
+\approx 19,60$. Neste caso, o erro absoluto é:
+\begin{align*}
+\varepsilon_{abs}
+& = ||(x,y) - (\overline{x},\overline{y})||
+  = \max \left\{ \left|19,60 - \frac{4900}{249}\right|, \left|0,80 - \frac{200}{249}\right| \right\}\\
+& = \max \left\{ \left|19,60 - 19,68\right|, \left|0,80 - 0,80\right| \right\}
+  = \max \left\{ \left|-0,08\right|, \left|0,00\right| \right\}
+  = 0,08.
+\end{align*}
+\end{enumerate}
+
+
+\Exercise[title={2,5}]
+Utilize a forma de Newton do polinômio interpolador para estimar o salário mínimo de 2016, arredondado com \textbf{2 dígitos} após a vírgula, considerando os dados a seguir:
+\medskip
+\begin{center}
+\begin{tabular}{cc}
+\hline
+Ano & Salário mínimo (R\$) \\
+\hline
+2014 & 724,00 \\
+2015 & 788,00 \\
+%2016 & 880 \\
+2017 & 937,00 \\
+2018 & 954,00 \\
+\hline
+\end{tabular}
+\end{center}
+\Answer
+A partir dos pontos dados, obtém-se:
+\[
+\begin{array}{ccccc}
+x_i
+& y_i=f[x_i]
+& f[x_i,x_{i+1}]
+& f[x_i,x_{i+1},x_{i+2}]
+& f[x_i,\ldots,x_{i+3}]\\
+2014 & \mathbf{724,00} \\
+     & & \mathbf{64,00} \\
+2015 & 788,00 & & \mathbf{3,50} \\
+     & & 74,50 & & \mathbf{-5,67}. \\
+2017 & 937,00 & & -19,17 \\
+     & & 17,00 \\
+2018 & 954,00
+\end{array}
+\]
+
+Então:
+\begin{align*}
+p(x)
+&=724,00
+ + 64,00 (x-2014)
+ +  3,50 (x-2014)(x-2015)\\
+&\quad +(-5,67) (x-2014)(x-2015)(x-2017).
+\end{align*}
+Usando este polinômio para estimar o valor pedido, resulta que:
+\begin{align*}
+p(2016)
+&=724,00
+ + 64,00\cdot (2)
+ +  3,50\cdot (2)\cdot (1)\\
+&\quad +(-5,67)\cdot (2)\cdot (1)\cdot (-1)\\
+& = 870,33.
+\end{align*}
+
+\Exercise[title={2,5}]
+Obtenha, pelo método de Lagrange, o polinômio $p(x)$ que interpola $f(x) = x^2 \cdot 2^{-x}$ em $x_0 = 1$, $x_1 = 2$ e $x_2 = 4$ e calcule o erro absoluto da aproximação $f(3) \approx p(3)$.
+\\(arredonde cada resultado com \textbf{4 dígitos} após a vírgula)
+\Answer
+Considerando que $f(1) = \frac{1}{2}$, $f(2) = 1$ e $f(4) = 1$, o método de Lagrange permite que o polinômio que interpola $f$ nestes pontos seja descrito da seguinte forma:
+\begin{align*}
+p(x)
+& = \frac{1}{2} L_0(x) + 1 L_1(x) + 1 L_2(x) \\
+& = \frac{1}{2} \cdot \frac{(x-2)(x-4)}{(1-2)(1-4)}
+  + 1 \cdot \frac{(x-1)(x-4)}{(2-1)(2-4)}
+  + 1 \cdot \frac{(x-1)(x-2)}{(4-1)(4-2)}\\
+& = \frac{x^2 - 6 x + 8}{6}
+    + \frac{-x^2 + 5 x - 4}{2}
+    + \frac{x^2 - 3 x + 2}{6}
+  = -\frac{x^2}{6} + x - \frac{1}{3}.
+\end{align*}
+Logo,
+\[
+p(3) = -\frac{3^2}{6} + 3 - \frac{1}{3} = \frac{7}{6} \approx 1,1667.
+\]
+e o erro da aproximação $f(3) \approx p(3)$ é $\varepsilon_{abs}
+= \left|\frac{7}{6} - \frac{9}{8}\right|
+= \frac{1}{24}
+\approx \left|1,1667 - 1,125\right|
+\approx 0,0417$.
+
+
+\Exercise[title={2,5}]
+Considere os sistemas lineares definidos por
+$
+\begin{bmatrix}
+1 & \mathbf{a}\\3 & 4
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1 \\ x_2
+\end{bmatrix}
+=
+\begin{bmatrix}
+5 \\6
+\end{bmatrix}$,
+sendo $\mathbf{a} \in \R$. Escreva a relação de recorrência do método de Gauss-Seidel na forma matricial,
+$X^{(k)} = C \cdot X^{(k-1)} +D$
+e mostre que para todo $\mathbf{a}$ tal que $|\mathbf{a}| < 4/3$, o método sempre produzirá sequências convergentes.
+\Answer
+As equações utilizadas no método de Gauss-Seidel são as seguintes:
+\[
+\begin{cases}
+x_1^{(k)} = 5 - a x_2^{(k-1)}\\
+x_2^{(k)} = \frac{6}{4} - \frac{3}{4}x_1^{(k)}
+\end{cases}
+\]
+Substituindo a primeira equação na segunda, resulta que \[
+x_2^{(k)}
+= \frac{6}{4} - \frac{3}{4}(5 - a x_2^{(k-1)})
+= \frac{-9}{4} + \frac{3a}{4} x_2^{(k-1)},
+\]
+ou seja,
+\[
+\begin{bmatrix}
+x_1^{(k)}\\
+x_2^{(k)}
+\end{bmatrix}
+=
+\begin{bmatrix}
+0 & -a\\
+0 & \frac{3a}{4}
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+x_1^{(k-1)}\\
+x_2^{(k-1)}
+\end{bmatrix}
++
+\begin{bmatrix}
+5\\
+\frac{-9}{4}
+\end{bmatrix}
+\]
+As sequências produzidas pelo método de Gauss-Seidel serão convergentes se, e somente se, todos os autovalores da matriz $C =
+\begin{bmatrix}
+0 & -a\\
+0 & \frac{3a}{4}
+\end{bmatrix}$ tiverem módulo menor do que um. Como o polinômio característico de $C$ é
+\[
+p_C(\lambda) = \det(\lambda I - C)
+=
+\begin{vmatrix}
+\lambda & a\\
+0 & \lambda-\frac{3a}{4}
+\end{vmatrix}
+= \lambda\left(\lambda-\frac{3a}{4}\right),
+\]
+conclui-se que os autovalores de $C$ são $\lambda_1 = 0$ e $\lambda_2 = \frac{3a}{4}$. Assim, tem-se a convergência se, e somente se, $\left|\frac{3a}{4}\right| < 1$, isto é, $|a| < \frac{4}{3}$. Note que neste caso, os sistemas lineares dados são possíveis e determinados, pois $\det(A) = 4-3a \neq 0$.
+\end{ExerciseList}
+
+\vfill
+\begin{center}
+BOA PROVA!
+\end{center}
+
+\newpage
+\restoregeometry
+\section*{Respostas}
+\shipoutAnswer
+\end{document}
