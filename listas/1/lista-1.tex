@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage{cmap} % Makes the PDF copyable. See http://tex.stackexchange.com/a/64198/25761
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
@@ -80,7 +80,6 @@ Este é um material de acesso livre distribuído sob os termos da licença \href
 \section*{Questões}
 
 \begin{enumerate}
-\setcounter{enumi}{9}
 \item \calc
 Obtenha a representação dos números a seguir nas bases indicadas, e complete a tabela:
 \begin{table}[h]
@@ -199,6 +198,15 @@ Seja $f(x) = \tg(x) - \sqrt{1 - x^2}$.
 \item Mostre que $h$ possui pelo menos uma raiz $\overline{x}$ no intervalo $I = [0, 1]$.
 \item Obtenha $x_{k} \approx \overline{x}$ pelo método da posição falsa, com um erro (estimado) de até $0.1\%$.
 \item Se forem usados os pontos $x_{-1} = 0$ e $x_0 = 1$ como aproximações iniciais no método da secante, por coincidência, as primeiras aproximações serão idênticas àquelas encontradas pela posição falsa. Qual é a primeira aproximação que difere das que foram obtidas pela posição falsa?
+\end{enumerate}
+\item \teoria Uma função $\varphi: [a, b] \to [a, b]$ é uma \textit{contração} se existe $\beta \in (0, 1)$ tal que
+\[
+  |\varphi(x) - \varphi(y)| \leq \beta |x-y|,
+\]
+para quaisquer $x,y \in [a, b]$. Mostre que se $\varphi: [a, b] \to [a, b]$ é uma contração então:
+\begin{enumerate}
+  \item $\varphi$ é uma função contínua.
+  \item $\varphi$ é não é sobrejetora.
 \end{enumerate}
 \end{enumerate}
 
@@ -338,9 +346,9 @@ Como se pode observar, $|x_3| < 0,1$ embora $|x_4| > 0,1$. Assim, o fato de um c
 \item Considerando que $2$ é a única raiz de $f(x)$ em $[1, 4]$, pode-se utilizar $\overline{x} = 2$ ao calcular o erro relativo percentual a cada iteração do método da bisseção. Estes são os valores obtidos:
 
 \begin{tabular}{cccccccc}
-\hline 
-$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\ 
-\hline 
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\
+\hline
 0 & 1,0000 & 2,5000 & 4,0000 & 21,0000 & -12,3750 & -48,0000 & 25,0000\% \\
 1 & 1,0000 & 1,7500 & 2,5000 & 21,0000 &   5,8594 & -12,3750 & 12,5000\%\\
 2 & 1,7500 & 2,1250 & 2,5000 &  5,8594 &  -3,0293 & -12,3750 &  6,2500\%\\
@@ -375,14 +383,14 @@ o resultado obtido será maior do que o esperado, pois esta fórmula é deduzida
 \item Considerando que $\overline{x} = 8$ é a única raiz de $f(x)$ em $[6, 9]$, pode-se utilizar este valor ao calcular o erro relativo percentual a cada iteração do método da bisseção, e obter:
 
 \begin{tabular}{cccccccc}
-\hline 
-$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\ 
-\hline 
+\hline
+$k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $\varepsilon_{rel}(x_k)$ \\
+\hline
 0 & 6,0000 & 7,5000 & 9,0000 & -64,0000 & -26,1250 & 77,0000 & -6,2500\%\\
 1 & 7,5000 & 8,2500 & 9,0000 & -26,1250 &  16,0156 & 77,0000 &  3,1250\%\\
 2 & 7,5000 & 7,8750 & 8,2500 & -26,1250 &  -7,2520 & 16,0156 & -1,5625\%\\
 3 & 7,8750 & 8,0625 & 8,2500 &  -7,2520 &   3,8127 & 16,0156 &  0,7813\%\\
-\hline 
+\hline
 \end{tabular}
 
 Assim, neste caso $k = 3$.
@@ -408,6 +416,26 @@ x + 1 - \sqrt{x^2 - 1} = x
 \item \begin{enumerate}
 \item Basta aplicar o teorema de Bolzano, pois $h$ é contínua.
 \item A raiz exata é $\overline{x} = \ln(\pi/2) \approx 0.451582705\ldots$.
+\end{enumerate}
+\item \begin{enumerate}
+  \item Dado $c \in [a,b]$, deve-se mostrar que $\varphi$ é contínua em $c$, isto é, que dado $\varepsilon > 0$ arbitrário, existe algum $\delta > 0$ tal que
+  \[
+    \forall x \in [a,b], \quad |x-c| < \delta \Rightarrow |\varphi(x)-\varphi(c)| < \varepsilon.
+  \]
+  Para isso, basta considerar $\delta = \varepsilon / \beta$ pois se $|x - c| < \delta$, então
+  \[
+    |\varphi(x)-\varphi(c)|
+    \leq \beta \cdot |x-c|
+    < \beta \cdot (\varepsilon / \beta)
+    = \varepsilon.
+  \]
+  \item Se $\varphi$ fosse sobrejetora, todo elemento $y$ do contradomínio $[a, b]$ seria imagem de algum elemento $x$ do domínio $[a,b]$. Em particular, isso valeria para as extremidades do intervalo, de modo que $a = \varphi(x_a)$ e $b = \varphi(x_b)$, para algum $x_a, x_b \in [a,b]$. Neste caso, teríamos uma contradição:
+  \[
+    |b-a| = | \varphi(x_b) - \varphi(x_a)|
+    \leq \beta |b - a|
+    < |b - a|.
+  \]
+  Logo, a contração $\varphi$ não pode ser sobrejetora.
 \end{enumerate}
 \end{enumerate}
 \end{document}
