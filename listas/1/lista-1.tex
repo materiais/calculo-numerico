@@ -213,7 +213,6 @@ para quaisquer $x,y \in [a, b]$. Mostre que se $\varphi: [a, b] \to [a, b]$ é u
 \newpage
 \section*{Respostas}
 \begin{enumerate}
-\setcounter{enumi}{9}
 \item Estas são as representações obtidas nas bases indicadas:
 \begin{table}[h]
 \centering
@@ -372,7 +371,7 @@ Assim, neste caso $k = 5$.
 \]
 e então executar as iterações até que o erro absoluto seja menor do que $0,02$ (o que, de qualquer modo, ocorrerá na quinta iteração). No entanto, se em vez de realizar as iterações for usado que
 \[
-k > \log_2 \left(\frac{4-1}{0,02}\right)-1 \approx 6,2
+k > \frac{\log(4-1)-\log(0,02)}{\log(2)} = \log_2 \left(\frac{4-1}{0,02}\right)-1 \approx 6,2
 \Rightarrow
 k \geq 7
 \Rightarrow

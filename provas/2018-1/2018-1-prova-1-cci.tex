@@ -283,15 +283,35 @@ $b_k$ & 1 & -1,2067 & 0,4561 & -0,5504 & 1,6642 & \textbf{-0,0082} \\
 \hline
 &  & -1,2067 & 2,9122 & -4,0645 & 5,5688 & \\
 \hline
-$c_k$ & 1 & -2,4134 & 3,3683 & -4,6149 & \textbf{7,233} & \\
+$c_k$ & 1 & -2,4134 & 3,3683 & -4,6149 & \textbf{7,2330} & \\
 \hline
 \end{tabular}
 \end{center}
 Logo, $p(x_3) = -0,1899$ e $p^\prime(x_3) = 7,9264$. Assim,
-$x_4 = -1,2307 + 0,1899/7,9264 \approx -1,2067$.
+$x_4 = -1,2067 + 0,0082/7,2330 \approx -1,2056$.
 
-Como $\varepsilon_{abs} \approx |x_4 - x_3| = 0 < 10^{-3}$, $x_4 = -1,2067$ é a aproximação procurada.
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|c|}
+\hline
+$x_0$ & $a_5$ & $a_4$ & $a_3$ & $a_2$ & $a_1$ & $a_0$ \\
+\hline
+-1,2056 & 1 & 0 & -1 & 0 & 1 & 2\\
+\hline
+&  & -1,2056 & 1,4535 & -0,5467 & 0,6591 & -2,0002 \\
+\hline
+$b_k$ & 1 & -1,2056 & 0,4535 & -0,5467 & 1,6591 & \textbf{-0,0002} \\
+\hline
+&  & -1,2056 & 2,9069 & -4,0513 & 5,5433 &   \\
+\hline
+$c_k$ & 1 & -2,4112 & 3,3604 & -4,5980 & \textbf{7,2024} &   \\
+\hline
+\end{tabular}
+\end{center}
+Logo, $p(x_4) = -0,0002$ e $p^\prime(x_4) = 7,2024$. Assim,
+$x_5 = -1,2056 - 0,0002/7,2024 \approx -1,2056$.
 
+Como $\varepsilon_{abs} \approx |x_5 - x_4| = 0 < 10^{-3}$, $x_5 = -1,2056$ é a aproximação procurada.
+\color{black}
 \Exercise[title={2,5}] Identifique um intervalo no qual a função $f(x) = \cos(\ln(x))$ tenha um zero $\overline{x} > 1/2$. Aplique o método da posição falsa para obter $x_k \approx \overline{x}$, de modo que $|f(x_k)| < 0,0001$.
 
 (arredonde cada valor de $f(x)$ utilizado com 5 dígitos após a vírgula)
@@ -309,12 +329,12 @@ Assim, pelo teorema de Bolzano, deve existir uma raiz de $f$ no intervalo $I = (
 
 Estas são as primeiras iterações do método da posição falsa partindo do intervalo inicial $a_0 = 4$ e $b_0 = 5$, com arredondamento no quinto dígito decimal a cada iteração:
 \begin{center}
-\begin{tabular}{|r|r|r|r|r|r|r|c|}
+\begin{tabular}{rrrrrrrc}
 \hline
 $k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $f(a_k)\cdot f(x_k)$ \\
 \hline
-0 & 4 & 4,82606 & 5 & 0,18346 & -0,00323 & -0,03863 & $<0$ \\\hline
-1 & 4 & 4,81177 & 4,82606 & 0,18346 & -0,00027 & -0,00323 & $<0$ \\\hline
+0 & 4 & 4,82606 & 5 & 0,18346 & -0,00323 & -0,03863 & $<0$ \\
+1 & 4 & 4,81177 & 4,82606 & 0,18346 & -0,00027 & -0,00323 & $<0$ \\
 2 & 4 & 4,81058 & 4,81177 & 0,18346 & -0,00002 & -0,00027 & $<0$ \\\hline
 \end{tabular}
 \end{center}
@@ -327,20 +347,20 @@ Nesta etapa, obtém-se a aproximação $x_2 = 4,81058$, com $|f(x_2)| \approx 0,
 (arredonde cada valor com 5 dígitos após a vírgula)
 \Answer Estas são as primeiras iterações do método da bisseção partindo do intervalo inicial $a_0 = 0$ e $b_0 = 3$, com arredondamento no quinto dígito decimal a cada iteração:
 \begin{center}
-\begin{tabular}{|r|r|r|r|r|r|r|c|r|}
+\begin{tabular}{rrrrrrrcr}
 \hline
 $k$ & $a_k$ & $x_k$ & $b_k$ & $f(a_k)$ & $f(x_k)$ & $f(b_k)$ & $f(a_k)\cdot f(x_k)$ & $\varepsilon_{per}$ \\
 \hline
-0 & 0 & 1,5 & 3 & 1 & 0,07074 & -0,98999 & - & -\\\hline
-1 & 1,5 & 2,25 & 3 & 0,07074 & -0,62817 & -0,98999 & $<0$ & 33,33333\%\\\hline
-2 & 1,5 & 1,875 & 2,25 & 0,07074 & -0,29953 & -0,62817 & $<0$ & 20,00000\%\\\hline
-3 & 1,5 & 1,6875 & 1,875 & 0,07074 & -0,11644 & -0,29953 & $<0$ & 11,11111\%\\\hline
-4 & 1,5 & 1,59375 & 1,6875 & 0,07074 & -0,02295 & -0,11644 & $<0$ & 5,88235\%\\\hline
-5 & 1,5 & 1,54688 & 1,59375 & 0,07074 & 0,02391 & -0,02295 & $>0$ & 3,02997\%\\\hline
-6 & 1,54688 & 1,57032 & 1,59375 & 0,02391 & 0,00048 & -0,02295 & $>0$ & 1,49269\%\\\hline
-7 & 1,57032 & 1,58204 & 1,59375 & 0,00048 & -0,01124 & -0,02295 & $<0$ & 0,74082\%\\\hline
-8 & 1,57032 & 1,57618 & 1,58204 & 0,00048 & -0,00538 & -0,01124 & $<0$ & 0,37178\%\\\hline
-9 & 1,57032 & 1,57325 & 1,57618 & 0,00048 & -0,00245 & -0,00538 & $<0$ & 0,18624\%\\\hline
+0 & 0 & 1,5 & 3 & 1 & 0,07074 & -0,98999 & - & -\\
+1 & 1,5 & 2,25 & 3 & 0,07074 & -0,62817 & -0,98999 & $<0$ & 33,33333\%\\
+2 & 1,5 & 1,875 & 2,25 & 0,07074 & -0,29953 & -0,62817 & $<0$ & 20,00000\%\\
+3 & 1,5 & 1,6875 & 1,875 & 0,07074 & -0,11644 & -0,29953 & $<0$ & 11,11111\%\\
+4 & 1,5 & 1,59375 & 1,6875 & 0,07074 & -0,02295 & -0,11644 & $<0$ & 5,88235\%\\
+5 & 1,5 & 1,54688 & 1,59375 & 0,07074 & 0,02391 & -0,02295 & $>0$ & 3,02997\%\\
+6 & 1,54688 & 1,57032 & 1,59375 & 0,02391 & 0,00048 & -0,02295 & $>0$ & 1,49269\%\\
+7 & 1,57032 & 1,58204 & 1,59375 & 0,00048 & -0,01124 & -0,02295 & $<0$ & 0,74082\%\\
+8 & 1,57032 & 1,57618 & 1,58204 & 0,00048 & -0,00538 & -0,01124 & $<0$ & 0,37178\%\\
+9 & 1,57032 & 1,57325 & 1,57618 & 0,00048 & -0,00245 & -0,00538 & $<0$ & 0,18624\%\\
 10 & 1,57032 & 1,57179 & 1,57325 & 0,00048 & -0,00099 & -0,00245 & $<0$ & 0,09289\%\\\hline
 \end{tabular}
 \end{center}
