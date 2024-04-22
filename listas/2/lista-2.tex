@@ -1,5 +1,5 @@
 \documentclass[12pt,a4paper]{article}
-\usepackage{cmap} % Makes the PDF copiable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage{cmap} % Makes the PDF copyable. See http://tex.stackexchange.com/a/64198/25761
 \usepackage[T1]{fontenc}
 \usepackage[brazil]{babel}
 \usepackage[utf8]{inputenc}
@@ -79,24 +79,24 @@ Este é um material de acesso livre distribuído sob os termos da licença \href
 
 \begin{enumerate}
 \item %\calc
-Sejam $A = 
+Sejam $A =
 \begin{bmatrix}
 -1 &  3 &  8 \\
  2 & -4 & -7 \\
 -3 &  1 & -7
-\end{bmatrix}$, $b = 
+\end{bmatrix}$, $b =
 \begin{bmatrix}
  24 \\
 -30 \\
  10
-\end{bmatrix}$ e $b^\prime = 
+\end{bmatrix}$ e $b^\prime =
 \begin{bmatrix}
  18 \\
 -13 \\
 -23
 \end{bmatrix}$.
 \begin{enumerate}
-\item Decomponha $A = L \cdot U$, usando a eliminação de Gauss (sem pivotamento). 
+\item Decomponha $A = L \cdot U$, usando a eliminação de Gauss (sem pivotamento).
 \item Resolva $Ax = b$ usando a decomposição obtida anteriormente.
 \item Utilize a mesma decomposição para resolver $Ax = b^\prime$.
 \end{enumerate}
@@ -192,8 +192,8 @@ x_1 + 6x_2 + 8x_3 + 5x_4 = 11,
 \]
 \begin{enumerate}
 \item Utilize a eliminação de Gauss, sem pivotamento, para calcular a solução exata do sistema.
-\item Verifique se a matriz do sistema é estritamente diagonalmente dominante. Se não for, permute suas equações para que a matriz associada seja estritamente diagonalmente dominante.
-\item Obtenha uma solução aproximada do sistema anterior, efetuando 2 etapas do método de Jacobi ou de Gauss-Seidel, usando $x^{(0)} = (0, 0, 0, 0)$ como aproximação inicial.
+\item Verifique se a matriz do sistema é estritamente diagonal dominante. Se não for, permute suas equações para que a matriz associada seja estritamente diagonal dominante.
+\item Obtenha soluções aproximadas do sistema anterior, efetuando 2 etapas dos métodos de Jacobi e de Gauss-Seidel, usando $x^{(0)} = (0, 0, 0, 0)^\intercal$ como aproximação inicial. Calcule o erro absoluto (exato e estimado) e também o erro percentual (exato e estimado) a cada iteração.
 \end{enumerate}
 
 \item Considere o sistema linear cuja representação matricial é:
@@ -203,7 +203,7 @@ x_1 + 6x_2 + 8x_3 + 5x_4 = 11,
 -2 & k & 3 \\
  k & 3 & 10
 \end{bmatrix}
-\cdot 
+\cdot
 \begin{bmatrix}
 x_1 \\ x_2 \\ x_3
 \end{bmatrix}
@@ -214,7 +214,7 @@ x_1 \\ x_2 \\ x_3
 \]
 \begin{enumerate}
 \item Para quais valores de $k \in \mathbb{Z}$ a matriz do sistema é estritamente diagonal dominante?
-\item Escolha o menor $k \in \mathbb{Z}$, positivo, nas condições acima e efetue 3 iterações do método de Gauss-Seidel.
+\item Considerando o menor $k \in \mathbb{Z}$, positivo, nas condições anteriores, e efetue 3 iterações do método de Gauss-Seidel para resolver o sistema linear correspondente, partindo da aproximação inicial  $x^{(0)} = (0, 0, 0)^\intercal$. Estime os erros absoluto e relativo a cada iteração.
 \end{enumerate}
 \item Considere os sistemas lineares
 \[(1)
@@ -235,10 +235,10 @@ a-3b+c  =2,
 \]
 \begin{enumerate}
 \item Mostre que os sistemas são equivalentes (têm a mesma solução), identificando as operações elementares que podem ser realizadas com as equações do primeiro sistema para obter as do segundo sistema.
-\item Se for utilizado o método de Gauss-Seidel para obter a solução destes sistemas, partindo da aproximação inicial $X^{(0)}=(a^{(0)},b^{(0)},c^{(0)},d^{(0)}) = (1,0,0,-2)$, em qual dos casos serão necessárias menos iterações para obter uma solução com erro relativo percentual de no máximo $1\%$?
+\item Se for utilizado o método de Gauss-Seidel para obter a solução destes sistemas, partindo da aproximação inicial $X^{(0)}=(a^{(0)}, b^{(0)}, c^{(0)},d^{(0)})^\intercal = (1, 0, 0, -2)^\intercal$, em qual dos casos serão necessárias menos iterações para obter uma solução com erro relativo percentual de no máximo $1\%$?
 \end{enumerate}
 
-\item O método iterativo $x^{(k+1)} = C x^{(k)} + d$ é convergente se, e somente se, o maior autovalor em módulo da matriz de iteração $C$ (o seu ``raio espectral'') é menor do que 1. Lembre-se que os autovalores de $C$ são as raízes do polinômio $p( \lambda ) = \det( \lambda I - C)$.
+\item O método iterativo $x^{(k+1)} = C x^{(k)} + d$ é convergente se, e somente se, o maior autovalor em módulo da matriz de iteração $C$ (o seu ``raio espectral'') é menor do que 1. Lembre-se que os autovalores de $C$ são as raízes (reais ou complexas) do polinômio $p( \lambda ) = \det( \lambda I - C)$.
 \begin{enumerate}
 \item Calcule a matriz de iteração $C$ do método de Jacobi para o sistema linear
 \[
@@ -249,13 +249,9 @@ a-3b+c  =2,
 \]
 \item Determine o maior autovalor em módulo da matriz $C$ calculada anteriormente. O que pode ser dito a respeito da convergência do método de Jacobi para este sistema?
 \item Se forem permutadas as equações do sistema linear acima, qual será a nova matriz de iteração? Calcule o maior autovalor em módulo desta matriz, e repita a análise da convergência do método de Jacobi para o novo sistema.
-\item Caso o método de Jacobi convirja, quando aplicado a algum dos sistemas anteriores, utilize-o para obter uma solução aproximada $x^{(k)} = \begin{bmatrix}
-x_1^{(k)}\\ x_2^{(k)}
-\end{bmatrix}$, tomando $x^{(0)} = \begin{bmatrix}
-0\\ 0
-\end{bmatrix}$, e realizando tantas iterações quantas forem necessárias para que o erro absoluto $\varepsilon = || x^{(k)} - x^{(k-1)} ||$ fique menor do que $0,01$. Considere $|| x || = \max\{|x_1|, |x_2|\}$.
+\item Caso o método de Jacobi convirja, quando aplicado a algum dos sistemas anteriores, utilize-o para obter uma solução aproximada $x^{(k)} = \left(x_1^{(k)}, x_2^{(k)}\right)^\intercal$, considerando que $x^{(0)} = (0, 0)^\intercal$, e realizando tantas iterações quantas forem necessárias para que a estimativa $\varepsilon = || x^{(k)} - x^{(k-1)} ||$ do erro absoluto fique menor do que $0,02$. Considere $|| x || = \max\{|x_1|, |x_2|\}$.
 \end{enumerate}
-\item Compare o número de iterações necessárias para que os métodos de Jacobi e de Gauss-Seidel produzam uma solução aproximada do sistema linear a seguir, com um erro relativo percentual de até $5\%$:
+\item Compare o número de iterações necessárias para que os métodos de Jacobi e de Gauss-Seidel produzam uma solução aproximada do sistema linear a seguir, com uma estimativa do erro relativo percentual de até $5\%$:
 \systeme{
 6x_1 + 4x_2 = 1,
 3x_1 + 4x_2 = 0.
@@ -267,11 +263,11 @@ x_1^{(k)}\\ x_2^{(k)}
 %f(x) = x ln(x) - 3x
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
-\hline			
-   $x$ &  5    & 10     & 15 & 20 & 25 & 30 \\ 
-\hline			
+\hline
+   $x$ &  5    & 10     & 15 & 20 & 25 & 30 \\
+\hline
 $f(x)$ & -6.95 & -6.97  & -4.38 & -0.09 & 5.47 & 12.04\\
-\hline			
+\hline
 \end{tabular}
 \end{center}
 
@@ -291,11 +287,11 @@ Obtenha o polinômio que interpola os pontos dados, usando os métodos de Lagran
 \item É possível representar uma função que assume os valores a seguir por um polinômio de terceiro grau? Em caso afirmativo, determine esse polinômio usando a forma de Newton.
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|c|c|}
-\hline			
-   $x$ & -2  & -1 & 0 & 1 &  2 & 3 \\ 
-\hline			
+\hline
+   $x$ & -2  & -1 & 0 & 1 &  2 & 3 \\
+\hline
 $f(x)$ & -39 & -4 & 1 & 0 & 17 & 76\\
-\hline			
+\hline
 \end{tabular}
 \end{center}
 %f(x) = 4x³ - 3x² - 2x + 1
@@ -326,7 +322,7 @@ x^3 + 9y &= 1
 \item Reescreva o sistema na forma de um problema de ponto-fixo, isto é, como $(x,y) = \varphi(x,y)$, para alguma função $\varphi$.
 \item Mostre que $\varphi$ possui pelo menos um ponto fixo no quadrado $Q = [0,1] \times [0,1]$.
 \item Mostre que o método de iteração de ponto fixo gera uma sequência que converge para o ponto fixo de $\varphi$, qualquer que seja a aproximação inicial escolhida em $Q$.
-\item Obtenha a solução do sistema com um erro relativo percentual de no máximo $1\%$, utilizando a aproximação inicial $X^{(0)} = (1, 1)$. 
+\item Obtenha a solução do sistema com um erro relativo percentual de no máximo $1\%$, utilizando a aproximação inicial $X^{(0)} = (1, 1)$.
 \end{enumerate}
 \end{enumerate}
 
@@ -365,7 +361,7 @@ $ x = \begin{bmatrix}
  16 &   6 &  0\\
 -18 & -14 & 15
 \end{bmatrix}
-=L \cdot U = 
+=L \cdot U =
 \begin{bmatrix}
 1&0&0\\
 \frac{2}{3}&1&0\\
@@ -384,7 +380,7 @@ $X = \begin{bmatrix}
 2&2&-2
 \end{bmatrix}$.
 
-\item $A = L \cdot U = 
+\item $A = L \cdot U =
 \begin{bmatrix}
 1&0&0\\4&1&0\\1&-3&1
 \end{bmatrix}
@@ -441,28 +437,80 @@ x_1 \\ x_2 \\ x_3 \\ x_4
 \end{bmatrix} = \begin{bmatrix}
 1 \\ 2 \\ 3 \\ 0
 \end{bmatrix}$.
-\item A matriz do sistema é estritamente diagonalmente dominante.
-\item $\color{red}x^{(2)} = \fixme
-%\begin{bmatrix}
-%0 \\ 0 \\ 0 \\ 0
-%\end{bmatrix}
+\item A matriz do sistema é estritamente diagonal dominante.
+\item Pelo método de Jacobi, obtém-se $x^{(2)} = (0,790, 1,800, 3,100, 0,314)^\intercal:
 $
+\medskip
+\begin{center}
+\begin{tabular}{crrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 0,333 & 0,790 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 1,571 & 1,800 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & 3,000 & 3,100 \\
+$\boldsymbol{x_4^{(k)}}$ & 0,000 & 0,200 & 0,314 \\
+\hline
+$\varepsilon_{abs}$ (exato) & - & 0,667 & 0,314 \\
+\hline
+$\varepsilon_{per}$ (exato) & - & 22,2\% & 10,5\% \\
+\hline
+$\varepsilon_{abs}$ (aprox.) & - & 3,000 & 0,457 \\
+\hline
+$\varepsilon_{per}$ (aprox.) & - & 100,0\% & 14,7\% \\
+\hline
+\end{tabular}
+\end{center}
+\medskip
+
+Pelo método de Gauss-Seidel, obtém-se $x^{(2)} = (0,790, 2,057, 3,172, 0,137)^\intercal:
+$
+\medskip
+\begin{center}
+\begin{tabular}{crrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 0,333 & 0,790 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 1,714 & 2,057 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & 3,000 & 3,172 \\
+$\boldsymbol{x_4^{(k)}}$ & 0,000 & 0,343 & 0,137 \\
+\hline
+$\varepsilon_{abs}$ (exato) & - & 0,667 & 0,210 \\
+\hline
+$\varepsilon_{per}$ (exato) & - & 22,2\% & 7,0\% \\
+\hline
+$\varepsilon_{abs}$ (aprox.) & - & 3,000 & 0,457 \\
+\hline
+$\varepsilon_{per}$ (aprox.) & - & 100,0\% & 14,4\% \\
+\hline
+\end{tabular}
+\end{center}
+
 \end{enumerate}
 \item \begin{enumerate}
 \item $k = 6$ ou $k = -6$
-\item $k = 6$, $\color{red} x^{(3)} = \fixme
-%\begin{bmatrix}
-%0\\ 0\\ 0\\ 0
-%\end{bmatrix}
-$ (solução exata: $
-\begin{bmatrix}
-x_1\\ x_2\\ x_3
-\end{bmatrix}
-=
-\begin{bmatrix}
-1\\ 0 \\-1
-\end{bmatrix}$)
+\item Para $k = 6$, a solução exata é $X = (x_1, x_2, x_3)^\intercal = (1, 0, -1)^\intercal$. Pelo método de Gauss-Seidel, obtém-se $x^{(2)} = (1,333, 0,036, -1,211)^\intercal:
+$
+\medskip
+\begin{center}
+\begin{tabular}{crrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2\\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & 1,000 & 1,333 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & -0,500 & 0,036 \\
+$\boldsymbol{x_3^{(k)}}$ & 0,000 & -0,850 & -1,211 \\
+\hline
+$\varepsilon_{abs}$ (aprox.) & - & 1,000 & 0,536 \\
+\hline
+$\varepsilon_{rel}$ (aprox.) & - & 1,000 & 0,402 \\
+\hline
+\end{tabular}
+\end{center}
 \end{enumerate}
+
+
 \item \begin{enumerate}
 \item As únicas diferenças entre os dois sistemas estão na segunda e na terceira equações. Assim, basta observar que se, no primeiro sistema, a primeira equação for subtraída termo a termo da segunda equação, o resultado será a segunda equação do segundo sistema. Analogamente, se a penúltima equação for subtraída da última, o resultado será a terceira equação do segundo sistema. Estas operações elementares preservam a solução do sistema, então eles são equivalentes.
 \item No primeiro caso, é preciso executar até a quinta iteração para que o erro relativo percentual não ultrapasse $1\%$, ficando igual a $0,5\%$. Já no segundo sistema, chega-se ao mesmo erro relativo percentual ainda na terceira iteração.
@@ -479,15 +527,26 @@ x_1\\ x_2\\ x_3
 0 & -4/7 \\
 -5/8 & 0
 \end{bmatrix}$, $|\lambda| = \sqrt{5/14}\approx 0,\!597614$. Como $|\lambda| < 1$, há convergência.
-\item $\color{red} x^{(k)} = \begin{bmatrix}
-x_1^{(k)} \\ x_2^{(k)}
-\end{bmatrix} = \fixme$ (solução exata: $x_1 = -1$ e $x_2 = 1$)
+\item A solução exata é $(x_1, x_2)^\intercal = (-1, 1)^\intercal$, e pelo método de Jacobi, obtém-se $x^{(7)} = (-0,974, 0,972)^\intercal$:
+\medskip
+\begin{center}
+\begin{tabular}{crrrrrrrr}
+\hline
+$\boldsymbol{k}$     & 0 & 1 & 2 & 3 & 4 & 5 & 6 & 7 \\
+\hline
+$\boldsymbol{x_1^{(k)}}$ & 0,000 & -0,429 & -0,643 & -0,796 & -0,873 & -0,927 & -0,955 & -0,974 \\
+$\boldsymbol{x_2^{(k)}}$ & 0,000 & 0,375 & 0,643 & 0,777 & 0,873 & 0,921 & 0,954 & 0,972 \\
+\hline
+$\varepsilon_{abs}$ (aprox.) & - & 0,429 & 0,268 & 0,153 & 0,096 & 0,054 & 0,033 & 0,019 \\
+\hline
+\end{tabular}
+\end{center}
 \end{enumerate}
 
 \item Solução exata: $x_1 = 1/3$ e $x_2 = -1/4$.
 \begin{enumerate}
-\item Jacobi: \fixme
-\item Gauss-Seidel: \fixme
+\item Jacobi: $x^{(9)} = (0,323, -0,235)^\intercal$, com cerca de $3,1\%$ de erro
+\item Gauss-Seidel: $x^{(5)} = (0,323, -0,242)^\intercal$, com cerca de $3,1\%$ de erro
 \end{enumerate}
 \item Conforme o Wolfram Alpha, o polinômio interpolador é:
 \[
@@ -514,7 +573,7 @@ e $f(16) \approx p(16) \approx -3,\!639$.
 \item O valor máximo de $|f(x) - p(x)|$ no intervalo $[-2, 0]$ é de $\frac{2}{3 \sqrt{3}}$ e ocorre no ponto $x = -1 - \frac{1}{\sqrt{3}}$.
 \end{enumerate}
 \item $y=6$
-\item 
+\item
 \begin{enumerate}
 \item Basta observar que $q(x_i + a, y_i) = p((x_i + a)-a)) = p(x_i) = y_i$, para $i = 0, \ldots, n$.
 \item Basta observar que $q(\frac{x_i}{a}, y_i) = p(a \cdot \frac{x_i}{a}) = p(x_i) = y_i$, para $i = 0, \ldots, n$.
