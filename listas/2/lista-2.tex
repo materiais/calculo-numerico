@@ -324,6 +324,26 @@ x^3 + 9y &= 1
 \item Mostre que o método de iteração de ponto fixo gera uma sequência que converge para o ponto fixo de $\varphi$, qualquer que seja a aproximação inicial escolhida em $Q$.
 \item Obtenha a solução do sistema com um erro relativo percentual de no máximo $1\%$, utilizando a aproximação inicial $X^{(0)} = (1, 1)$.
 \end{enumerate}
+
+\item Um spline cúbico natural interpolador aos nós $x_0 = 3$, $x_1 = 5$ e $x_2 = 7$ é dado por
+\[
+   s(x) =
+   \begin{cases}
+      4 - 6x + \frac{x^3}{4}, & \text{ se } 0 \leq x \leq 2,\\
+      A + B(x - 2) + C(x - 2)^2 + D(x - 2)^3, & \text{ se } 2 \leq x \leq 7.
+   \end{cases}
+\]
+Utilize as propriedades de continuidade, suavidade e naturalidade do spline e encontre os valores de $A$, $B$, $C$ e $D$.
+
+\item Sejam $f(x) = 2^x$ e considere os pontos $x_0 = 0$, $x_1 = 1$ e $x_2 = 2$. Interpole $f$ nos pontos dados por um spline:
+\begin{multicols}{3}
+\begin{enumerate}
+\item De ordem 0
+\item De ordem 1
+\item Natural, de ordem 3
+\end{enumerate}
+\end{multicols}
+\item Construa um spline cúbico natural que passe pelos pontos $(0, 3)$, $(2, 0)$, $(3, -1)$ e $(4, 0)$.
 \end{enumerate}
 
 
@@ -580,5 +600,55 @@ e $f(16) \approx p(16) \approx -3,\!639$.
 \end{enumerate}
 
 \item A solução é $(\overline{x},\overline{y}) = (0,0351187281,\ 0,1111062986)$. A aproximação $X^{(4)}$ estará dentro da margem de erro especificada.
+\item $A = -6$, $B = -3$, $C = \frac{3}{2}$ e $D = -\frac{1}{10}$
+\item
+\begin{enumerate}
+\item Utilizando funções constantes em cada subintervalo, o spline é uma função degrau:
+\[
+s(x) =
+\begin{cases}
+1, & \text{ se } 0\leq x < 1, \\
+2, & \text{ se } 1\leq x < 2, \\
+4, & \text{ se } x = 2.
+\end{cases}
+\]
+\textit{Observação}: note que há descontinuidade nos nós.
+
+\item Um spline interpolador de ordem 1 é uma função contínua cuja restrição a cada subintervalo é uma função afim. Neste caso, aplicando a fórmula de Lagrange para interpolar linearmente os valores de $f$ em cada subintervalo, obtém-se:
+\[
+s(x) =
+\begin{cases}
+2^0\dfrac{x-1}{0-1} + 2^1\dfrac{x-0}{1-0}, & \text{ se } 0\leq x < 1, \\ \\
+2^1\dfrac{x-2}{1-2} + 2^2\dfrac{x-1}{2-1}, & \text{ se } 1\leq x \leq 2,
+\end{cases}
+\]
+ou seja,
+\[
+s(x) =
+\begin{cases}
+x + 1, & \text{ se } 0\leq x < 1, \\
+2x, & \text{ se } 1\leq x \leq 2.
+\end{cases}
+\]
+\textit{Observação}: note que embora $s$ seja contínua no nó central, sua derivada não está definida nesse ponto, pois as inclinações são diferentes à esquerda e à direita do nó.
+\item Resolvendo \href{https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/i1-interpolacao_cubica_segmentada_-_spline.html#x71-1160006.6.1}{um sistema linear}, obtém-se os valores que a derivada do spline natural $s(x)$ assume em cada nó, e a partir desses valores, podem ser calculados os coeficientes das funções cúbicas $s_0$ e $s_1$ que definem o spline nos subintervalos $[x_0, x_1)$ e $[x_1, x_2]$:
+\[
+s(x) =
+\begin{cases}
+1 + \frac{3}{4} x + \frac{1}{4}x^3,               & \text{ se } 0\leq x < 1, \\
+2 + \frac{3}{2} (x - 1) + \frac{3}{4}(x - 1)^2 - \frac{1}{4}(x - 1)^3, & \text{ se } 1\leq x \leq 2.
+\end{cases}
+\]
+\textit{Observação}: note que há continuidade tanto de $s$ (pois $s_0(1) = 2 = s_1(1)$), quanto de sua primeira derivada ($s_1^{\prime}(1) = \frac{3}{2} = s_2^{\prime}(1)$) e de sua segunda derivada (pois $s_1^{\prime\prime}(1) = \frac{3}{2} = s_2^{\prime\prime}(1)$). Além disso, $s$ realmente é natural, já que $s^{\prime\prime}(0) = 0 = s^{\prime\prime}(2)$.
+\end{enumerate}
+\item O spline cúbico natural $s$ é definido por:
+\[
+s(x) =
+\begin{cases}
+3 - \frac{3}{2}x,               & \text{ se } 0\leq x < 2, \\
+-\frac{3}{2} (x - 2) + \frac{1}{2}(x - 2)^3, & \text{ se } 2\leq x < 3, \\
+-1 + \frac{3}{2}(x - 3)^2 - \frac{1}{2}(x - 3)^3, & \text{ se } 3\leq x \leq 4.
+\end{cases}
+\]
 \end{enumerate}
 \end{document}
