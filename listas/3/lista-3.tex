@@ -25,6 +25,7 @@
 \newcommand*\tg{\operatorname{tg}}
 \newcommand*\arctg{\operatorname{arctg}}
 \newcommand*\R{\mathbb{R}}
+\newcommand*\diff{\mathop{}\!\mathrm{d}}
 
 \newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
 \newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
@@ -107,9 +108,27 @@ $y_i$ & 14 &  4 &  4 & -2 & 2 & 0 & 8 \\ \hline
 
 \item Seja $D = \{ (-1,2), (0,3), (1, k) \}$. Determine os valores de $k \in \R$ para os quais o erro quadrático da reta que melhor se ajusta a $D$ é menor do que $2/3$.
 
-\item Uma forma simples de estimar o valor de $\int_a^b f(x)\,dx$ é utilizar o \textit{método do ponto médio}, um método de Newton-Cotes aberto, no qual considera-se um retângulo cuja base é o intervalo $[a,b]$ e a altura é o valor de $f$ no ponto médio deste intervalo, ou seja:
+\item Encontre as funções afins que melhor se ajustam, no sentido dos mínimos quadrados a:
+\begin{multicols}{2}
+\begin{enumerate}
+   \item $f(x) = e^x$ no intervalo $[-1, 1]$.
+   \item $f(x) = \cos(x)$ no intervalo $[0, \pi]$.
+\end{enumerate}
+\end{multicols}
+
+\item Utilize as raízes do polinômio de Chebyshev de grau dois, e (se necessário) uma transformação dos intervalos, para construir um polinômio interpolador de grau menor ou igual a um para as seguintes funções nos intervalos indicados:
+\begin{multicols}{2}
+\begin{enumerate}
+   \item $f(x) = 2^x$ no intervalo $[-1, 1]$.
+   \item $f(x) = 2^x$ no intervalo $[0, 3]$.
+\end{enumerate}
+\end{multicols}
+
+\item Repita o exercício anterior com as raízes do polinômio de Chebyshev de grau três, para obter um polinômio interpolador de grau menor ou igual a dois.
+
+\item Uma forma simples de estimar o valor de $\int_a^b f(x)\diff{x}$ é utilizar o \textit{método do ponto médio}, um método de Newton-Cotes aberto, no qual considera-se um retângulo cuja base é o intervalo $[a,b]$ e a altura é o valor de $f$ no ponto médio deste intervalo, ou seja:
 \[
-\int_a^b f(x)\,dx \approx (b-a) \cdot f\left(m \right),
+\int_a^b f(x)\diff{x} \approx (b-a) \cdot f\left(m \right),
 \quad
 m = \frac{a+b}{2}.
 \]
@@ -117,22 +136,22 @@ m = \frac{a+b}{2}.
 Calcule numericamente as integrais a seguir por meio de uma única aplicação das regras: (1) do ponto médio, (2) do trapézio, (3) 1/3 de Simpson, (4) 3/8 de Simpson e (5) de Boole. Obtenha também as soluções exatas e compare-as com as aproximações obtidas, calculando os erros relativos percentuais. Interprete geometricamente.
 \begin{multicols}{4}
 \begin{enumerate}
-\item $\int_0^1 3x^2 \,dx$
+\item $\int_0^1 3x^2 \diff{x}$
 % I = 1
-\item $\int_0^1 4x^3 \,dx$
+\item $\int_0^1 4x^3 \diff{x}$
 % I = 1
-\item $\int_{0}^1 x^9 - 3x^2 \,dx$
+\item $\int_{0}^1 x^9 - 3x^2 \diff{x}$
 % I = -0.9
-\item $\int_{1}^5 \frac{4}{x} - \cos(x) \,dx$
+\item $\int_{1}^5 \frac{4}{x} - \cos(x) \diff{x}$
 % I ≈ 8.2381
 \end{enumerate}
 \end{multicols}
 
-\item Considere a integral $I = \int_0^2 \cos(x^2)\, dx$, cujo valor com 10 casas decimais corretas é $0.4614614624$. Subdivida o intervalo $[a, b] = [0, 2]$ utilizando $n+1$ pontos igualmente espaçados, $a = x_0 < x_1 < \ldots < x_n = b$, e calcule numericamente o valor aproximado de $I$ aplicando repetidas vezes os métodos do ponto médio, do trapézio e 1/3 de Simpson aos subintervalos $[x_i,x_{i+1}]$. Compare os resultados obtidos com $n = 1, 2, 4, 8$.
+\item Considere a integral $I = \int_0^2 \cos(x^2)\diff{x}$, cujo valor com 10 casas decimais corretas é $0.4614614624$. Subdivida o intervalo $[a, b] = [0, 2]$ utilizando $n+1$ pontos igualmente espaçados, $a = x_0 < x_1 < \ldots < x_n = b$, e calcule numericamente o valor aproximado de $I$ aplicando repetidas vezes os métodos do ponto médio, do trapézio e 1/3 de Simpson aos subintervalos $[x_i,x_{i+1}]$. Compare os resultados obtidos com $n = 1, 2, 4, 8$.
 
-\item Seja $M$ a aproximação de $\int_a^b f(x)\, dx$ fornecida pela regra do ponto médio, $T$ a aproximação obtida pela regra do trapézio e $S$ a aproximação que resulta da regra 1/3 de Simpson. Mostre que $S$ é uma média aritmética ponderada de $M$ e $T$.
+\item Seja $M$ a aproximação de $\int_a^b f(x)\diff{x}$ fornecida pela regra do ponto médio, $T$ a aproximação obtida pela regra do trapézio e $S$ a aproximação que resulta da regra 1/3 de Simpson. Mostre que $S$ é uma média aritmética ponderada de $M$ e $T$.
 
-\item Qual é o maior valor de $h \in \mathbb{R}$ para o qual a regra do trapézio aproxima $\int_0^h f(x) \ dx$ com um erro absoluto $|\varepsilon_{abs}| \leq 0,1$ considerando que $f(x) = x^2$? E se $f(x) = x^3$, o valor de $h$ aumenta, diminui ou permanece o mesmo? O que se pode esperar de outras funções $f(x) = x^n$, com $n = 4,5,6,\ldots$? Explique.
+\item Qual é o maior valor de $h \in \mathbb{R}$ para o qual a regra do trapézio aproxima $\int_0^h f(x) \diff{x}$ com um erro absoluto $|\varepsilon_{abs}| \leq 0,1$ considerando que $f(x) = x^2$? E se $f(x) = x^3$, o valor de $h$ aumenta, diminui ou permanece o mesmo? O que se pode esperar de outras funções $f(x) = x^n$, com $n = 4,5,6,\ldots$? Explique.
 
 \item Considere uma função $g$ que assume os valores dados na tabela a seguir:
 %g(x) = (x² + 1) cos(x π / 12 )
@@ -143,7 +162,7 @@ Calcule numericamente as integrais a seguir por meio de uma única aplicação d
 $g(x_i)$ & 1.00 & 1.93 & 4.33 & 7.07 & 8.50 & 6.73 & 0.00 \\ \hline
 \end{tabular}
 \end{center}
-Estime $\int_0^6 g(x)\,dx$ utilizando os métodos a seguir no maior número de subintervalos de mesmo comprimento que for possível:
+Estime $\int_0^6 g(x)\diff{x}$ utilizando os métodos a seguir no maior número de subintervalos de mesmo comprimento que for possível:
 \begin{multicols}{2}
 \begin{enumerate}
 \item A regra do trapézio.
@@ -166,25 +185,25 @@ Calcule a altura do foguete após 40 segundos utilizando a regra 1/3 de Simpson.
 \item Estime as integrais a seguir utilizando a quadratura de Gauss-Legendre com 2 a 5 pontos, depois de realizar uma mudança de variáveis apropriada para usar o intervalo $[-1,1]$:
 \begin{multicols}{4}
 \begin{enumerate}
-\item $\int_0^2 x^2 + x\,dx$
-\item $\int_1^2 \frac{2}{x^2}\,dx$
-\item $\int_{-1}^3 e^{-x^2}\,dx$
-\item $\int_{-3}^3 \frac{1}{1+x^2} \,dx$
+\item $\int_0^2 x^2 + x\diff{x}$
+\item $\int_1^2 \frac{2}{x^2}\diff{x}$
+\item $\int_{-1}^3 e^{-x^2}\diff{x}$
+\item $\int_{-3}^3 \frac{1}{1+x^2} \diff{x}$
 \end{enumerate}
 \end{multicols}
 
-\item Utilize o método de Romberg para estimar o valor de $\pi = \int_{-1}^1 \frac{2}{x^2 + 1} dx$, com um erro relativo percentual inferior a $0,1\%$.
+\item Utilize o método de Romberg para estimar o valor de $\pi = \int_{-1}^1 \frac{2}{x^2 + 1}\diff{x}$, com um erro relativo percentual inferior a $0,1\%$.
 
-\item Forneça uma estimativa de $\int_1^{1.8} e^x dx$ com erro relativo menor ou igual a $10^{-7}$, utilizando o esquema de Romberg.
+\item Forneça uma estimativa de $\int_1^{1.8} e^x\diff{x}$ com erro relativo menor ou igual a $10^{-7}$, utilizando o esquema de Romberg.
 
 \item Utilize o método de Newton-Cotes adaptável estimar as integrais a seguir:
 \begin{enumerate}
-\item $\int_{0.3}^{1.5} \tg(x) dx$, com $|\varepsilon_{rel}| \leq 0.1$, usando 3 dígitos após a vírgula
-\item $\int_{0.4}^{2} \ln{x} dx$, com $|\varepsilon_{rel}| \leq 0.005$, usando 4 dígitos após a vírgula
-\item $\int_{1}^{13} \sqrt{x} dx$, com $|\varepsilon_{rel}| \leq 0.001$, usando 4 dígitos após a vírgula
-\item $\int_1^5 \frac{x+1}{x^2} dx$, com $|\varepsilon_{rel}| \leq 0.02$, usando 3 dígitos após a vírgula
-\item $\int_{0.2}^{1} \sen(1/x) dx$, com $|\varepsilon_{rel}| \leq 0.01$, usando 3 dígitos após a vírgula
-\item $\int_{0}^{2} f(x) dx$, com $|\varepsilon_{rel}| \leq 0.01$, considerando que $f(x)$ assume os seguintes valores:
+\item $\int_{0.3}^{1.5} \tg(x)\diff{x}$, com $|\varepsilon_{rel}| \leq 0.1$, usando 3 dígitos após a vírgula
+\item $\int_{0.4}^{2} \ln{x}\diff{x}$, com $|\varepsilon_{rel}| \leq 0.005$, usando 4 dígitos após a vírgula
+\item $\int_{1}^{13} \sqrt{x}\diff{x}$, com $|\varepsilon_{rel}| \leq 0.001$, usando 4 dígitos após a vírgula
+\item $\int_1^5 \frac{x+1}{x^2}\diff{x}$, com $|\varepsilon_{rel}| \leq 0.02$, usando 3 dígitos após a vírgula
+\item $\int_{0.2}^{1} \sen(1/x)\diff{x}$, com $|\varepsilon_{rel}| \leq 0.01$, usando 3 dígitos após a vírgula
+\item $\int_{0}^{2} f(x)\diff{x}$, com $|\varepsilon_{rel}| \leq 0.01$, considerando que $f(x)$ assume os seguintes valores:
 %f(x) = cos(3x) + 21 / (7 + x⁸)
 \begin{center}\hspace{-1cm}
 \begin{tabular}{|c|c||c|c||c|c||c|c||c|c|}
@@ -254,6 +273,7 @@ y(0) = 1.
 Utilize passos de tamanho $h = 0.2$ ao longo do intervalo $[a,b] = [0, 1]$. Faça um gráfico para comparar as soluções obtidas solução e a solução exata, que é $y = \frac{1}{3} (6 x - 2 + 5 e^{-3 x})$.
 \end{enumerate}
 
+
 \newpage
 \section*{Algumas respostas}
 
@@ -265,7 +285,7 @@ Utilize passos de tamanho $h = 0.2$ ao longo do intervalo $[a,b] = [0, 1]$. Faç
 \item $f(x) = x^2 - 2\cos(\pi x)$, com resíduo quadrático $R = 28$.
 \end{enumerate}
 A segunda função apresenta o menor erro quadrático.
-\item 
+\item
 \begin{enumerate}
 \item \textbf{Falso}. Por exemplo, se $D = \{(1,5), (2,5), (3,5)\}$, então a função constante $y = 5$ é a função que melhor se ajusta aos dados, tanto no caso de funções afins quanto no caso das funções de grau menor ou igual a dois, e seu resíduo é nulo.
 \item \textbf{Verdadeiro}. Toda função $f(x) = a_1 + a_2 x$ também pode ser escrita na forma $f(x) = a_1 + a_2 x + 0 x^2$, ou seja, a função $g$ que melhor se ajusta a $D$ não pode ser pior do que $f$, isto é, deve ter um erro quadrático menor ou igual ao de $f$.
@@ -281,14 +301,140 @@ pois $(f(x_n)-y_n)^2 \geq 0$.
 \end{enumerate}
 \item $f(x) = \frac{-7}{x} + \frac{10}{x^2}$
 \item $2 < k < 6$
+
+\item \begin{enumerate}
+   \item Se $y = a x + b$ é a função afim procurada, então $X = (a, b)^T$ é solução de $A X = B$, em que
+
+   \[
+      a_{11} = \int_{-1}^1 x^2 \diff{x} = \frac{2}{3}
+   \]
+   \[
+      a_{12} = a_{21} = \int_{-1}^1 x \diff{x} = 0
+   \]
+   \[
+      a_{22} = \int_{-1}^1 1 \diff{x} = 2
+   \]
+   \[
+      b_1 = \int_{-1}^1 xe^x \diff{x} = \frac{2}{e}
+   \]
+   \[
+      b_2 = \int_{-1}^1 e^x = e - \frac{1}{e}
+   \]
+   Assim,
+   \[
+      \begin{bmatrix}
+         \frac{2}{3} & 0 \\
+         0 & 2
+      \end{bmatrix}
+      \cdot
+      \begin{bmatrix}
+         a \\
+         b
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+         \frac{2}{e} \\
+         e - \frac{1}{e}
+      \end{bmatrix}.
+   \]
+   Logo, $a = \frac{\frac{2}{e}}{\frac{2}{3}} = \frac{3}{e}$, $b = \frac{e - \frac{1}{e}}{2} = \frac{e}{2} - \frac{1}{2e}$ e assim, $y = \frac{3}{e} x + \frac{e}{2} - \frac{1}{2e}$.
+
+
+   \item Se $y = a x + b$ é a função afim procurada, então $X = (a, b)^T$ é solução de $A X = B$, em que
+
+   \[
+      a_{11} = \int_0^\pi x^2 \diff{x} = \frac{\pi^3}{3}
+   \]
+   \[
+      a_{12} = a_{21} = \int_0^\pi x \diff{x} = \frac{\pi^2}{2}
+   \]
+   \[
+      a_{22} = \int_0^\pi 1 \diff{x} = \pi
+   \]
+   \[
+      b_1 = \int_0^\pi x\cos(x) \diff{x} = -2
+   \]
+   \[
+      b_2 = \int_0^\pi \cos(x) = 0
+   \]
+   Assim,
+   \[
+      \begin{bmatrix}
+         \frac{\pi^3}{3} & \frac{\pi^2}{2} \\
+         \frac{\pi^2}{2} & \pi
+      \end{bmatrix}
+      \cdot
+      \begin{bmatrix}
+         a \\
+         b
+      \end{bmatrix}
+      =
+      \begin{bmatrix}
+         -2 \\
+         0
+      \end{bmatrix}.
+   \]
+   Por Cramer, como $\begin{vmatrix}
+      \frac{\pi^3}{3} & \frac{\pi^2}{2} \\
+      \frac{\pi^2}{2} & \pi
+   \end{vmatrix} = \frac{\pi^4}{3} - \frac{\pi^4}{4} = \frac{\pi^4}{12}$, tem-se $a = \frac{\begin{vmatrix}
+      -2 & \frac{\pi^2}{2} \\
+      0 & \pi
+   \end{vmatrix}}{\frac{\pi^4}{12}} = \frac{-2\pi}{\frac{\pi^4}{12}} = -\frac{24}{\pi^3}$ e  $b = \frac{\begin{vmatrix}
+      \frac{\pi^3}{3} & -2 \\
+      \frac{\pi^2}{2} & 0
+   \end{vmatrix}}{\frac{\pi^4}{12}} = \frac{\pi^2}{\frac{\pi^4}{12}} = \frac{12}{\pi^2}$. Assim, $y = -\frac{24}{\pi^3} x + \frac{12}{\pi^2}$.
+\end{enumerate}
+
+
+\item \begin{enumerate}
+   \item O polinômio de Chebyshev de grau dois é dado por $T_2(x) = \cos(2\arccos(x)) = 2 x^2 - 1$ para $x \in [-1, 1]$, e suas raízes são $x_1 = \cos\left(\frac{1}{4}\pi\right) = \frac{\sqrt{2}}{2} \approx 0,7071$ e $x_2 = \cos\left(\frac{3}{4}\pi\right) = -\frac{\sqrt{2}}{2} \approx -0,7071$. Por Lagrange, o polinômio que interpola $f(x) = 2^x$ nesses pontos é dado por:
+   \begin{align*}
+      p(x)
+      & = 2^{0,7071} \left(\frac{x+0,7071}{0,7071+0,7071}\right)
+      + 2^{-0,7071} \left(\frac{x-0,7071}{-0,7071-0,7071}\right)\\
+      & = 1,1544 (x + 0,7071) - 0,4331 (x - 0,7071) \\
+      & = 0,7213 x + 1,1225
+   \end{align*}
+   \item Como no item anterior, as raízes do polinômio de Chebyshev de grau dois são $x_1 \approx 0,7071$ e $x_2 \approx -0,7071$. Transformando o intervalo $[-1, 1]$ em $[0, 3]$ por meio de
+   \[
+   \tilde{x} = \frac{1}{2}[(3 - 0) x + (0 + 3)] = \frac{3}{2}(x + 1),
+   \]
+   obtém-se $\tilde{x}_1 \approx 2,5607$ e $\tilde{x}_2 \approx 0,4394$. Por Lagrange, o polinômio que interpola $f(x) = 2^x$ nesses pontos é dado por:
+   \begin{align*}
+      p(x)
+      & = 2^{2,5607} \left(\frac{x - 0,4394}{2,5607 - 0,4394}\right)
+      + 2^{0,4394} \left(\frac{x - 2,5607}{0,4394 - 2,5607}\right)\\
+      & = 2,7813 (x - 0,4394) - 0,6392 (x - 2,5607) \\
+      & = 2,1421 x + 0,4147
+   \end{align*}
+\end{enumerate}
+
+\item \begin{enumerate}
+   \item O polinômio de Chebyshev de grau três é dado por $T_3(x) = \cos(3\arccos(x)) = 4 x^3 - 3x$ para $x \in [-1, 1]$, e suas raízes são $x_1 = \cos\left(\frac{1}{6}\pi\right) = \frac{\sqrt{3}}{2} \approx 0,8660$ e $x_2 = \cos\left(\frac{3}{6}\pi\right) = 0$ e $x_3 = \cos\left(\frac{5}{6}\pi\right) = - \frac{\sqrt{3}}{2} \approx -0,8660$. O polinômio que interpola $f(x) = 2^x$ nesses pontos é dado por:
+   \begin{align*}
+      p(x)
+      = 0,2475x^2 + 0,7355x + 1.
+   \end{align*}
+   \item Como no item anterior, as raízes do polinômio de Chebyshev de grau dois são $x_1 \approx 0,8660$ e $x_2 = 0$ e $x_3 \approx -0,8660$. Transformando o intervalo $[-1, 1]$ em $[0, 3]$ por meio de
+   \[
+   \tilde{x} = \frac{1}{2}[(3 - 0) x + (0 + 3)] = \frac{3}{2}(x + 1),
+   \]
+   obtém-se $\tilde{x}_1 \approx 2,7990$, $\tilde{x}_2 = 1,5$ e $\tilde{x}_3 \approx 1,1495$. O polinômio que interpola $f(x) = 2^x$ nesses pontos é dado por:
+   \begin{align*}
+      p(x)
+      & = 0,7266x^2 + 0,0565x + 1,1088.
+   \end{align*}
+\end{enumerate}
+
 \item Estas são as soluções exatas:
 \begin{enumerate}
-\item $\int_0^1 3x^2 \,dx = x^3 \Big|_0^1 = 1$
-\item $\int_0^1 4x^3 \,dx = x^4 \Big|_0^1 = 1$
-\item $\int_0^1 x^9 - 3x^2 \,dx= \left(\frac{1}{10}x^{10} - x^3\right) \Big|_0^1 = -0.9$
-\item $\int_1^5 \frac{4}{x} - \cos(x) \,dx = \left( 4\ln(x) - \sen(x)\right) \Big|_1^5 = 4\ln(5) + \sen(1) - \sen(5) \approx 8.2381$
+\item $\int_0^1 3x^2 \diff{x} = x^3 \Big|_0^1 = 1$
+\item $\int_0^1 4x^3 \diff{x} = x^4 \Big|_0^1 = 1$
+\item $\int_0^1 x^9 - 3x^2 \diff{x}= \left(\frac{1}{10}x^{10} - x^3\right) \Big|_0^1 = -0.9$
+\item $\int_1^5 \frac{4}{x} - \cos(x) \diff{x} = \left( 4\ln(x) - \sen(x)\right) \Big|_1^5 = 4\ln(5) + \sen(1) - \sen(5) \approx 8.2381$
 \end{enumerate}
-\item $\int_0^2 \cos(x^2)\, dx \approx 0.4614614624$
+\item $\int_0^2 \cos(x^2)\diff{x} \approx 0.4614614624$
 \begin{center}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
@@ -303,38 +449,38 @@ Simpson (3/8) & $\textbf{0}.60960$ & $\textbf{0.46}211$ & $\textbf{0.461}18$ & $
 \item Para $f(x) = x^2$, tem-se $h_{max}=\sqrt[3]{6} \approx 1,8$. Para $f(x) = x^3$, tem-se $h_{max}=\sqrt[4]{4}\approx 1,4 < 1,8$. Em geral, para $f(x) = x^n$, $h_{max}=\sqrt[n+1]{\frac{2n+2}{n-1}}$ diminui conforme $n$ aumenta.
 \item
 \begin{enumerate}
-\item $\int_0^6 g(x)\,dx \approx 29.0623$, aplicando a regra do trapézio em $6$ subintervalos
-\item $\int_0^6 g(x)\,dx \approx 29.8630$, aplicando a regra 1/3 de Simpson em $3$ subintervalos
+\item $\int_0^6 g(x)\diff{x} \approx 29.0623$, aplicando a regra do trapézio em $6$ subintervalos
+\item $\int_0^6 g(x)\diff{x} \approx 29.8630$, aplicando a regra 1/3 de Simpson em $3$ subintervalos
 \end{enumerate}
 \item \fixme
 \item A altura é de aproximadamente $8554,67$ metros.
 \item
 \begin{enumerate}
-\item $\int_0^2 x^2 + x\,dx = \left( \frac{1}{3}x^3 +\frac{1}{2}x^2 \right)\Big|_0^2 = 14/3 \approx 4.6667$
-\item $\int_1^2 \frac{2}{x^2}\,dx = \left( \frac{-2}{x} \right)\Big|_1^2 = 1$
-\item $\int_{-1}^3 e^{-x^2}\,dx \approx 1.63303$
-\item O valor exato é $\int_{-3}^3 \frac{1}{1+x^2} \,dx = \arctg(x) \Big|_{-3}^3 = 2 \arctg(3) \approx 2.49809154479651$.
+\item $\int_0^2 x^2 + x\diff{x} = \left( \frac{1}{3}x^3 +\frac{1}{2}x^2 \right)\Big|_0^2 = 14/3 \approx 4.6667$
+\item $\int_1^2 \frac{2}{x^2}\diff{x} = \left( \frac{-2}{x} \right)\Big|_1^2 = 1$
+\item $\int_{-1}^3 e^{-x^2}\diff{x} \approx 1.63303$
+\item O valor exato é $\int_{-3}^3 \frac{1}{1+x^2} \diff{x} = \arctg(x) \Big|_{-3}^3 = 2 \arctg(3) \approx 2.49809154479651$.
 \begin{itemize}
-\item Gauss-Legendre com 2 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 1.5$
-\item Gauss-Legendre com 3 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 3.1875$ 
-\item Gauss-Legendre com 4 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 2.1897810219$
-\item Gauss-Legendre com 5 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \,dx \approx 2.6717025035$
+\item Gauss-Legendre com 2 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \diff{x} \approx 1.5$
+\item Gauss-Legendre com 3 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \diff{x} \approx 3.1875$
+\item Gauss-Legendre com 4 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \diff{x} \approx 2.1897810219$
+\item Gauss-Legendre com 5 pontos: $\int_{-3}^3 \frac{1}{1+x^2} \diff{x} \approx 2.6717025035$
 \end{itemize}
 \end{enumerate}
 \item $\pi \approx R_{5,5} \approx 3.141582321$
-\item $\int_1^{1.8} e^x dx
+\item $\int_1^{1.8} e^x\diff{x}
 = \left(e^x \right)\Big|_{1}^{1.8}
 = e^{1.8} - e
 \approx R_{5,5}
 \approx 3.331365637$.
 \item Estes são os valores exatos:
 \begin{enumerate}
-\item $\int_{0.3}^{1.5} \tg(x) dx \approx 2.603$
-\item $\int_{0.4}^{2} \ln{x} dx \approx 0.1528$
-\item $\int_{1}^{13} \sqrt{x} dx \approx 30.5814$
-\item $\int_1^5 \frac{x+1}{x^2} dx \approx 2.409$
-\item $\int_{0.2}^{1} \sen(1/x) dx \approx 0.506$
-\item $\int_{0}^{2} f(x) dx \approx 3.80997$
+\item $\int_{0.3}^{1.5} \tg(x)\diff{x} \approx 2.603$
+\item $\int_{0.4}^{2} \ln{x}\diff{x} \approx 0.1528$
+\item $\int_{1}^{13} \sqrt{x}\diff{x} \approx 30.5814$
+\item $\int_1^5 \frac{x+1}{x^2}\diff{x} \approx 2.409$
+\item $\int_{0.2}^{1} \sen(1/x)\diff{x} \approx 0.506$
+\item $\int_{0}^{2} f(x)\diff{x} \approx 3.80997$
 \end{enumerate}
 \item \fixme
 \item \begin{enumerate}
@@ -358,6 +504,5 @@ Portanto $y_1(1) = 2\sen(4) \approx -1.5136$ e $y_2(1) = 2\cos(4) \approx -1.307
 \item Com $h=0.25$, $y_1(1) \approx 17.3116$ e $y_2(1) \approx 7.0648$
 \item Com $h=0.125$, $y_1(1) \approx 41.6057$ e $y_2(1) \approx 10.9499$
 \end{itemize}
-
 \end{enumerate}
 \end{document}

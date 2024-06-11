@@ -118,6 +118,17 @@ Utilize a fatoração $LU$ para encontrar uma matriz $X$, de ordem $3 \times 3$,
 \end{bmatrix}.
 \]
 
+\item Mostre que se $A =\begin{bmatrix}
+0 & 1\\
+2 & 3
+\end{bmatrix}$ então não existem $L = \begin{bmatrix}
+1 & 0\\
+c & 1
+\end{bmatrix}$ e $U = \begin{bmatrix}
+a & b\\
+0 & d
+\end{bmatrix}$ tais que $A=LU$.
+
 \item %\calc
 Calcule $A^{-1}$ resolvendo o sistema $A X = I_{3 \times 3}$ por meio da fatoração $LU$, sendo
 \[
@@ -399,6 +410,38 @@ $X = \begin{bmatrix}
 3&2&-4\\
 2&2&-2
 \end{bmatrix}$.
+\item Observe que
+\[
+L U
+=
+\begin{bmatrix}
+1 & 0\\
+c & 1
+\end{bmatrix}
+\cdot
+\begin{bmatrix}
+a & b\\
+0 & d
+\end{bmatrix}
+=
+\begin{bmatrix}
+a & b\\
+ac & bc + d
+\end{bmatrix}.
+\]
+Então, para que $A=\begin{bmatrix}
+0 & 1\\
+2 & 3
+\end{bmatrix} = LU$, seria preciso que
+\[
+\begin{cases}
+   a &= 0,\\
+   b &= 1,\\
+   ac &= 2,\\
+   bc + d &= 3,
+\end{cases}
+\]
+o que é impossível, já que $a = 0$ implica $ac = 0 \neq 2$.
 
 \item $A = L \cdot U =
 \begin{bmatrix}
