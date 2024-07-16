@@ -1,4 +1,6 @@
 .vscode
+*.ggb
+*.ods
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
