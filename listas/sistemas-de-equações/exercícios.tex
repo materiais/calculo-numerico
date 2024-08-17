@@ -46,21 +46,21 @@
 \newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
    \hspace*{\SmileysLength}}
 
-\newcommand*\tipo{2ª Lista de Exercícios}
+\newcommand*\tipo{Lista de Exercícios - Sistemas de Equações}
 %\newcommand*\turma{...}
 \newcommand*\disciplina{ANN0001/CAN0001}
 \newcommand*\eu{Helder G. G. de Lima}
 \newcommand*\data{\today}
 
 \author{\eu}
-\title{\tipo - \disciplina}
+\title{\tipo}
 \date{\data}
 
 \begin{document}
 
 \begin{center}
 \includegraphics[width=9.0cm]{marca} \\
-\textbf{\tipo\ (\disciplina)} \\
+\textbf{\tipo} \\
 Prof. \eu\footnote{
 Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}.}
 \end{center}
@@ -268,60 +268,6 @@ a-3b+c  =2,
 3x_1 + 4x_2 = 0.
 }
 
-%\newpage
-%%%%%%%% INTERPOLAÇÃO %%%%%%%
-\item Suponha que uma função $f(x)$ assuma os valores dados pela tabela a seguir:
-%f(x) = x ln(x) - 3x
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-   $x$ &  5    & 10     & 15 & 20 & 25 & 30 \\
-\hline
-$f(x)$ & -6.95 & -6.97  & -4.38 & -0.09 & 5.47 & 12.04\\
-\hline
-\end{tabular}
-\end{center}
-
-Obtenha o polinômio que interpola os pontos dados, usando os métodos de Lagrange e de Newton. Utilize o polinômio obtido para estimar $f(16)$.
-% p(x) = -8.26667×10^-7 x^5 + 0.000094 x^4 - 0.00457 x^3 + 0.13985 x^2 - 1.46223 x - 2.62
-% p(16) = -3.63924
-
-\item Obtenha os polinômios de Lagrange $L_i(x)$ correspondentes aos pontos $x_0 = -1$, $x_1 = 3$ e $x_2 = 7$. Mostre que estes polinômios são dois a dois ortogonais (isto é $\langle L_i, L_j \rangle = 0$ para $i \neq j$) com relação ao seguinte produto interno:
-\[
-\langle f, g \rangle = f(x_0) g(x_0) + f(x_1) g(x_1) + f(x_2) g(x_2).
-\]
-\item Determine o erro relativo percentual ao aproximar $\sqrt{10}$ através de uma interpolação nos pontos $x_0 = 1$, $x_1 = 4$ e $x_2 = 16$. Compare os gráficos de $f(x) = \sqrt{x}$ e do polinômio interpolador no intervalo $[1,16]$.
-
-\item Alguma das parábolas que possuem eixo de simetria vertical e que contém os pontos $(2, -16)$ e $(5, 5)$ passa pela origem? Em caso afirmativo, qual é esta parábola?
-%f(x) = 3x² - 14x
-\item Dê um exemplo de uma função polinomial cujo gráfico intercepta o da função $f(x) = 2^x$ pelo menos quatro vezes no intervalo $(-2,3)$.
-\item É possível representar uma função que assume os valores a seguir por um polinômio de terceiro grau? Em caso afirmativo, determine esse polinômio usando a forma de Newton.
-\begin{center}
-\begin{tabular}{|c|c|c|c|c|c|c|}
-\hline
-   $x$ & -2  & -1 & 0 & 1 &  2 & 3 \\
-\hline
-$f(x)$ & -39 & -4 & 1 & 0 & 17 & 76\\
-\hline
-\end{tabular}
-\end{center}
-%f(x) = 4x³ - 3x² - 2x + 1
-
-\item Seja $f(x) = x^3 - 3x$ e considere os pontos $x_0 = -2$, $x_1 = -1$ e $x_2 = 0$.
-\begin{enumerate}
-\item Obtenha o polinômio $p(x)$ que interpola $f(x)$ nos pontos dados.
-\item Mostre que o erro absoluto da aproximação $f(x) \approx p(x)$, estimado por meio de uma derivada de ordem superior de $f$, coincide com o valor exato do erro.
-\item Calcule o erro máximo da aproximação $f(x)\approx p(x)$ no intervalo $[x_0, x_2]$.
-\end{enumerate}
-
-\item Seja $p(x)$ o polinômio que interpola os pontos $(-1, 0)$, $(0, 1)$, $(1, y)$, $(3, -20)$. Encontre o valor de $y$ sabendo que o coeficiente de $x^3$ em $p(x)$ é -2.
-
-\item Seja $p:\R \to \R$ o polinômio que interpola os pontos $(x_0, y_0), \ldots, (x_n, y_n)$. Mostre que, para todo $a \in \R$, são verdadeiras as afirmações a seguir:
-\begin{enumerate}
-\item A translação horizontal $q:\R \to \R$ do gráfico de $p$, definida por por $q(x) = p(x - a)$, para todo $x \in \R$, interpola os pontos $(x_0+a, y_0), \ldots, (x_n+a, y_n)$.
-\item A mudança de escala horizontal $q:\R \to \R$ do gráfico de $p$, definida por por $q(x) = p(a \cdot x)$, para todo $x \in \R$, interpola os pontos $(\frac{x_0}{a}, y_0), \ldots, (\frac{x_n}{a}, y_n)$.
-\end{enumerate}
-
 \item Considere o sistema não linear
 \[
 \begin{cases}
@@ -335,26 +281,6 @@ x^3 + 9y &= 1
 \item Mostre que o método de iteração de ponto fixo gera uma sequência que converge para o ponto fixo de $\varphi$, qualquer que seja a aproximação inicial escolhida em $Q$.
 \item Obtenha a solução do sistema com um erro relativo percentual de no máximo $1\%$, utilizando a aproximação inicial $X^{(0)} = (1, 1)$.
 \end{enumerate}
-
-\item Um spline cúbico natural interpolador aos nós $x_0 = 3$, $x_1 = 5$ e $x_2 = 7$ é dado por
-\[
-   s(x) =
-   \begin{cases}
-      4 - 6x + \frac{x^3}{4}, & \text{ se } 0 \leq x \leq 2,\\
-      A + B(x - 2) + C(x - 2)^2 + D(x - 2)^3, & \text{ se } 2 \leq x \leq 7.
-   \end{cases}
-\]
-Utilize as propriedades de continuidade, suavidade e naturalidade do spline e encontre os valores de $A$, $B$, $C$ e $D$.
-
-\item Sejam $f(x) = 2^x$ e considere os pontos $x_0 = 0$, $x_1 = 1$ e $x_2 = 2$. Interpole $f$ nos pontos dados por um spline:
-\begin{multicols}{3}
-\begin{enumerate}
-\item De ordem 0
-\item De ordem 1
-\item Natural, de ordem 3
-\end{enumerate}
-\end{multicols}
-\item Construa um spline cúbico natural que passe pelos pontos $(0, 3)$, $(2, 0)$, $(3, -1)$ e $(4, 0)$.
 \end{enumerate}
 
 
@@ -611,87 +537,8 @@ $\varepsilon_{abs}$ (aprox.) & - & 0,429 & 0,268 & 0,153 & 0,096 & 0,054 & 0,033
 \item Jacobi: $x^{(9)} = (0,323, -0,235)^\intercal$, com cerca de $3,1\%$ de erro
 \item Gauss-Seidel: $x^{(5)} = (0,323, -0,242)^\intercal$, com cerca de $3,1\%$ de erro
 \end{enumerate}
-\item Conforme o Wolfram Alpha, o polinômio interpolador é:
-\[
-p(x) = -8,\!26667 \times 10^{-7} x^5 + 0,\!000094 x^4 - 0,\!00457 x^3 + 0,\!13985 x^2 - 1,\!46223 x - 2,\!62
-\]
-e $f(16) \approx p(16) \approx -3,\!639$.
-%\begin{enumerate}
-%\item Lagrange: \fixme
-%\item Newton: \fixme
-%\end{enumerate}
-\item \fixme
-\item $p(x) = -\frac{1}{90}x^2 + \frac{7}{18} x + \frac{28}{45}$, $\sqrt{10} \approx p(10) = \frac{17}{5} = 3,\!4$ e $\varepsilon \approx 7,\!5\%$.
-\item Sim, $p(x) = 3x^2 - 14x$.
-\item $p(x) = \frac{1}{12}x^3 + \frac{1}{4}x^2 + \frac{2}{3} x + 1$
-\item Sim, $f(x) = 4x^3 - 3x^2 - 2x + 1$.
-\item Seja $f(x) = x^3 - 3x$ e considere os pontos $x_0 = -2$, $x_1 = -1$ e $x_2 = 0$.
-\begin{enumerate}
-\item $p(x) = -3x^2 - 5x$
-\item O erro absoluto no ponto $x$ é dado por
-\[
-|f(x) - p(x)| = |x^3 + 3x^2 + 2x| = |(x + 2) (x + 1) x|.
-\]
 
-\item O valor máximo de $|f(x) - p(x)|$ no intervalo $[-2, 0]$ é de $\frac{2}{3 \sqrt{3}}$ e ocorre no ponto $x = -1 - \frac{1}{\sqrt{3}}$.
-\end{enumerate}
-\item $y=6$
-\item
-\begin{enumerate}
-\item Basta observar que $q(x_i + a, y_i) = p((x_i + a)-a)) = p(x_i) = y_i$, para $i = 0, \ldots, n$.
-\item Basta observar que $q(\frac{x_i}{a}, y_i) = p(a \cdot \frac{x_i}{a}) = p(x_i) = y_i$, para $i = 0, \ldots, n$.
-\end{enumerate}
 
 \item A solução é $(\overline{x},\overline{y}) = (0,0351187281,\ 0,1111062986)$. A aproximação $X^{(4)}$ estará dentro da margem de erro especificada.
-\item $A = -6$, $B = -3$, $C = \frac{3}{2}$ e $D = -\frac{1}{10}$
-\item
-\begin{enumerate}
-\item Utilizando funções constantes em cada subintervalo, o spline é uma função degrau:
-\[
-s(x) =
-\begin{cases}
-1, & \text{ se } 0\leq x < 1, \\
-2, & \text{ se } 1\leq x < 2, \\
-4, & \text{ se } x = 2.
-\end{cases}
-\]
-\textit{Observação}: note que há descontinuidade nos nós.
-
-\item Um spline interpolador de ordem 1 é uma função contínua cuja restrição a cada subintervalo é uma função afim. Neste caso, aplicando a fórmula de Lagrange para interpolar linearmente os valores de $f$ em cada subintervalo, obtém-se:
-\[
-s(x) =
-\begin{cases}
-2^0\dfrac{x-1}{0-1} + 2^1\dfrac{x-0}{1-0}, & \text{ se } 0\leq x < 1, \\ \\
-2^1\dfrac{x-2}{1-2} + 2^2\dfrac{x-1}{2-1}, & \text{ se } 1\leq x \leq 2,
-\end{cases}
-\]
-ou seja,
-\[
-s(x) =
-\begin{cases}
-x + 1, & \text{ se } 0\leq x < 1, \\
-2x, & \text{ se } 1\leq x \leq 2.
-\end{cases}
-\]
-\textit{Observação}: note que embora $s$ seja contínua no nó central, sua derivada não está definida nesse ponto, pois as inclinações são diferentes à esquerda e à direita do nó.
-\item Resolvendo \href{https://www.ufrgs.br/reamat/CalculoNumerico/livro-py/i1-interpolacao_cubica_segmentada_-_spline.html#x71-1160006.6.1}{um sistema linear}, obtém-se os valores que a derivada do spline natural $s(x)$ assume em cada nó, e a partir desses valores, podem ser calculados os coeficientes das funções cúbicas $s_0$ e $s_1$ que definem o spline nos subintervalos $[x_0, x_1)$ e $[x_1, x_2]$:
-\[
-s(x) =
-\begin{cases}
-1 + \frac{3}{4} x + \frac{1}{4}x^3,               & \text{ se } 0\leq x < 1, \\
-2 + \frac{3}{2} (x - 1) + \frac{3}{4}(x - 1)^2 - \frac{1}{4}(x - 1)^3, & \text{ se } 1\leq x \leq 2.
-\end{cases}
-\]
-\textit{Observação}: note que há continuidade tanto de $s$ (pois $s_0(1) = 2 = s_1(1)$), quanto de sua primeira derivada ($s_1^{\prime}(1) = \frac{3}{2} = s_2^{\prime}(1)$) e de sua segunda derivada (pois $s_1^{\prime\prime}(1) = \frac{3}{2} = s_2^{\prime\prime}(1)$). Além disso, $s$ realmente é natural, já que $s^{\prime\prime}(0) = 0 = s^{\prime\prime}(2)$.
-\end{enumerate}
-\item O spline cúbico natural $s$ é definido por:
-\[
-s(x) =
-\begin{cases}
-3 - \frac{3}{2}x,               & \text{ se } 0\leq x < 2, \\
--\frac{3}{2} (x - 2) + \frac{1}{2}(x - 2)^3, & \text{ se } 2\leq x < 3, \\
--1 + \frac{3}{2}(x - 3)^2 - \frac{1}{2}(x - 3)^3, & \text{ se } 3\leq x \leq 4.
-\end{cases}
-\]
 \end{enumerate}
 \end{document}

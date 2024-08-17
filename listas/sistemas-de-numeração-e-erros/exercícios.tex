@@ -1,0 +1,297 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{cmap} % Makes the PDF copyable. See http://tex.stackexchange.com/a/64198/25761
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{textcomp} % \degree
+\usepackage{gensymb} % \degree
+\usepackage[usenames,svgnames,dvipsnames]{xcolor}
+\usepackage{hyperref}
+\usepackage{multicol}
+\usepackage{graphicx}
+\usepackage[margin=2cm]{geometry}
+\usepackage{systeme}
+\usepackage{icomma} % vírgulas como pontuação vs ponto decimal
+\usepackage{listings}
+\hypersetup{
+    colorlinks = true,
+    allcolors = {blue}
+}
+
+\newcommand{\fixme}{{\color{red}(...)}}
+\newcommand*\sen{\operatorname{sen}}
+\newcommand*\tg{\operatorname{tg}}
+
+\newcommand*\R{\mathbb{R}}
+
+\newcommand{\IconPc}{\includegraphics[width=1em]{computer.png}}
+\newcommand{\IconCalc}{\includegraphics[width=1em]{calculator.png}}
+\newcommand{\IconThink}{\includegraphics[width=1em]{pencil.png}}
+\newcommand{\IconCheck}{\includegraphics[width=1em]{checkmark.png}}
+\newcommand{\IconConcept}{\includegraphics[width=1em]{edit.png}}
+
+\newlength{\SmileysLength}
+\setlength{\SmileysLength}{\labelwidth}\addtolength{\SmileysLength}{\labelsep}
+
+\newcommand{\calc}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCalc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\software}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconPc}%
+   \hspace*{\SmileysLength}}
+\newcommand{\teoria}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconThink}%
+   \hspace*{\SmileysLength}}
+\newcommand{\conceito}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+\newcommand{\concept}{\hspace*{-\SmileysLength}\makebox[0pt][r]{\IconCheck}%
+   \hspace*{\SmileysLength}}
+
+\newcommand*\tipo{Lista de Exercícios - Sistemas de Numeração e Erros}
+%\newcommand*\turma{...}
+\newcommand*\disciplina{ANN0001/CAN0001}
+\newcommand*\eu{Helder G. G. de Lima}
+\newcommand*\data{\today}
+
+\author{\eu}
+\title{\tipo}
+\date{\data}
+
+\begin{document}
+
+\begin{center}
+\includegraphics[width=9.0cm]{marca} \\
+\textbf{\tipo} \\
+Prof. \eu\footnote{
+Este é um material de acesso livre distribuído sob os termos da licença \href{https://creativecommons.org/licenses/by-sa/4.0/deed.pt_BR}{Creative Commons BY-SA 4.0}.}
+\end{center}
+
+%\section*{Legenda}
+%\begin{multicols}{4}
+%\begin{itemize}
+%\item[] \hspace*{\SmileysLength} \calc \hspace*{-\SmileysLength} Cálculos
+%\item[] \hspace*{\SmileysLength} \conceito \hspace*{-\SmileysLength} Conceitos
+%\item[] \hspace*{\SmileysLength} \teoria \hspace*{-\SmileysLength} Teoria
+%\item[] \hspace*{\SmileysLength} \software \hspace*{-\SmileysLength} Software
+%\end{itemize}
+%\end{multicols}
+
+\section*{Questões}
+
+\begin{enumerate}
+\item \calc
+Obtenha a representação dos números a seguir nas bases indicadas, e complete a tabela:
+\begin{table}[h]
+\centering
+%\caption{Conversão entre bases}
+\begin{tabular}{|c|c|c|}
+\hline
+  \textbf{Decimal}
+& \textbf{Binário}
+& \textbf{Octal} \\ \hline
+  $(33,25)_{10}$
+& $(100001,01)_2$
+& $(41,2)_8$ \\ \hline
+?
+& $(110,1)_2$
+& ? \\ \hline
+  $(110,1)_{10}$
+& ?
+& ? \\ \hline
+  ?
+& ?
+& $(110,1)_8$ \\ \hline
+  $(501,375)_{10}$
+& ?
+& ? \\ \hline
+  ?
+& ?
+& $(35,1)_8$ \\ \hline
+  ?
+& $(1011,101)_2$
+& ? \\ \hline
+\end{tabular}
+\end{table}
+\vspace{-0.8cm}
+\item \software Devido à forma como os números são representados no computador, pode ocorrer que dois números reais distintos sejam representados internamente pelo mesmo número, sendo arredondados. Utilize uma linguagem de programação de sua escolha para estimar o maior valor de $\varepsilon$ tal que $1+\varepsilon$ seja arredondado para $1$ através do seguinte algoritmo:
+\begin{lstlisting}[mathescape=true]
+Defina $\varepsilon = 1$
+Enquanto $1 \neq (1 + \varepsilon)$:
+    Defina $ \varepsilon = \varepsilon / 2$
+Retorne $\varepsilon$
+\end{lstlisting}
+\vspace{-0.5cm}
+\item \software Utilize uma linguagem de programação de sua escolha para identificar qual é a primeira potência de dois cuja representação no computador é idêntica à de seu sucessor. Em outras palavras, encontre o menor valor de $n \in \mathbb{N}$ tal que $(2^n) + 1$ é arredondado para $2^n$.
+
+\item \calc Calcule o erro relativo percentual cometido ao arredondar os seguintes números (conforme as regras da ABNT), conservando apenas 2 algarismos após a vírgula:
+\begin{multicols}{5}
+\begin{enumerate}
+\item $3,999$
+\item $\pi$
+\item $e$
+\item $\frac{37}{8}$
+\item $\sqrt{3}$
+\item $\sqrt{2}$
+\item $0,975$
+\item $0,1357$
+\item $4,56 \times 10^{-2}$
+\item $8 \times 10^{-3}$
+\end{enumerate}
+\end{multicols}
+
+\item \calc Sabe-se que determinada quantidade $\overline{x}$ só assume valores tais que $0,1 \leq \overline{x} \leq 1,25$. Sabendo que ao medir $\overline{x}$ foi obtida uma aproximação $x \approx \overline{x}$, que satisfaz $0,05 \leq x \leq 0,6$, responda:
+\begin{enumerate}
+\item Qual é o maior erro absoluto $\varepsilon_{abs} = |\overline{x}-x|$ que pode ter ocorrido? Para quais valores de $\overline{x}$ e de $x$ ocorreria esse erro?
+\item Qual é o maior erro relativo $\varepsilon_{rel} = \frac{|\overline{x}-x| }{ |\overline{x}|}$ que pode ter ocorrido? Para quais valores de $\overline{x}$ e de $x$ ocorreria esse erro?
+\end{enumerate}
+
+\item \calc Se um número natural em binário tem 34 dígitos (bits), qual é o mínimo e o máximo de dígitos decimais que ele pode ter?
+
+\item \calc A seguir são apresentadas algumas sequências $\{ x_n \}_{n \in \mathbb{N}}$ que convergem para $\overline{x} = 2$. Determine, em cada caso, qual é o primeiro termo $x_k$ que pode ser tomado como aproximação de $\overline{x}$, para que o erro percentual relativo cometido nesta aproximação seja inferior a $1\%$.
+\begin{multicols}{2}
+\begin{enumerate}
+\item $x_k =
+\begin{cases}
+\dfrac{{(x_{k-1})}^2 + 4}{2x_{k-1}},& \text{ se } k \geq 2\\
+1, & \text{ se } k = 1
+\end{cases}$
+\item $x_k = 2 + \dfrac{ (-1)^k }{ k^2 }$, para todo $k \geq 1$
+\end{enumerate}
+\end{multicols}
+
+\item \calc Seja $\{ x_n \}_{n \in \mathbb{N}}$, a sequência definida por $x_n = \dfrac{2 + \cos(\pi n)}{2\pi n}$, para $n\geq 1$. Verifique que, apesar de ser verdade que $x_n \to 0$, é possível obter $|x_n| < 0.1$ sem que ocorra $|x_{n+1}| < 0.1$. O que isso revela sobre o uso de testes como $|\varepsilon_{\text{abs}}| < \text{TOL}$ como critério de parada?
+\end{enumerate}
+
+
+\newpage
+\section*{Respostas}
+\begin{enumerate}
+\item Estas são as representações obtidas nas bases indicadas:
+\begin{table}[h]
+\centering
+\caption{Conversão entre bases}
+\begin{tabular}{|c|c|c|}
+\hline
+  \textbf{Decimal}
+& \textbf{Binário}
+& \textbf{Octal} \\ \hline
+  $(33,25)_{10}$
+& $(100001,01)_2$
+& $(41,2)_8$ \\ \hline
+  $(6,5)_{10}$
+& $(110,1)_2$
+& $(6,4)_8$ \\ \hline
+  $(110,1)_{10}$
+& $(1101110.0\overline{0011}...)_2$
+& $(156.0\overline{6314})_8$ \\ \hline
+  $(72,125)_{10}$
+& $(1001000,001)_2$
+& $(110,1)_8$ \\ \hline
+  $(501,375)_{10}$
+& $(111110101,011)_2$
+& $(765,3)_8$ \\ \hline
+  $(29,125)_{10}$
+& $(11101,001)_2$
+& $(35,1_8)_8$ \\ \hline
+  $(11,625)_{10}$
+& $(1011,101)_2$
+& $(13,5)_8$ \\ \hline
+\end{tabular}
+\end{table}
+
+\item Ao testar com o Scilab, Python ou JavaScript, obtém-se $\varepsilon \approx 1.1102230246251565 \times 10 ^{-16}$.
+
+\item Ao testar com o Scilab, ou em JavaScript, obtém-se $n=53$, pois a representação interna de $2^{53} +1$ é a mesma de $2^{53}$.
+
+\item
+\begin{multicols}{5}
+\begin{enumerate}
+\item $0,03\%$
+\item $0,05\%$
+\item $0,03\%$
+\item $0,11\%$
+\item $0,12\%$
+\item $0,30\%$
+\item $0,51\%$
+\item $3,17\%$
+\item $9,65\%$
+\item $25,00\%$
+\end{enumerate}
+\end{multicols}
+
+\item
+\begin{enumerate}
+\item O maior erro absoluto possível nesta situação é $\varepsilon_{abs} = |1,25 - 0,05| = 1,2$. Isso pode ser obtido calculando o máximo absoluto da função $f(\overline{x}, x) = |\overline{x} - x|$ sobre o retângulo $D = \{ (\overline{x}, x) \in \R^2 \ |\ 0,1 \leq \overline{x} \leq 1,25 \text{ e } 0,05 \leq x \leq 0,6 \}$.
+
+\item O maior erro relativo possível nesta situação é $\varepsilon_{rel} = \frac{|0,6 - 0,1| }{ |0,1|} = 5$. Isso pode ser obtido usando ferramentas do cálculo diferencial para calcular o máximo absoluto da função $g(\overline{x}, x) = \frac{|\overline{x}-x| }{ |\overline{x}|}$ sobre o retângulo $D = \{ (\overline{x}, x) \in \R^2 \ |\ 0,1 \leq \overline{x} \leq 1,25 \text{ e } 0,05 \leq x \leq 0,6 \}$. Observe que, para um valor de $x$ fixado, o erro relativo aumenta conforme o valor de $\overline{x}$ se aproxima de zero.
+\end{enumerate}
+
+\item Considerando que $2^{33} = 8589934592 \leq n \leq 17179869183 = 2^{34}-1$, resulta que $n$ tem de $10$ a $11$ dígitos.
+\item Considerando que $\overline{x} = 2$, têm-se as seguintes equivalências a respeito da aproximação $x_k$:
+\[
+\varepsilon_{per}(x_k) < 1\%
+\Leftrightarrow
+\varepsilon_{rel}(x_k) < 0,01
+\Leftrightarrow
+\frac{|x_k - 2|}{|2|} < 0,01
+\Leftrightarrow
+|x_k - 2| < 0,02
+\Leftrightarrow
+1,98 < x_k < 2,02
+\]
+
+As tabelas a seguir mostra os primeiros termos de cada sequência, e os respectivos erros, arredondados para o quarto dígito após a vírgula:
+\begin{enumerate}
+\item
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x_k$ & $\varepsilon_{abs}$ & $\varepsilon_{rel}$ & $\varepsilon_{per}$ \\
+\hline
+$1$ & $2,5000$ & $0,5000$ & $0,2500$ & $25,00\%$ \\
+\hline
+$2$ & $2,0500$ & $0,0500$ & $0,0250$ & $2,50\%$ \\
+\hline
+$3$ & $2,0006$ & $0,0006$ & $0,0003$ & $0,03\%$ \\
+\hline
+\end{tabular}
+
+Portanto o primeiro termo que aproxima $\overline{x}$ com menos de $1\%$ de erro é $x_3 = 2,0006$.
+\item
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$ & $x_k$ & $\varepsilon_{abs}$ & $\varepsilon_{rel}$ & $\varepsilon_{per}$ \\
+\hline
+$1$ & $1,0000$ & $1,0000$ & $0,5000$ & $50,00\%$ \\
+\hline
+$2$ & $2,2500$ & $0,2500$ & $0,1250$ & $12,5\%$ \\
+\hline
+$3$ & $1,8889$ & $0,8889$ & $0,0556$ & $5,56\%$ \\
+\hline
+$4$ & $2,0625$ & $0,0625$ & $0,0313$ & $3,13\%$ \\
+\hline
+$5$ & $1,9600$ & $0,9600$ & $0,0200$ & $2,00\%$ \\
+\hline
+$6$ & $2,0278$ & $0,0278$ & $0,0139$ & $1,39\%$ \\
+\hline
+$7$ & $2,9796$ & $0,9796$ & $0,0102$ & $1,02\%$ \\
+\hline
+$8$ & $2,0156$ & $0,0156$ & $0,0078$ & $0,78\%$ \\
+\hline
+\end{tabular}
+
+Portanto o primeiro termo que aproxima $\overline{x}$ com menos de $1\%$ de erro é $x_8 = 2,0156$.
+\end{enumerate}
+\item Os primeiros termos da sequência são os seguintes:
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+$k$   & $1$   & $2$   & $3$   & $4$\\
+\hline
+$x_k$ & $0,159$ & $0,239$ & $0,053$ & $0,119$ \\
+\hline
+\end{tabular}
+\end{center}
+Como se pode observar, $|x_3| < 0,1$ embora $|x_4| > 0,1$. Assim, o fato de um certo termo de uma sequência convergente estar muito próximo do limite não garante que todos os termos seguintes estarão igualmente (ou mais) próximos do limite. Assim, mesmo que o critério de parada seja satisfeito, não há garantia de que as aproximações subsequentes seriam ainda melhores.
+\end{enumerate}
+\end{document}

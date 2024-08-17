@@ -3,9 +3,9 @@
 *.ods
 
 # Output files
-listas/1/lista-1.pdf
 listas/2/lista-2.pdf
 listas/3/lista-3.pdf
+listas/*/exercícios.pdf
 provas/2017-1/2017-1-prova-[1-3]-pro.pdf
 provas/2017-2/2017-2-prova-[1-3]-pro.pdf
 provas/2018-1/2018-1-prova-[1-3]-pro.pdf
